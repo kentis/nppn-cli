@@ -14,6 +14,12 @@ import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 class CpnIO {
 	
 	
+	def readAndParseCPN(model){
+		def cpn = readCPN(model)
+		parsePragmatics(cpn)
+		return cpn
+	}
+	
 	def readCPN(model){
 		org.cpntools.accesscpn.model.PetriNet pn = null;
 		
