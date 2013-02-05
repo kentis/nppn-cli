@@ -1034,7 +1034,7 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Open
-&lt;&lt;External(server)&gt;&gt;</text>
+&lt;&lt;service(server)&gt;&gt;</text>
         <box w="144.000000"
              h="72.000000"/>
         <subst subpage="ID1426771432"
@@ -1139,7 +1139,7 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Send
-&lt;&lt;External(msg)&gt;&gt;</text>
+&lt;&lt;service(msg)&gt;&gt;</text>
         <box w="144.000000"
              h="72.000000"/>
         <subst subpage="ID1426780102"
@@ -1244,7 +1244,7 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Close
-&lt;&lt;External&gt;&gt;</text>
+&lt;&lt;service&gt;&gt;</text>
         <box w="144.000000"
              h="72.000000"/>
         <subst subpage="ID1426782521"
@@ -2048,7 +2048,7 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Open
-&lt;&lt;External(rhost, rport)&gt;&gt;
+&lt;&lt;service(rhost, rport)&gt;&gt;
 &lt;&lt;OpenChannel()&gt;&gt;
 &lt;&lt;SetField(Receiver, socket)&gt;&gt;</text>
         <box w="282.000000"
@@ -2839,7 +2839,7 @@ Completed
         <textattr colour="Black"
                   bold="false"/>
         <text>Send
-&lt;&lt;External(msg)&gt;&gt;</text>
+&lt;&lt;service(msg)&gt;&gt;</text>
         <box w="146.000000"
              h="96.000000"/>
         <binding x="7.200000"
@@ -4543,7 +4543,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>Close
-&lt;&lt;External()&gt;&gt;</text>
+&lt;&lt;service()&gt;&gt;</text>
         <box w="140.000000"
              h="40.000000"/>
         <binding x="7.200000"
@@ -5010,7 +5010,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>Init
-&lt;&lt;External(rport)&gt;&gt;</text>
+&lt;&lt;service(rport)&gt;&gt;</text>
         <box w="138.000000"
              h="62.000000"/>
         <subst subpage="ID1427031858"
@@ -5115,7 +5115,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>ReceiverClose
-&lt;&lt;External&gt;&gt;</text>
+&lt;&lt;service&gt;&gt;</text>
         <box w="138.000000"
              h="62.000000"/>
         <subst subpage="ID1427035246"
@@ -5220,7 +5220,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>ReceiverReceive
-&lt;&lt;External()&gt;&gt;</text>
+&lt;&lt;service()&gt;&gt;</text>
         <box w="138.000000"
              h="62.000000"/>
         <subst subpage="ID1427038816"
@@ -5967,7 +5967,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>Init
-&lt;&lt;External(rhost, rport)&gt;&gt;
+&lt;&lt;service(rhost, rport)&gt;&gt;
 &lt;&lt;OpenServerChannel(rport,socket)&gt;&gt;
 &lt;&lt;SetField(Sender, socket)&gt;&gt;</text>
         <box w="250.000000"
@@ -6424,7 +6424,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>Close 
-&lt;&lt;External()&gt;&gt;</text>
+&lt;&lt;service()&gt;&gt;</text>
         <box w="208.000000"
              h="40.000000"/>
         <binding x="7.200000"
@@ -7045,7 +7045,7 @@ Messages</text>
         <textattr colour="Black"
                   bold="false"/>
         <text>Receive
-&lt;&lt;External()&gt;&gt;
+&lt;&lt;service()&gt;&gt;
 &lt;&lt;SetValue(mss, [])&gt;&gt;</text>
         <box w="192.000000"
              h="96.000000"/>
