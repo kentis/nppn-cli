@@ -2482,7 +2482,7 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Packet Sent
-&lt;&lt;EndLop(cond: &apos;(eq 1 __TOKEN__[0])&apos; )&gt;&gt;</text>
+&lt;&lt;Id(cond: &apos;(eq 1 __TOKEN__[0])&apos; )&gt;&gt;</text>
         <ellipse w="332.000000"
                  h="66.000000"/>
         <token x="-10.000000"
@@ -6690,7 +6690,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>PacketReceived
-&lt;&lt;EndLop(cond: &apos;(eq 1 __TOKEN__[0])&apos; )&gt;&gt;</text>
+&lt;&lt;Id(cond: &apos;(eq 1 __TOKEN__[0])&apos; )&gt;&gt;</text>
         <ellipse w="300.000000"
                  h="78.000000"/>
         <token x="-44.000000"

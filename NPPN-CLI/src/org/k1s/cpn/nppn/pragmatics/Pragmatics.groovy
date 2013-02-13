@@ -9,6 +9,16 @@ class Pragmatics {
 	/* just for safe-keeping */
 	String pragmaticsText
 	
+	
+	public Pragmatics(){
+		
+	}
+	
+	public Pragmatics(PragmaticsDescriptor pragDef){
+		this.type = pragDef
+		this.name = pragDef.name
+	}
+	
 	public static Pragmatics parse(String input) {
 		Pragmatics prag = new Pragmatics();
 		

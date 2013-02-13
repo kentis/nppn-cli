@@ -15,7 +15,7 @@ class PrgamaticsDescriptorDSL {
 		if(closure instanceof String){
 			closure = new GroovyShell().evaluate("return {${closure}}")
 		}
-		if(!(closure instanceof Closure)) throw new IllegalArgumentException("Illegeal type of argument: $arg")
+		if(!(closure instanceof Closure)) throw new IllegalArgumentException("Illegeal type of argument: $closure")
 		
 		closure.delegate = this
 		closure()

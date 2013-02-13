@@ -5,12 +5,22 @@ import org.cpntools.accesscpn.model.Arc
 import org.cpntools.accesscpn.model.Instance
 import org.cpntools.accesscpn.model.Page
 import org.cpntools.accesscpn.model.Place
+import org.cpntools.accesscpn.model.RefPlace;
 import org.cpntools.accesscpn.model.Transition
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 class CPNBuilderTests {
+	
+	@Before
+	void setup(){
+		Transition.metaClass.pragmatics = null
+		Place.metaClass.pragmatics = null
+		Instance.metaClass.pragmatics = null
+		RefPlace.metaClass.pragmatics = null
+	}
 	
 	@Test
 	void testBuilderPagePlaceArcTransition(){
@@ -37,6 +47,30 @@ class CPNBuilderTests {
 		assertThat arc.getTarget(), is(pn.page[0].object[1])
 
 		assertThat pn.page[0].object[1].getTargetArc()[0], is(arc)
+	}
+	
+	
+	@Test
+	void testBuilderPagePlaceArcTransitionWithPragmatics(){
+		//def builder = new ePNKBuilder(PnmlcoremodelFactory.eINSTANCE)
+		def builder = new CPNBuilder()
+		
+		def pn = builder.make {
+			page(name:'root'){
+				def p = place(name:'place', pragmatics: 'dilldall()')
+				def t = transition(name:'tranistion', pragmatics: 'tullball()')
+				arc(p,t)
+			}
+		}
+		
+		assertThat pn.page.size(),  is(1)
+		assertThat pn.page[0].object.size(), is(2)
+		println pn.page[0].object[0].class
+		assertTrue pn.page[0].object[0] instanceof Place
+		assertTrue pn.page[0].object[1] instanceof Transition
+		
+		assertThat pn.page[0].object[0].pragmatics[0].name, is('dilldall')
+		assertThat pn.page[0].object[1].pragmatics[0].name, is('tullball')
 	}
 	
 	@Test

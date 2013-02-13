@@ -4,6 +4,7 @@ import org.cpntools.accesscpn.model.Arc
 import org.cpntools.accesscpn.model.Name
 import org.cpntools.accesscpn.model.Page
 import org.cpntools.accesscpn.model.impl.*
+import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 
 class CPNBuilder {
 	def pn
@@ -13,7 +14,7 @@ class CPNBuilder {
 	def labelsMap
 	
 	CPNBuilder(labelsMap = [:]){
-		println "setting factory: $factory"
+		//println "setting factory: $factory"
 		this.factory = ModelFactoryImpl.eINSTANCE
 		this.labelsMap = labelsMap
 		pn = factory.createPetriNet()
@@ -62,17 +63,17 @@ class CPNBuilder {
 					obj = t
 				break
 			case "refplace":
-				println args
+				//println args
 					def rp = createRefPlace(args)
 					currentPage.object << rp
 					obj = rp
 				break
 			case "arc":
-				println "arc($args)"
+				//println "arc($args)"
 				obj = createArc(args)
 				break
 			case "substtransition":
-				obj = createSubstTransition(args)
+				obj = createSubstTransition(args[0])
 				currentPage.object << obj
 				break
 			case "epnkbuilder":
@@ -104,6 +105,7 @@ class CPNBuilder {
 	def createPlace(args){
 		def place = factory.createPlace()
 		place.setName getName(args.name == null ? "place" : args.name)
+		setPragmatic(place, args.pragmatics)
 		if(args.labels != null){
 			setLabels(place, args.labels)
 		}
@@ -113,6 +115,9 @@ class CPNBuilder {
 	def createTransition(args){
 		def trans = factory.createTransition()
 		trans.setName getName(args.name == null ? "trans" : args.name)
+		
+		setPragmatic(trans, args.pragmatics)
+		
 		if(args.labels != null){
 			setLabels(trans, args.labels)
 		}
@@ -123,6 +128,7 @@ class CPNBuilder {
 		def trans = factory.createInstance()
 		trans.setName getName(args.name == null ? "trans" : args.name)
 		trans.setSubPageID(args.subPageId)
+		setPragmatic(trans, args.pragmatics)
 		if(args.labels != null){
 			setLabels(trans, args.labels)
 		}
@@ -134,9 +140,9 @@ class CPNBuilder {
 	def createArc(args){
 		Arc arc = factory.createArc()
 		if(args.size() >= 4){
-			def insc = factory.eINSTANCE.createInscription()
+			def insc = factory.eINSTANCE.createHLAnnotation()
 			insc.setText args[3]
-			arc.setInscription insc
+			arc.setHlinscription(insc)
 		}
 		
 		arc.setSource args[0]
@@ -145,6 +151,12 @@ class CPNBuilder {
 		args[0].sourceArc.add arc
 		args[1].targetArc.add arc
 		return arc
+	}
+	
+	def setPragmatic(node, pragmatic){
+		if(pragmatic == null) return
+		if(node.pragmatics == null) node.pragmatics = []
+		node.pragmatics << Pragmatics.parse(pragmatic)
 	}
 	
 	def setLabels(node, labels){

@@ -3,6 +3,7 @@ package org.k1s.nppn.pragmatics;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.junit.Test;
 import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL
 
@@ -13,7 +14,7 @@ class PragmaticsDescriptorDSLTests {
 	void testNewDesc(){
 		def desc = new PrgamaticsDescriptorDSL()
 		
-		desc.test(type: null, paramters: ['dill', 'dall'])
+		desc.test(paramters: ['dill', 'dall'])
 		
 		assertThat desc.prags.size(), is(1)
 		assertThat desc.prags['test'], is(not(null))
@@ -29,7 +30,7 @@ class PragmaticsDescriptorDSLTests {
 	void testNewDescFromString(){
 		def desc = new PrgamaticsDescriptorDSL()
 		
-		def string = "test(type: null, paramters: ['dill', 'dall'])"
+		def string = "test(paramters: ['dill', 'dall'])"
 		
 		desc.build(string)
 		
@@ -44,8 +45,8 @@ class PragmaticsDescriptorDSLTests {
 	void testNewDescFromStringWith2Lines(){
 		def desc = new PrgamaticsDescriptorDSL()
 		
-		def string = "test(type: null, paramters: ['dill', 'dall'])\n"+
-					 "test2(type: null, paramters: ['dill2', 'dall2'])"
+		def string = "test( paramters: ['dill', 'dall'])\n"+
+					 "test2( paramters: ['dill2', 'dall2'])"
 		
 		desc.build(string)
 		
@@ -57,5 +58,18 @@ class PragmaticsDescriptorDSLTests {
 		
 		assertThat desc.prags['test2'].name, is("test2")
 	}
+	
+	@Test
+	void testNewDescFromCore(){
+		def desc = new PrgamaticsDescriptorDSL()
+		
+		def string = this.class.getResourceAsStream("/core.prags")
+		desc.build(string.text)
+		
+		println desc
+		assertTrue desc.prags.size() > 3
+
+	}
+	
 	
 }
