@@ -1,5 +1,6 @@
 *.class
 **/bin
+*.swp
 .metadata
 AccessCPNFeature/
 EMF2DSL/
