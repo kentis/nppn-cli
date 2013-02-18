@@ -1,6 +1,6 @@
 package org.k1s.nppn.blocks
 
-class Sequence implements Block{
+class Sequence extends Block{
 
 	def children = []
 	

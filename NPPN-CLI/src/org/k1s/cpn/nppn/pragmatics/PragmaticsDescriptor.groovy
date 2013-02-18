@@ -19,6 +19,9 @@ class PragmaticsDescriptor {
 	List derviationRules
 	List validationRules
 	
+	//indicates wether or not this pragatic indicates the control flow path
+	boolean controlFlow = false
+	Map block
 	
 	void setOrigin(origin){
 		if(origin instanceof String){

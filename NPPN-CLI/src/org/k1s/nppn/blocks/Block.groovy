@@ -1,6 +1,8 @@
 package org.k1s.nppn.blocks
 
-interface Block {
-	def start
-	def end
+abstract class Block {
+	public def start
+	public def end
+	
+
 }

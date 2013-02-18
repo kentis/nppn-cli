@@ -1,6 +1,6 @@
 package org.k1s.nppn.blocks
 
-class Conditinoal implements Block {
+class Conditional extends Block {
 	def pragmatic
 	def sequence
 }
