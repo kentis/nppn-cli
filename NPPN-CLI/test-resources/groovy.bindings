@@ -1,0 +1,41 @@
+ClassTemplate(pragmatic: 'Principal', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/mainClass.tmpl', isContainer: true)
+			
+			ExternalTemplate(pragmatic: 'service', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/externalMethod.tmpl', isContainer: true)
+			
+			send(pragmatic: 'send', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/sendMessageTCP.tmpl', dependencies: 'channels')
+			
+			//Receive(pragmatic: 'Receive', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/recieveMessageTCP.tmpl', dependencies: 'channels')
+			
+			
+			COND(pragmatic: '_COND_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/cond.tmpl')
+			TRUE(pragmatic: '_TRUE_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/true.tmpl')
+			EXPR(pragmatic: '_EXPR_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/expr.tmpl')
+			
+			TOKEN(pragmatic: '_-TOKEN-_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/__TOKEN__.tmpl')
+			DECLARATIONS(pragmatic: '_-DECLARATIONS-_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/__DECLARATIONS__.tmpl')
+			
+			Id(pragmatic: 'Id')
+			Cond(pragmatic: 'Cond', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/cond.tmpl', isContainer: true, isMultiContainer: true)
+			startLoop(pragmatic: 'startLoop', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/loop.tmpl', isContainer: true, isMultiContainer: true)
+			
+			endLoop(pragmatic: 'endLoop', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/endLoop.tmpl')
+			Print(pragmatic: 'Print', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/print.tmpl')
+			RemoveHead(pragmatic: 'RemoveHead', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/remHead.tmpl')
+			Merge(pragmatic: 'Merge')
+			LCV(pragmatic: 'LCV')
+			Return(pragmatic: 'return', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/return.tmpl')
+			Return1(pragmatic: 'Return', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/return.tmpl')
+			
+			/**OPERATIONS**/
+			//Partition(pragmatic: 'partition', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/partition.tmpl')
+			//Departition(pragmatic: 'Departition', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/departition.tmpl')
+			Pop(pragmatic: 'pop', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/pop.tmpl')
+			SetToken(pragmatic: 'setToken', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setToken.tmpl')
+			
+			SetField(pragmatic: 'SetField', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setField.tmpl')
+			//Append(pragmatic: 'Append', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/append.tmpl')
+			SetValue(pragmatic: 'SetValue', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setValue.tmpl')
+			OpenChannel(pragmatic: 'OpenChannel', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/openChannel.tmpl')
+			OpenServerChannel(pragmatic: 'OpenServerChannel', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/openServerChannel.tmpl')
+			
+			STMT(pragmatic: 'Stmt', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/stmt.tmpl')

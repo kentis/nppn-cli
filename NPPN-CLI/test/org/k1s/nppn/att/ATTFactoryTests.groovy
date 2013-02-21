@@ -81,7 +81,7 @@ class ATTFactoryTests {
 	}
 	
 	
-	def getCorePragmatics(){
+	static def getCorePragmatics(){
 		def desc = new PrgamaticsDescriptorDSL()
 		def string = this.class.getResourceAsStream("/core.prags")
 		desc.build(string.text)

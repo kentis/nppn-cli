@@ -50,7 +50,7 @@ class  PNPattern {
 		}
 		
 		if(pragmatics != null){
-			println node.pragmatics
+			//println node.pragmatics
 			def pragNode = node
 			//if(node instanceof RefPlace) {
 			while(pragNode instanceof RefPlace) {
@@ -60,9 +60,9 @@ class  PNPattern {
 			if(pragNode == null || pragNode.pragmatics == null || pragmatics.size() != pragNode.pragmatics.size()) return false
 			def pragsOk = true
 			pragNode.pragmatics.each { 
-				println "checking prag: ${it}"
+				//println "checking prag: ${it}"
 				def pragName = it.name
-				println "pragName: $pragName"
+				//println "pragName: $pragName"
 				if(!pragmatics.contains(pragName)) pragsOk = false
 			}
 			if(!pragsOk) return false
@@ -107,12 +107,12 @@ class  PNPattern {
 //		}
 		
 		if(minInEdges != null){
-			println "checking num in edges"
+			//println "checking num in edges"
 			if(node.getTargetArc().size() < minInEdges) return false
 		}
 		
 		if(minOutEdges != null){
-			println "checking num out edges"
+			//println "checking num out edges"
 			if(node.getSourceArc().size() < minOutEdges) return false
 		}
 		

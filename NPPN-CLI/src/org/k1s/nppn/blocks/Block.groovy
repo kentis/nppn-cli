@@ -4,5 +4,6 @@ abstract class Block {
 	public def start
 	public def end
 	
-
+	public def text
+	public def pragmatics = []
 }
