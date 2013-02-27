@@ -24,21 +24,8 @@ class Binding{
 	def dependencies
 	def isContainer = false
 	def isMultiContainer = false
+	def parameterStrategy
 	
-	def toFowl(){
-		StringBuilder fowl = new StringBuilder()
-		fowl.append """Declaration( NamedIndividual( :${name}))
-	ClassAssertion( :TemplateBinding :${name})
-	ObjectPropertyAssertion( :pragmatic :${name} nppn:${pragmatic} )
-	DataPropertyAssertion(:template :${name} \"${template}\"^^xsd:string)
-	DataPropertyAssertion(:container :${name} "${isContainer}"^^xsd:boolean)
-	"""
-		if(dependencies != null){
-			fowl.append "DataPropertyAssertion(:dependencies :${name} \"${dependencies}\"^^xsd:string)"
-		}
-		fowl.append "\n\n"
-		return fowl.toString()
-	}
 	
 	def getTemplate(){
 		if(template instanceof Closure) return template.call()

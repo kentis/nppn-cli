@@ -54,6 +54,17 @@ class ATTFactory {
 			}
 		}
 		
+		
+		//set LCVs and States
+		page.object.findAll{ it instanceof Place && it.pragmatics.name.contains('LCV')}.each{ lcv ->
+			principal.lcvs << lcv
+			//println "INITIAL-MARKING: "+((Place)lcv).initialMarking.toString() 
+		}
+		page.object.findAll{ it instanceof Place && !it.pragmatics.name.contains('LCV')}.each{ state ->
+			principal.states << state
+		}
+		
+		
 		return principal
 	}
 	
@@ -80,6 +91,14 @@ class ATTFactory {
 		def firstBlockStart = findFollowingControlflowPlaces(service.start_node)
 		
 		//TODO add pragmatics of single tranition services
+		//If there are extra pragmatics on the service, add a "virtual" atomic for the service
+		if(service.start_node.pragmatics.size() > 1){
+			def atomic = new Atomic()
+			atomic.transition = service.start_node
+			atomic.pragmatics = service.start_node.pragmatics.findAll{it.name != "service"}
+			atomic.parent = service
+			service.children << atomic
+		}
 		
 		if(firstBlockStart.size() == 0) return service
 		
@@ -87,11 +106,11 @@ class ATTFactory {
 		firstBlockStart = firstBlockStart[0]
 		//service.children << findNextBlock(firstBlockStart)
 		
-		def block = findNextBlock(firstBlockStart)
+		def block = findNextBlock(firstBlockStart, service)
 		
 		if(block != null) service.children << block
 		while(block && block.end) {
-			block = findNextBlock(block.end)
+			block = findNextBlock(block.end, service)
 			if(block != null) service.children << block
 		}
 		
@@ -122,14 +141,14 @@ class ATTFactory {
 		return retval
 	}
 	
-	def findNextBlock(node){
+	def findNextBlock(node, service){
 		if(isControllFlowPlace(node)){
 			//decide if this is a block or just an atomic
 			if(isBlockStart(node)) {
-				return createBlock(node)
+				return createBlock(node, service)
 			} else {
 				//println "creating atomic for $node with prags: ${node.pragmatics.name}"
-				return createAtomic(node)
+				return createAtomic(node, service)
 			}
 		} else {
 			//println node
@@ -142,18 +161,19 @@ class ATTFactory {
 	}
 	
 	
-	def createBlock(Place node){
+	def createBlock(Place node, parent){
 		
 		if(node.pragmatics.name.flatten().contains("startLoop")){
 			//println "creating loop for: $node"
 			def loop = new Loop()
 			loop.start = node
+			loop.parent = parent
 			visited << node
-			
+			//loop.parent = parent
 			def sequence = new Sequence()
 			sequence.start = node
 			
-			def block = createAtomic(node)
+			def block = createAtomic(node, loop)
 			
 			if(block != null) sequence.children << block
 			
@@ -161,7 +181,7 @@ class ATTFactory {
 				  ! (block.end.pragmatics.flatten().name.contains("endLoop"))) {
 				
 				////println "${block.end.pragmatics.name} does not contain \"endLoop\""
-				block = findNextBlock(block.end)
+				block = findNextBlock(block.end, loop)
 				////println "next end $block.end"
 				////println "next end prags: ${block.end.pragmatics.flatten().name}"
 				////println "next end ends loop: ${block.end.pragmatics.flatten().name.contains("endLoop")}"
@@ -182,12 +202,12 @@ class ATTFactory {
 		throw new Exception("block type for ${node.name} not yet supported")
 	}
 	
-	def createAtomic(Place node, transition = null){
+	def createAtomic(Place node, parent, transition = null){
 		//if(node.sourceArc.size() != 1) throw new Exception("Not start of an Atomic: $node. Wrong number of outGoing arcs: found ${node.sourceArc.size()} expected 1.")
 		def atomic = new Atomic()
 		
 		atomic.start = node
-		
+		atomic.parent = parent
 		if(transition == null){
 			node.sourceArc.each{
 				if( transition == null
@@ -202,7 +222,7 @@ class ATTFactory {
 		if(transition == null) return null
 		atomic.transition = transition
 		atomic.pragmatics = transition.pragmatics
-		atomic.end = findFollowingControlflowPlaces( transition)
+		atomic.end = findFollowingControlflowPlaces( transition)[0]
 		
 		visited << node
 		visited << atomic.transition

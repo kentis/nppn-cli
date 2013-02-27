@@ -34,12 +34,18 @@ class CodeGenerator {
 			}
 		}
 		
-		return node.text.toString().replace("%%yield%%", yieald.toString())
+		def text = node.text.toString().replace("%%yield%%", yieald.toString())
+		if(text.contains("%%yield_declarations%%")){
+			text = text.replace("%%yield_declarations%%", node.declarationsText ? node.declarationsText : "/*no decls found*/")
+		}
+		return text
 	}
 	
 	
 	static def removePrags(str){
-		str.substring(0,str.indexOf("<")).trim()
+		if(str.indexOf("<") < 0) return str
+		
+		return str.substring(0,str.indexOf("<")).trim()
 	}
 	
 	static def nameToFilename(str){

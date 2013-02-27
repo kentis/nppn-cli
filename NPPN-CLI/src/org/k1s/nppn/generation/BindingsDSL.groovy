@@ -4,6 +4,8 @@ import org.codehaus.groovy.ast.expr.ClosureExpression;
 
 import groovy.lang.Closure;
 
+import static org.k1s.nppn.generation.ParameterStrategy.*
+
 class BindingsDSL {
 	final String style
 	
@@ -50,7 +52,7 @@ Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
 	
 	
 	static def makeBindings(InputStream is){
-		def string = "return {\n${is.text}\n}"
+		def string = "import static org.k1s.nppn.generation.ParameterStrategy.* \n return {\n${is.text}\n}"
 		def closure = new GroovyShell().evaluate(string)
 		return makeBindings(closure)
 	}

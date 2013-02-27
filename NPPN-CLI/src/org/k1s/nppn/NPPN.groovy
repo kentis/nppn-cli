@@ -11,9 +11,17 @@ class NPPN {
 			println cli.usage()
 			return
 		}
+		def pragmaticsDescriptor
+		if(options.hasOption('no-core-pragmatics')){
+			pragmaticsDescriptor = ""
+		} else  {
+			pragmaticsDescriptor = getCorePragmaticsStr()
+		}
+		
 		
 		unless(options.hasOption('no-derived')){
 			//do derivition stuff
+			
 		}
 		
 	}
@@ -49,5 +57,9 @@ class NPPN {
 //		cli.o('Output directory (default: .)')
 //		cli.u('Print usage statement')
 		
+	}
+	
+	static def getCorePragmaticsStr(){
+		this.class.getResourceAsStream("/core.prags").text
 	}
 }

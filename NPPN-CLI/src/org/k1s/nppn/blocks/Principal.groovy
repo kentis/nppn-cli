@@ -28,7 +28,7 @@ class Principal {
 		//println bindings.prag2Binding
 		def binding = bindings.prag2Binding["Principal"]
 		//println binding
-		this.text = new TemplateManager().runTemplate(binding.template,['name':CodeGenerator.nameToFilename(name)])
+		this.text = new TemplateManager().runTemplate(binding.template,['name':CodeGenerator.nameToFilename(name), 'lcvs': lcvs, 'fields': states]).toString()
 		//println this.text
 		return this.text
 	}

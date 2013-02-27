@@ -9,9 +9,10 @@ abstract class ODGVisitor {
 
 	abstract def visitElement(element, bindings);
 	
-	static final def visitorsPass1 = [new GenerationVisitor()]
+	static final def visitorsPass1 = [new GenerationVisitor(),
+									  new VarsVisitor()]
 	
-	static final def visitorsPass2 = []
+	static final def visitorsPass2 = [new VarsTextVisitor()]
 	
 	final static void visitATT(att, bindings){
 

@@ -8,6 +8,11 @@ import org.k1s.nppn.att.ATTFactoryTests;
 import org.k1s.nppn.blocks.derived.PragmaticsDerivator;
 import org.k1s.nppn.cpn.io.CpnIO
 
+
+import static org.hamcrest.CoreMatchers.*
+
+import static org.junit.matchers.JUnitMatchers.*
+
 class CodeGeneratorTests {
 
 	@Test
@@ -53,17 +58,19 @@ class CodeGeneratorTests {
 		
 		def t = Thread.start {
 				//server.start(31337)
-			server.ReceiverInit(31337)
+			
+			server.Init(31337)
 			def res = server.ReceiverReceive()
+			//println "And the result is:"
 			println res
 		}
 		
 		Thread.sleep(1000)
 		
 		//client.start("the quick brown fox jumps over the lazy dog",[port: 31337, host:'localhost'])
-		client.SenderOpen([port: 31337, host:'localhost'])
-		client.SenderSend("the quick brown fox jumps over the lazy dog")
-		client.SenderClose()
+		client.Open([port: 31337, host:'localhost'])
+		client.Send("the quick brown fox jumps over the lazy dog")
+		client.Close()
 		
 		Thread.sleep 1000
 		t.stop()

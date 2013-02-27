@@ -29,7 +29,7 @@ class TemplateManager {
 		
 		SimpleTemplateEngine engine = new SimpleTemplateEngine()
 		Template simpleTemplate = engine.createTemplate(tmpl)
-		def retval = simpleTemplate.make(params)
+		def retval = simpleTemplate.make(params).toString()
 		return retval
 	}
 	

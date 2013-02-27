@@ -2482,7 +2482,8 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Packet Sent
-&lt;&lt;Id(cond: &apos;(eq 1 __TOKEN__[0])&apos; )&gt;&gt;</text>
+&lt;&lt;Id(cond: &apos;(eq 0 __TOKEN__[0])&apos; )&gt;&gt;</text>
+
         <ellipse w="332.000000"
                  h="66.000000"/>
         <token x="-10.000000"
@@ -3017,7 +3018,10 @@ Completed
         <textattr colour="Black"
                   bold="false"/>
         <text>NextMessage
-&lt;&lt;Pop(OutgoingMessage, m)&gt;&gt;</text>
+&lt;&lt;Pop(OutgoingMessage, m)&gt;&gt;
+&lt;&lt;SetToken(cond: &apos; (isEmpty OutgoingMessage)&apos;,  
+[1_m], [0_m], ) &gt;&gt;
+</text>
         <box w="234.000000"
              h="60.000000"/>
         <binding x="7.200000"
@@ -6690,7 +6694,7 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>PacketReceived
-&lt;&lt;Id(cond: &apos;(eq 1 __TOKEN__[0])&apos; )&gt;&gt;</text>
+&lt;&lt;Id(cond: &apos;(eq 0 __TOKEN__[0])&apos; )&gt;&gt;</text>
         <ellipse w="300.000000"
                  h="78.000000"/>
         <token x="-44.000000"
@@ -7137,7 +7141,9 @@ Messages</text>
         <text>Receive
 Packet
 &lt;&lt;Receive(p, Sender)&gt;&gt;
-&lt;&lt;Append(p,mss)&gt;&gt;</text>
+&lt;&lt;Append(p,mss)&gt;&gt;
+&lt;&lt;SetToken(p)&gt;&gt;
+</text>
         <box w="192.000000"
              h="122.000000"/>
         <binding x="7.200000"
