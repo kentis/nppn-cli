@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <enumeration id="1" language="java" name="org.k1s.cpn.nppn.pragmatics.OriginType" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PragmaticsDescriptor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="221" width="148" x="391" y="498"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="2" language="java" name="org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PrgamaticsDescriptorDSL.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="201" x="621" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.k1s.cpn.nppn.pragmatics.ParamterDesciptor" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PragmaticsDescriptor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="144" x="207" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.k1s.cpn.nppn.pragmatics.Pragmatics" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/Pragmatics.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="190" x="391" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PragmaticsDescriptor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="496" y="360"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="6">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="7" name="type">        
+        <position height="16" width="29" x="455" y="224"/>      
+      </attribute>      
+      <multiplicity id="8" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="9">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="10" name="origin"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
