@@ -13,11 +13,11 @@ class PragmaticsDescriptor {
 
 	OriginType origin = OriginType.EXPLICIT
 	String name
-	List paramters
+	//List paramters
 	
 	
 	List derviationRules
-	List validationRules
+	//List validationRules
 	
 	//indicates wether or not this pragatic indicates the control flow path
 	boolean controlFlow = false
@@ -41,8 +41,8 @@ enum OriginType {
 	EXPLICIT, DERIVED
 }
 
-class ParamterDesciptor {
+/*class ParamterDesciptor {
 	String name
 	String type
 	List<String> legalValues
-}
+}*/

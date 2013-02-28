@@ -1,6 +1,10 @@
 package org.k1s.nppn
 import static org.k1s.nppn.Conditionals.*
 
+import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL;
+import org.k1s.nppn.blocks.derived.PragmaticsDerivator;
+import org.k1s.nppn.cpn.io.CpnIO
+
 class NPPN {
 
 	public static void main(String[] args){
@@ -11,18 +15,40 @@ class NPPN {
 			println cli.usage()
 			return
 		}
-		def pragmaticsDescriptor
-		if(options.hasOption('no-core-pragmatics')){
-			pragmaticsDescriptor = ""
-		} else  {
-			pragmaticsDescriptor = getCorePragmaticsStr()
+		
+		/****** MODULE 1: Derive pragmaitcs! ***********/
+		
+		//Parse the model
+		def model = new File(options.arguments()[0]).text
+		def io = new CpnIO()
+		def cpn = io.readCPN(model)
+		io.parsePragmatics(cpn)
+		
+		//get pragmatics descriptions
+		def pragmaticsDescriptor = new StringBuffer()
+		unless(options.hasOption('no-core-pragmatics')){
+			pragmaticsDescriptor.append getCorePragmaticsStr()
 		}
 		
+		options.'pragmatics-specifications'.each {
+			pragmaticsDescriptor.append "\n"
+			pragmaticsDescriptor.append new File(it).text
+		}
+		
+		//Parse pragmatics descriptions
+		def prags = new PrgamaticsDescriptorDSL()
+		prags.build(pragmaticsDescriptor.toString())
+		pragmaticsDescriptor = prags.prags
+		
+		
+		//Add derived pragmatics
 		
 		unless(options.hasOption('no-derived')){
 			//do derivition stuff
-			
+			PragmaticsDerivator.addDerivedPragmatics(cpn, pragmaticsDescriptor)
 		}
+		
+		/************ Module 2: Generate ATT ****************/
 		
 	}
 	
@@ -39,7 +65,7 @@ class NPPN {
 			_(longOpt: 'no-derived', 'No derived pragmatics will be added')
 			_(longOpt: 'output-annotated-net', 'write the annotated net to the output dir')
 			_(longOpt: 'only-output-annotated-net','write the annotated net to the output dir and exit')
-			p(longOpt: 'pragmatics-specification', 'sets an additional set of pragmatics for the model')
+			p(longOpt: 'pragmatics-specification', args: Option.UNLIMITED_VALUES, valueSeparator: ',' as char, 'sets an additional set of pragmatics for the model')
 			c(longOpt: 'no-core-pragmatics', 'disables the default core proagmatics')
 			
 			
@@ -50,7 +76,7 @@ class NPPN {
 			
 						
 			//Code generation options
-			b(longOpt: 'tempålate-bindings','specifies template bindigns')
+			b(longOpt: 'template-bindings','specifies template bindigns')
 		}
 //		cli.t('Specify template bindings')
 //		cli.o('Specify derived pragmatics')
