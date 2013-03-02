@@ -26,6 +26,18 @@ class CodeGenerator {
 		return files
 	}
 	
+	def write(files){
+		
+		att.children.eachWithIndex { att, index ->
+			//println "witing to '${outdir}/${nameToFilename(att.name)}'"
+			
+			def file = new File("${outdir}/${nameToFilename(att.name)}")
+			file.createNewFile() 
+			
+			file.text = files[index]
+		}
+	}
+	
 	def attToFile(node){
 		def yieald = new StringBuffer()
 		if(node.metaClass.hasProperty(node, "children") || node.metaClass.respondsTo(node, "getChildren")){
