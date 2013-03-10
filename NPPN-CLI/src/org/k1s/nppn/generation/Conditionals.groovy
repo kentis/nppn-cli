@@ -19,7 +19,7 @@ class Conditionals {
 		println "prag args: ${pragmatic.arguments}"
 		println "prag text: ${pragmatic.text}"*/
 		if(pragmatic.name == "Id"){
-			println pragmatic.arguments
+			//println pragmatic.arguments
 			def args = pragmatic.arguments
 			def map = new GroovyShell().evaluate("return [$args]")
 			//println map
@@ -32,9 +32,9 @@ class Conditionals {
 			println "args = '$args'"*/
 			condStr = new GroovyShell().evaluate("return $args")
 		} 
-		println condStr
+		//println condStr
 		def conds = parse(condStr)
-		println conds.conds
+		//println conds.conds
 		/*def iftmpl = '''
 			${first ? '' : 'else '}if(${cond.e == 't'? t : cond.e}){ ${cond.p} }
 		'''
@@ -61,7 +61,7 @@ class Conditionals {
 			} 
 			for(def i = 1; i < e.size(); i++){%> ${e[i]} ${i < (e.size() -1) ? verb : ''}<%}%>'''  
 		*/
-		println "BB: ${bindings.bindings}"
+		//println "BB: ${bindings.bindings}"
 		def exprTmpl = new File(bindings.bindings.EXPR.template).text
 		def condTmpl = new File(bindings.bindings.COND.template).text
 		def trueTmpl = new File(bindings.bindings.TRUE.template).text
@@ -82,9 +82,9 @@ class Conditionals {
 	static def translateExpr(pragmatic, bindings){
 		def args = pragmatic.arguments
 		args = args.replaceAll("\n", " ")
-		println "translating: $args"
+		//println "translating: $args"
 		def map = new GroovyShell().evaluate("return [$args]")
-		println map
+		//println map
 		def exprStr = map.cond
 		def exprTmpl = new File(bindings.bindings.STMT.template).text
 		
@@ -96,13 +96,13 @@ class Conditionals {
 		
 		def exprText = exprTemplate.make([stmt: parseExpr(exprStr), t: trueTmpl]).toString()
 		
-		println "exprText: ${exprText}"
+		//println "exprText: ${exprText}"
 		return exprText
 		
 	}
 	
 	static def parseExpr(exprStr){
-		println "-------------------------------------"
+		//println "-------------------------------------"
 		def exprs = []
 		def currExpr
 		def parentExprs = []
@@ -135,8 +135,8 @@ class Conditionals {
 			}
 		}
 		
-		println exprs[0]
-		println "-------------------------------------"
+		//println exprs[0]
+		//println "-------------------------------------"
 		return exprs[0]
 	}
 	

@@ -27,7 +27,7 @@ class NPPN {
 		/****** MODULE 1: Derive pragmaitcs! ***********/
 		
 		//Parse the model
-		println options.arguments()
+		//println options.arguments()
 		def model = new File(options.arguments().last())
 		def io = new CpnIO()
 		def cpn = io.readCPN(new FileInputStream(model))

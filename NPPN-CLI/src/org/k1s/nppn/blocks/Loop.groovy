@@ -10,7 +10,8 @@ class Loop extends Block{
 	def endPragmmatic
 	def declarationsText
 	def declarations = []
-	def getChildren(){
+	List<Block> children = []
+	List<Block> getChildren(){
 		return sequence.children
 	}
 	

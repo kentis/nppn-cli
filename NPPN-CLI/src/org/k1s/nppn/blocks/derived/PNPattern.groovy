@@ -41,7 +41,7 @@ class  PNPattern {
 		
 		
 		if(node instanceof Arc){
-			println "WTF arc?"
+			//println "WTF arc?"
 		}
 		
 		if(name != null){

@@ -21,8 +21,8 @@ class Service extends Sequence {
 		//println bindings.prag2Binding
 		def binding = bindings.prag2Binding["service"]
 		//println binding
-		println node.pragmatics[0].name
-		println node.pragmatics[0].arguments
+		//println node.pragmatics[0].name
+		//println node.pragmatics[0].arguments
 		
 		def params = new TemplateParameters(bindings).getParamtersFor(node.pragmatics[0], node, binding.parameterStrategy)
 		params.name = CodeGenerator.nameToFilename(name)
