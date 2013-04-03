@@ -12,6 +12,11 @@ import org.k1s.nppn.generation.CodeGenerator
 
 class NPPN {
 
+	
+	/**
+	 * Main method of the program. This is where it all begins.
+	 * @param args The arguments as a String array as per tradition.
+	 */
 	public static void main(String[] args){
 		
 		def cli = getCli()
@@ -84,7 +89,10 @@ class NPPN {
 		//files.each{ println it; println "\n\n\n\n\n"}
 	}
 	
-	
+	/**
+	 * Returns the CliBuilder used for this application.
+	 * @return CliBuilder
+	 */
 	def static getCli(){
 		def cli = new CliBuilder(usage: 'NPPN model' )
 		cli.with {
@@ -119,6 +127,10 @@ class NPPN {
 		return cli
 	}
 	
+	/**
+	 * Gets the core pragmatics definitions
+	 * @return String
+	 */
 	static def getCorePragmaticsStr(){
 		this.class.getResourceAsStream("/core.prags").text
 	}

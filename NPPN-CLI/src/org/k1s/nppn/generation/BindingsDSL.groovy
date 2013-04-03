@@ -6,10 +6,15 @@ import groovy.lang.Closure;
 
 import static org.k1s.nppn.generation.ParameterStrategy.*
 
+/**
+ * Implements a DSL for bindings
+ * @author kent
+ *
+ */
 class BindingsDSL {
 	final String style
 	
-	static final String prefix = """Prefix(:=<http://k1s.org/orn/plattform/>)
+	/*static final String prefix = """Prefix(:=<http://k1s.org/orn/plattform/>)
 Prefix(basic:=<http://t.k1s.org/OntologyReastrictedNets/basic/>)
 Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
 Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
@@ -26,7 +31,7 @@ Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
 	SubClassOf( :TemplateBinding ObjectAllValuesFrom( :template xsd:string ) )
 	SubClassOf( :TemplateBinding ObjectAllValuesFrom( :container xsd:Boolean ) )
 	SubClassOf( :TemplateBinding ObjectAllValuesFrom( :depends xsd:string ) )
-	"""
+	"""*/
 	
 	static final String postfix = "\n)"
 	StringBuilder sb = new StringBuilder()	
@@ -37,7 +42,7 @@ Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
 		this.style = style
 	}
 	
-	static def makeOWL(closure){
+	/*static def makeOWL(closure){
 		
 		
 		def bindings = new BindingsDSL("OWL")
@@ -48,7 +53,7 @@ Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
 		bindings.sb.append(postfix)
 		
 		return bindings.getFowl()
-	}
+	}*/
 	
 	
 	static def makeBindings(InputStream is){

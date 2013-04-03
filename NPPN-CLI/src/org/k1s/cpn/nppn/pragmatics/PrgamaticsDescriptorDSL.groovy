@@ -11,6 +11,13 @@ class PrgamaticsDescriptorDSL {
 	
 	def prags = [:]
 	
+	
+	/**
+	 * Runs a descriptor DSL
+	 * 
+	 * @param String containing a program of the DSL
+	 * @return
+	 */
 	def build(closure){
 		if(closure instanceof String){
 			closure = new GroovyShell().evaluate("return {${closure}}")
@@ -21,10 +28,21 @@ class PrgamaticsDescriptorDSL {
 		closure()
 	}
 	
+	
+	/**
+	 * Overrides the methodMissing method
+	 * 
+	 * @param methodName
+	 * @param args
+	 * @return
+	 */
 	def methodMissing(String methodName, args) {
 		PragmaticsDescriptor prag = new PragmaticsDescriptor(args.size() > 0? args[0] : [:])
+		
 		prag.name = methodName
 		prags[methodName] = prag
+		
+		
 	}
 
 		

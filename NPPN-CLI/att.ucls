@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="org.k1s.cpn.nppn.att.ATTFactory" project="NPPN-CLI" 
     file="/NPPN-CLI/src/org/k1s/cpn/nppn/att/ATTFactory.groovy" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="317" y="267"/>    
+    <position height="-1" width="-1" x="592" y="257"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      

@@ -2,19 +2,33 @@ package org.k1s.nppn.generation
 
 import org.k1s.nppn.generationVisitors.ODGVisitor;
 
+/**
+ * Main driver for the code generation
+ * @author kent
+ *
+ */
 class CodeGenerator {
 
 	def att
 	def bindings
 	def outdir
 	
+	/**
+	 * Constructor
+	 * @param att The ATT for which code should be generated
+	 * @param bindings the bindings for templates
+	 * @param outdir The output directiory for the generated code
+	 */
 	public CodeGenerator(att, bindings, outdir = "./"){
 		this.att = att
 		this.bindings = bindings
 		this.outdir = outdir
 	}
 
-	
+	/**
+	 * Generates code
+	 * @return
+	 */
 	def generate(){
 
 		att.children.each{
@@ -26,6 +40,10 @@ class CodeGenerator {
 		return files
 	}
 	
+	/**
+	 * Writes code to the output directory
+	 * @param files
+	 */
 	def write(files){
 		
 		att.children.eachWithIndex { att, index ->

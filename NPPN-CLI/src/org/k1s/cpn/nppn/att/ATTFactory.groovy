@@ -9,6 +9,11 @@ import org.cpntools.accesscpn.model.Transition;
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 import org.k1s.nppn.blocks.*
 
+/**
+ * Generator class for ATTs
+ * @author kent
+ *
+ */
 class ATTFactory {
 	
 	def controlFlowPragmatics = []
@@ -17,6 +22,11 @@ class ATTFactory {
 	
 	def visited = []
 	
+	
+	/**
+	 * Constructor
+	 * @param pragmatics
+	 */
 	private ATTFactory(pragmatics){
 		this.pragmatics = pragmatics.collect{ it.value }
 		this.pragmaticsMap = pragmatics
@@ -27,7 +37,15 @@ class ATTFactory {
 		}
 	}
 	
-	def AbstractTemplateTree createATT(pn, pragmatics, bindings){
+	/**
+	 * Creates an ATT for the given CPN model
+	 *  
+	 * @param pn
+	 * @param pragmatics
+	 * @param bindings
+	 * @return AbstractTemplateTree
+	 */
+	AbstractTemplateTree createATT(pn, pragmatics, bindings){
 		def rootPage = pn.page[0]
 		def att = new AbstractTemplateTree()
 		
@@ -42,6 +60,14 @@ class ATTFactory {
 		return att
 	}
 	
+	/**
+	 * Generates a sub-ATT for a page at the principal level
+	 * @param node
+	 * @param pn
+	 * @param bindings
+	 * @param att
+	 * @return
+	 */
 	def attForPrincipal(Instance node, PetriNet pn, bindings, att){
 		def principal = new Principal(name: node.name.text)
 		
@@ -68,6 +94,12 @@ class ATTFactory {
 		return principal
 	}
 	
+	/**
+	 * Returns a subpage given its subPaheID
+	 * @param subPageID
+	 * @param pn
+	 * @return
+	 */
 	static def getPageForId(subPageID, pn){
 		def retVal
 		pn.page.each{ Page page ->
@@ -77,6 +109,13 @@ class ATTFactory {
 		return retVal
 	}
 	
+	
+	/**
+	 * Generates a sub-ATT for a page at the service level
+	 * @param node
+	 * @param pn
+	 * @return
+	 */
 	def attForService(Instance node, pn){
 		def service = new Service(name: node.name.getText())
 		def page = getPageForId(node.subPageID, pn) 
@@ -117,6 +156,12 @@ class ATTFactory {
 		return service
 	}
 	
+	
+	/**
+	 * finds possible control-flow places following a transition
+	 * @param trans
+	 * @return
+	 */
 	def findFollowingControlflowPlaces(Transition trans){
 		def retval = []
 		trans.sourceArc.each {
@@ -125,6 +170,11 @@ class ATTFactory {
 		return retval
 	}
 	
+	/**
+	 * Determines if a node is a ControlFlow Palce
+	 * @param p
+	 * @return
+	 */
 	def isControllFlowPlace(p){
 		def retval = false
 		p.pragmatics.flatten().each {
@@ -133,6 +183,11 @@ class ATTFactory {
 		return retval
 	}
 	
+	/**
+	 * 
+	 * @param place
+	 * @return
+	 */
 	def isBlockStart(place){
 		def retval= false
 		place.pragmatics.flatten().each{
@@ -141,6 +196,12 @@ class ATTFactory {
 		return retval
 	}
 	
+	/**
+	 * 
+	 * @param node
+	 * @param service
+	 * @return
+	 */
 	def findNextBlock(node, service){
 		if(isControllFlowPlace(node)){
 			//decide if this is a block or just an atomic

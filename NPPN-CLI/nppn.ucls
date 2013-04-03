@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="org.k1s.nppn.NPPN" project="NPPN-CLI" 
     file="/NPPN-CLI/src/org/k1s/nppn/NPPN.groovy" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="151" y="98"/>    
+    <position height="131" width="173" x="4866" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -12,13 +12,356 @@
   </class>  
   <class id="2" language="java" name="org.k1s.nppn.Conditionals" project="NPPN-CLI" 
     file="/NPPN-CLI/src/org/k1s/nppn/Conditionals.groovy" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="315" y="88"/>    
+    <position height="95" width="178" x="2297" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
+  <class id="3" language="java" name="org.k1s.cpn.nppn.att.ATTIO" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/att/ATTIO.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="162" x="3392" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.k1s.cpn.nppn.att.ATTFactory" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/att/ATTFactory.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="401" width="292" x="3594" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.k1s.cpn.nppn.att.AbstractTemplateTree" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/att/AbstractTemplateTree.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="150" x="4415" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="6" language="java" name="org.k1s.cpn.nppn.pragmatics.OriginType" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PragmaticsDescriptor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="221" width="148" x="1384" y="685"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="7" language="java" name="org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PrgamaticsDescriptorDSL.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="201" x="628" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.k1s.cpn.nppn.pragmatics.Pragmatics" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/Pragmatics.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="190" x="1384" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PragmaticsDescriptor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="150" x="1384" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.k1s.nppn.blocks.Atomic" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/Atomic.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="167" x="4897" y="685"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.k1s.nppn.blocks.Service" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/Service.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="221" width="167" x="4756" y="946"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.k1s.nppn.blocks.Loop" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/Loop.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="203" width="167" x="5079" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.k1s.nppn.blocks.Principal" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/Principal.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="239" width="167" x="1940" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.k1s.nppn.blocks.Block" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/Block.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="116" x="5079" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="org.k1s.nppn.blocks.derived.PNPatternMatcher" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/derived/PNPatternMatcher.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="77" width="129" x="3223" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.k1s.nppn.blocks.derived.PNPattern" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/derived/PNPattern.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="347" width="221" x="4605" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="org.k1s.nppn.cpn.io.CpnIO" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/cpn/io/CpnIO.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="185" width="189" x="1155" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="org.k1s.nppn.generation.Expr" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/Conditionals.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="110" x="2147" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="org.k1s.nppn.generation.BindingsDSL" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/BindingsDSL.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="257" width="201" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="org.k1s.nppn.generation.TemplateParameters" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/TemplateParameters.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="185" width="306" x="282" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="org.k1s.nppn.generation.Binding" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/Binding.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="221" width="153" x="2515" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="org.k1s.nppn.generation.CodeGenerator" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/CodeGenerator.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="239" width="207" x="4168" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="23" language="java" name="org.k1s.nppn.generation.ParameterStrategy" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/TemplateParameters.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="257" width="246" x="869" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="24" language="java" name="org.k1s.nppn.generation.Conditional" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/Conditionals.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="110" x="1614" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="org.k1s.nppn.generation.Conditionals" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/Conditionals.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="203" width="203" x="2708" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="org.k1s.nppn.generation.Bindings" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/Bindings.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="136" x="1764" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="org.k1s.nppn.generation.TemplateManager" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generation/TemplateManager.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="232" x="2951" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="org.k1s.nppn.generationVisitors.GenerationVisitor" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generationVisitors/GenerationVisitor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="189" x="4155" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="org.k1s.nppn.generationVisitors.ODGVisitor" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generationVisitors/ODGVisitor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="202" x="3926" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="org.k1s.nppn.generationVisitors.VarsVisitor" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generationVisitors/VarsVisitor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="189" x="3926" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="org.k1s.nppn.generationVisitors.VarsTextVisitor" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/generationVisitors/VarsTextVisitor.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="189" x="3697" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="org.k1s.nppn.blocks.Sequence" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/Sequence.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="77" width="94" x="4611" y="708"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="org.k1s.nppn.blocks.Conditional" project="NPPN-CLI" 
+    file="/NPPN-CLI/src/org/k1s/nppn/blocks/Conditional.groovy" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4801" y="545"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="38">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="39" name="children"/>      
+      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="42">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="43" name="type"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="46">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="47" name="children"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="50" name="origin"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    

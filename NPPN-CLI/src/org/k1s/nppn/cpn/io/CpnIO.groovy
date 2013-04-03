@@ -13,13 +13,25 @@ import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 
 class CpnIO {
 	
-	
+	/**
+	 * Reads and parses a CPN model and its pragmatics.
+	 * 
+	 * @param model an InputStream that contains a CPN model
+	 * @return PetriNet with pragmatics added
+	 */
 	def readAndParseCPN(model){
 		def cpn = readCPN(model)
 		parsePragmatics(cpn)
 		return cpn
 	}
 	
+	
+	/**
+	 * Reads and parses a CPN model and its pragmatics.
+	 *
+	 * @param model an InputStream that contains a CPN model
+	 * @return PetriNet without explicit pragmatics added
+	 */
 	def readCPN(model){
 		org.cpntools.accesscpn.model.PetriNet pn = null;
 		
@@ -32,8 +44,13 @@ class CpnIO {
 		}
 	}
 	
-	
-	def parsePragmatics(PetriNet pn){
+	/**
+	 * Parses the pragmatics in a CPN model
+	 * 
+	 * @param pn a PetriNet model
+	 * @return void
+	 */
+	void parsePragmatics(PetriNet pn){
 		Transition.metaClass.pragmatics = null
 		Place.metaClass.pragmatics = null
 		Instance.metaClass.pragmatics = null
@@ -43,7 +60,13 @@ class CpnIO {
 		
 	}
 	
-	def parsePragmatics(Page page){
+	/**
+	 * Parses the pragmatics in a Page of a CPN model
+	 * 
+	 * @param page a Page 
+	 * @return void
+	 */
+	void parsePragmatics(Page page){
 		page.getObject().each{
 			it.pragmatics = []
 			getPrags(it.name.text).each { pragDef ->
@@ -53,7 +76,12 @@ class CpnIO {
 		}
 	}
 	
-	
+	/**
+	 * Gets the pragmatics from the name of an element
+	 * 
+	 * @param elemName
+	 * @return List of pragmatics
+	 */
 	protected def getPrags(String elemName){
 		
 		def retval = []
@@ -80,6 +108,12 @@ class CpnIO {
 		
 	}
 	
+	/**
+	 * Serializes a PetriNet to XML 
+	 * 
+	 * @param cpn
+	 * @return String The serialized version of the parameter.
+	 */
 	def cpnToXml(PetriNet cpn){
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		

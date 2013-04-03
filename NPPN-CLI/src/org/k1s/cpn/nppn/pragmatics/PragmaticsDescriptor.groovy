@@ -1,5 +1,7 @@
 package org.k1s.cpn.nppn.pragmatics
 
+import javax.management.InstanceOfQueryExp;
+
 
 
 
@@ -14,7 +16,7 @@ class PragmaticsDescriptor {
 	OriginType origin = OriginType.EXPLICIT
 	String name
 	//List paramters
-	
+	PragmaticsConstraints constraints
 	
 	List derviationRules
 	//List validationRules
@@ -34,6 +36,27 @@ class PragmaticsDescriptor {
 		}
 		this.origin = origin
 	}
+
+	void setConstraints(c){
+		switch(c){
+			case PragmaticsConstraints:
+				constraints = c
+				break;
+			case List:
+			
+				break;
+			case Map:
+				constraints = new PragmaticsConstraints(c)
+				break;
+			default:
+				throw new Exception("can not construct PragmaticConstraint from: ${c.class}")
+		}
+
+	}
+		
+	
+	
+
 	
 }
 
