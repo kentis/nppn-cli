@@ -4,7 +4,11 @@ import org.k1s.cpn.nppn.att.AbstractTemplateTree;
 import org.k1s.nppn.blocks.Block;
 
 
-
+/**
+ * The abstract vivitor
+ * @author kent
+ *
+ */
 abstract class ODGVisitor {
 
 	abstract def visitElement(element, bindings);
@@ -14,6 +18,11 @@ abstract class ODGVisitor {
 	
 	static final def visitorsPass2 = [new VarsTextVisitor()]
 	
+	/**
+	 * Visits all nodes on an ATT in no particular order vith all visitors
+	 * @param att
+	 * @param bindings
+	 */
 	final static void visitATT(att, bindings){
 
 		//TODO: change to depth first strategy? Does it matter?		

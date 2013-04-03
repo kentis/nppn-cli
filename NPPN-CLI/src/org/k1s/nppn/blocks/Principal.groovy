@@ -3,6 +3,11 @@ package org.k1s.nppn.blocks
 import org.k1s.nppn.generation.CodeGenerator;
 import org.k1s.nppn.generation.TemplateManager;
 
+/**
+ * Principal
+ * @author kent
+ *
+ */
 class Principal {
 	def name
 	def channels = []
@@ -23,6 +28,11 @@ class Principal {
 	
 	def text
 	
+	/**
+	 * Code generator for principals
+	 * @param bindings
+	 * @return
+	 */
 	def generateCode(bindings){
 		//println name
 		//println bindings.prag2Binding

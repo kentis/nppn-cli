@@ -1,7 +1,11 @@
 package org.k1s.nppn.generationVisitors	
 
 
- 
+/**
+ * Variables visitos pass 2
+ * @author kent
+ *
+ */
 class VarsVisitor extends ODGVisitor{
 	def bindings
 	

@@ -4,8 +4,6 @@ import javax.management.InstanceOfQueryExp;
 
 
 
-
-
 /**
  * Defines the descriptor (type) information of a pragmatic.
  * @author kent

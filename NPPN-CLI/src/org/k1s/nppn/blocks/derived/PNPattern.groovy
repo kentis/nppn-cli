@@ -5,7 +5,11 @@ import org.cpntools.accesscpn.model.Page
 import org.cpntools.accesscpn.model.PetriNet
 import org.cpntools.accesscpn.model.RefPlace
 
-
+/**
+ * A patern used to match 
+ * @author kent
+ *
+ */
 class  PNPattern {
 	
 	def name
@@ -31,6 +35,11 @@ class  PNPattern {
 //	def backlink
 //	def backlinkTo
 	
+	/**
+	 * Matches a node to this pattern
+	 * @param node
+	 * @return
+	 */
 	def matchNode(node, visited = []){
 		
 		if(type != null)
@@ -134,6 +143,12 @@ class  PNPattern {
 		return true
 	}
 	
+	/**
+	 * Checks outlink
+	 * @param from
+	 * @param to
+	 * @return
+	 */
 	def hasOutLinkTo(from, to){
 		def retval = false
 		from.out.each{ arc ->
@@ -142,6 +157,13 @@ class  PNPattern {
 		return retval
 	}
 	
+	/**
+	 * checks links
+	 * @param node
+	 * @param links
+	 * @param linksTo
+	 * @return
+	 */
 	def checkLinks(node, links, linksTo){
 		def numLinks = 0
 		node.sourceArc.each {

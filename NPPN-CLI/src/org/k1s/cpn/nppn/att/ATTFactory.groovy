@@ -185,6 +185,8 @@ class ATTFactory {
 	
 	/**
 	 * 
+	 * Determines if the current place represents the start of a (non-atomoic) block
+	 * 
 	 * @param place
 	 * @return
 	 */
@@ -197,6 +199,7 @@ class ATTFactory {
 	}
 	
 	/**
+	 * Fineds the next block
 	 * 
 	 * @param node
 	 * @param service
@@ -221,7 +224,13 @@ class ATTFactory {
 		return null
 	}
 	
-	
+	/**
+	 * Creates an appropriate block that starts at the given node
+	 * 
+	 * @param node
+	 * @param parent
+	 * @return
+	 */
 	def createBlock(Place node, parent){
 		
 		if(node.pragmatics.name.flatten().contains("startLoop")){
@@ -263,6 +272,12 @@ class ATTFactory {
 		throw new Exception("block type for ${node.name} not yet supported")
 	}
 	
+	/**
+	 * creates an atomic block starting at the given place
+	 * @param node Place
+	 * @param parent
+	 * @return
+	 */
 	def createAtomic(Place node, parent, transition = null){
 		//if(node.sourceArc.size() != 1) throw new Exception("Not start of an Atomic: $node. Wrong number of outGoing arcs: found ${node.sourceArc.size()} expected 1.")
 		def atomic = new Atomic()
@@ -291,7 +306,11 @@ class ATTFactory {
 		return atomic
 	}
 	
-	
+	/**
+	 * Finds the service node for a given page
+	 * @param page
+	 * @return
+	 */
 	def findServiceNodeInPage(page){
 		def res = findNodesInPageByPragmatic(page, "service")
 		if(res.size() > 1){
@@ -303,6 +322,13 @@ class ATTFactory {
 		return res[0]
 	}
 	
+	
+	
+	/**
+	 * Finds the return node of a given serivice page
+	 * @param page
+	 * @return
+	 */
 	def findReturnNodeInPage(page){
 		def res = findNodesInPageByPragmatic(page, "return")
 		if(res.size() > 1){
@@ -314,7 +340,14 @@ class ATTFactory {
 		return res[0]
 	}
 	
-	def findNodesInPageByPragmatic(page, pragName){
+	
+	/**
+	 * Finds a node in a page with the given pragmatic
+	 * @param page
+	 * @param pragName
+	 * @return
+	 */
+	private def findNodesInPageByPragmatic(page, pragName){
 		def res = []
 		page.object.each{
 			if(it.pragmatics.name.contains(pragName)){

@@ -5,12 +5,23 @@ import org.k1s.nppn.generation.ParameterStrategy;
 import org.k1s.nppn.generation.TemplateManager
 import org.k1s.nppn.generation.TemplateParameters;
 
+/**
+ * An atomic block
+ * @author kent
+ *
+ */
 class Atomic extends Block{
 	def pragmatics = []
 	def transition
 	def parent
 	
 	def text
+	
+	/**
+	 * Code generator for an atomic
+	 * @param bindings
+	 * @return
+	 */
 	def generateCode(bindings){
 		
 		def tm = new TemplateManager()

@@ -3,7 +3,11 @@ package org.k1s.nppn.generationVisitors
 import groovy.text.SimpleTemplateEngine;
 
 
-
+/**
+ * Variables visitor pass 2
+ * @author kent
+ *
+ */
 class VarsTextVisitor extends ODGVisitor{
 	def bindings
 	

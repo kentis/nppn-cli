@@ -7,10 +7,20 @@ import groovy.text.GStringTemplateEngine;
 import groovy.text.SimpleTemplateEngine
 import groovy.text.Template
 
+/**
+ * Template manager that does common template operations
+ * @author kent
+ *
+ */
 class TemplateManager {
 
 	def templateFinder 
 	
+	/**
+	 * Finds a template givemn its name
+	 * @param name
+	 * @return
+	 */
 	def findTemplate(name){
 		def template = templateFinder."$name"
 		
@@ -24,6 +34,12 @@ class TemplateManager {
 	}
 	
 	
+	/**
+	 * Runs a template
+	 * @param template
+	 * @param params
+	 * @return
+	 */
 	def runTemplate(template, params){
 		def tmpl = new File(template).text
 		
@@ -46,6 +62,12 @@ class TemplateManager {
 //		return generated.toString()
 //	}
 //	
+	/**
+	 * Finds and then runs a template
+	 * @param templateName
+	 * @param params
+	 * @return
+	 */
 	def findAndRunTemplate(templateName, params){
 		return runTemplate(findTemplate(templateName), params)
 	}

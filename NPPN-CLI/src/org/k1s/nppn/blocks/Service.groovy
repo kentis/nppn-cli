@@ -4,6 +4,11 @@ import org.k1s.nppn.generation.CodeGenerator;
 import org.k1s.nppn.generation.TemplateManager
 import org.k1s.nppn.generation.TemplateParameters
 
+/**
+ * Service
+ * @author kent
+ *
+ */
 class Service extends Sequence {
 	def name
 	
@@ -16,6 +21,11 @@ class Service extends Sequence {
 	def declarationsText
 	def declarations = ['__TOKEN__']
 	
+	/**
+	 * code generator for services
+	 * @param bindings
+	 * @return
+	 */
 	def generateCode(bindings){
 	//	println name
 		//println bindings.prag2Binding

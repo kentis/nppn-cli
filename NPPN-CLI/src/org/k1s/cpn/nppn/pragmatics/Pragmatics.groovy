@@ -1,5 +1,10 @@
 package org.k1s.cpn.nppn.pragmatics
 
+/**
+ * Pragmatics are instances of this class
+ * @author kent
+ *
+ */
 class Pragmatics {
 	String name
 	PragmaticsDescriptor type
@@ -10,15 +15,27 @@ class Pragmatics {
 	String pragmaticsText
 	
 	
+	/**
+	 * Constructor
+	 */
 	public Pragmatics(){
 		
 	}
 	
+	/**
+	 * Constructor
+	 */
 	public Pragmatics(PragmaticsDescriptor pragDef){
 		this.type = pragDef
 		this.name = pragDef.name
 	}
 	
+	
+	/**
+	 * Creates a pragmatic from the text input
+	 * @param input String
+	 * @return
+	 */
 	public static Pragmatics parse(String input) {
 		Pragmatics prag = new Pragmatics();
 		

@@ -10,10 +10,21 @@ import org.k1s.cpn.nppn.att.ATTFactory;
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 import org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor;
 
+/**
+ * Deries derived pragmatics
+ * @author kent
+ *
+ */
 class PragmaticsDerivator {
 	
 	static CONTROL_FLOW_PRAGS = ["Id", "startLoop", "endLoop", "branch", "merge"]
 	
+	
+	/**
+	 * gets serivce pages
+	 * @param pn
+	 * @return
+	 */
 	static def getServicePages(PetriNet pn){
 		def rootPage = pn.page[0]
 		//def principals = []
@@ -38,7 +49,12 @@ class PragmaticsDerivator {
 	
 	}
 
-	
+	/**
+	 * Adds derived pragmatics to the given CPN based on pragmatics defnintions
+	 * @param pn
+	 * @param pragmaticsDefinitions
+	 * @return
+	 */
 	static def addDerivedPragmatics(pn, pragmaticsDefinitions){
 		//println pragmaticsDefinitions
 		
@@ -47,6 +63,12 @@ class PragmaticsDerivator {
 		}
 	}	
 	
+	/**
+	 * Adds derived pragmatics to the given page based on pragmatics defnintions
+	 * @param page
+	 * @param pragmaticsDefinitions
+	 * @return
+	 */
 	static def derivePragsForPage(page, pragmaticsDefinitions){
 		def serviceNode = getServiceNode(page)
 		if(serviceNode == null) throw new IllegalArgumentException("Page ${page.name.text} has no service")
@@ -68,6 +90,14 @@ class PragmaticsDerivator {
 		}
 	}
 	
+	/**
+	 * Derives pragmatics for a given node
+	 * @param node
+	 * @param page
+	 * @param pragmaticsDefinitions
+	 * @param visited
+	 * @return
+	 */
 	static def derivePrags(node, page, pragmaticsDefinitions, visited){
 		pragmaticsDefinitions.each{ key, PragmaticsDescriptor pragDef ->
 			pragDef.derviationRules.each{
@@ -80,12 +110,24 @@ class PragmaticsDerivator {
 		}
 	}
 	
+	
+	/**
+	 * Adds a pragmatic to a node
+	 * @param node
+	 * @param pragDef
+	 * @return
+	 */
 	static def addPrag(node, pragDef){
 		def prag = new Pragmatics(pragDef)
 		node.pragmatics << prag
 	}
 	
 	 
+	/**
+	 * Gets the serivce transition in a service page
+	 * @param page
+	 * @return
+	 */
 	static def getServiceNode(page){
 		//println "findSerive for ${page.name.text}"
 		//println page.object.pragmatics.name
@@ -95,6 +137,11 @@ class PragmaticsDerivator {
 	}
 	
 	
+	/**
+	 * Finds the next node 
+	 * @param node
+	 * @return
+	 */
 	static def findNextNode(node){
 		def nodes = []
 		node.getSourceArc().each { Arc outArc ->
@@ -113,6 +160,11 @@ class PragmaticsDerivator {
 		return nodes
 	}
 	
+	/**
+	 * Checks if a node is on the contropl flow path
+	 * @param node
+	 * @return
+	 */
 	static def isControlFlow(node){
 		if(node instanceof Place){
 			if(node.pragmatics.size() > 0){

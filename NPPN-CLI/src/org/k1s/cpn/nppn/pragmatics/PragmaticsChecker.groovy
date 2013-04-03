@@ -5,9 +5,19 @@ import org.cpntools.accesscpn.model.Place;
 import org.cpntools.accesscpn.model.Page;
 import org.cpntools.accesscpn.model.Transition;
 
+/**
+ * Checks simple constraints for pragmatics
+ * @author kent
+ *
+ */
 class PragmaticsChecker {
 	
-	
+	/**
+	 * Checks the pragmatics of CPN according to the restrictions given in the pragmatics definitions  
+	 * @param cpn
+	 * @param prags
+	 * @return
+	 */
 	static boolean check(cpn, prags){
 		def violations = []
 		def retval = true
@@ -49,7 +59,14 @@ class PragmaticsChecker {
 		return retval
 	}
 	
-	
+	/**
+	 * Checks the pragmatics of a page of CPN according to the restrictions given in the pragmatics definitions
+	 * @param page
+	 * @param prags
+	 * @param violations
+	 * @param pageType
+	 * @return
+	 */
 	static boolean checkPage(page, prags, violations, pageType){
 		def retval = true
 		page.object.each{
@@ -63,7 +80,15 @@ class PragmaticsChecker {
 		return retval
 	}
 	
-	
+	/**
+	 * Checks the pragmatics on a single object
+	 * @param obj
+	 * @param pragDescs
+	 * @param page
+	 * @param violations
+	 * @param pageType
+	 * @return
+	 */
 	static boolean checkObject(obj, pragDescs, page, violations, pageType){
 		def retval = true
 		println "checking obj: $obj"
@@ -96,6 +121,12 @@ class PragmaticsChecker {
 		return retval
 	}
 	
+	/**
+	 * checkes level constraints on an object
+	 * @param levels
+	 * @param pageType
+	 * @return
+	 */
 	static boolean checklevel(levels, pageType){
 		println "levels: $levels"
 		println "levels: ${levels.class}"
@@ -105,6 +136,13 @@ class PragmaticsChecker {
 		return true
 	}
 	
+	
+	/**
+	 * Checks type constraints on a specific object
+	 * @param typeStr
+	 * @param obj
+	 * @return
+	 */
 	static boolean checkConnectedType(typeStr, obj){
 		def retval = false
 		switch(typeStr){
@@ -126,6 +164,11 @@ class PragmaticsChecker {
 	}
 }
 
+/**
+ * Enum for the available page levels
+ * @author kent
+ *
+ */
 enum PageLevels{
 	PROTOCOL,
 	PRINCIPAL,

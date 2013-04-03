@@ -2,14 +2,26 @@ package org.k1s.nppn.generation
 
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 
+/**
+ * Sets up parameteres for templates
+ * @author kent
+ *
+ */
 class TemplateParameters {
 	static final def DEFAULT_STRATEGY = ParameterStrategy.FROM_PRAGMATIC
 	def bindings
 	
+	/**
+	 * constructor
+	 */
 	public TemplateParameters(bindings){
 		this.bindings = bindings
 	}
 	
+	
+	/**
+	 *Gets the parameters for a pragmatic using the given strategy 
+	 */
 	def getParamtersFor(pragmatic, node, ParameterStrategy strategy = TemplateParameters.DEFAULT_STRATEGY){
 		if(strategy == null) strategy = TemplateParameters.DEFAULT_STRATEGY
 		def parameters
@@ -27,10 +39,17 @@ class TemplateParameters {
 	}
 	
 	
+	
+	/**
+	 * gets paramteters using the default strategy
+	 */
 	def getParametersFromPragmatic(Pragmatics pragmatic){
 		return [params: pragmatic.getArguments().split(",")]
 	}
 	
+	/**
+	 * gets paramteters using the Conditionals strategy
+	 */
 	def getParametersFromPragmaticConditionals(prag){
 		def retval = [:]
 		def addParams = []
@@ -59,6 +78,11 @@ class TemplateParameters {
 	}
 }
 
+/**
+ * Enum of parameter strategies
+ * @author kent
+ *
+ */
 enum ParameterStrategy{
 	FROM_PRAGMATIC, COMBINED_PRAGMATICS, CUSTOM,
 	CONDITIONALS,
