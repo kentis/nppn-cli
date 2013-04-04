@@ -5,7 +5,7 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="NPPN-CLI">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../usr/eclipse-4.2/eclipse"/>
+    <property name="ECLIPSE_HOME" value="/home/kent/usr/eclipse-4.2/eclipse"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
@@ -45,7 +45,7 @@
 
     <taskdef name="groovyc"
          classname="org.codehaus.groovy.ant.Groovyc"
-         classpathref="Groovy Libraries.libraryclasspath"/>
+         classpathref=""/>
 
 
 
