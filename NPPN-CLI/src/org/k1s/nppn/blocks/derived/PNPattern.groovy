@@ -84,7 +84,7 @@ class  PNPattern {
 				def hasMatchingAdj = false
 				if(node != null && node.getSourceArc() != null){
 				node.getSourceArc().each { adjArc ->
-					adjPattern.backlinkTo = node
+					adjPattern.backLinks?.contains( node )
 					if(adjPattern.matchNode(adjArc.target)) hasMatchingAdj = true
 				}
 				}
@@ -178,24 +178,24 @@ class  PNPattern {
 		return numLinks == links
 	}
 	
-//	def match(p, retval = []){
-//		def nodes
-//		if(p instanceof PetriNet) nodes = p.page
-//		else if(p instanceof Page) nodes = p.object
-//		
-//		println "matching nodes: $nodes"
-//		nodes.each { 
-//			if(!(it instanceof Arc)){
-//				
-//				if(it instanceof Page){
-//					match(it, retval)
-//				} else {
-//					if(matchNode(it)) retval << it
-//					
-//				}
-//			}
-//		}
-//		
-//		return retval
-//	}
+	def match(p, retval = []){
+		def nodes
+		if(p instanceof PetriNet) nodes = p.page
+		else if(p instanceof Page) nodes = p.object
+		
+		println "matching nodes: $nodes"
+		nodes.each { 
+			if(!(it instanceof Arc)){
+				
+				if(it instanceof Page){
+					match(it, retval)
+				} else {
+					if(matchNode(it)) retval << it
+					
+				}
+			}
+		}
+		
+		return retval
+	}
 }

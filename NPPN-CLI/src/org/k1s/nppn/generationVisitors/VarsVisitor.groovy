@@ -2,7 +2,7 @@ package org.k1s.nppn.generationVisitors
 
 
 /**
- * Variables visitos pass 2
+ * Variables visitos pass 1
  * @author kent
  *
  */

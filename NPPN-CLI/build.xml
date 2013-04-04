@@ -243,10 +243,13 @@
             <test name="org.k1s.nppn.blocks.derived.PragmaticsDerivatorTests" todir="${junit.output.dir}"/>
             <test name="org.k1s.nppn.cpn.io.CpnIOTests" todir="${junit.output.dir}"/>
             <test name="org.k1s.nppn.cpnBuilder.CPNBuilderTests" todir="${junit.output.dir}"/>
-            <test name="org.k1s.nppn.generation.ChoiceCodeGenerator" todir="${junit.output.dir}"/>
+            <test name="org.k1s.nppn.generation.ChoiceCodeGeneratorTests" todir="${junit.output.dir}"/>
             <test name="org.k1s.nppn.generation.CodeGeneratorTests" todir="${junit.output.dir}"/>
             <test name="org.k1s.nppn.pragmatics.PragmaticsCheckerTests" todir="${junit.output.dir}"/>
-            <test name="org.k1s.nppn.pragmatics.PragmaticsDescriptorDSLTests" todir="${junit.output.dir}"/>
+            <test name="org.k1s.nppn.pragmatics.PragmaticsDescriptorDSLTests" todir="${junit.output.dir}"/> 
+<!--	    <batchtest>
+                <fileset dir="bin" includes="**/*Test*.class" />
+            </batchtest> -->
             <classpath refid="NPPN-CLI.classpath"/>
         </junit>
     </target>

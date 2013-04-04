@@ -13,7 +13,7 @@ class PragmaticsDescriptor {
 
 	OriginType origin = OriginType.EXPLICIT
 	String name
-	//List paramters
+	List paramters
 	PragmaticsConstraints constraints
 	
 	List derviationRules

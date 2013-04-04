@@ -1,4 +1,4 @@
-package org.k1s.cpn.nppn.att
+package org.k1s.cpn.nppn.att;
 
 import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.Page
