@@ -45,7 +45,7 @@
 
     <taskdef name="groovyc"
          classname="org.codehaus.groovy.ant.Groovyc"
-         classpathref=""/>
+         classpathref="Groovy Libraries.libraryclasspath"/>
 
 
 
