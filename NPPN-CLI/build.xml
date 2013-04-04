@@ -42,6 +42,13 @@
         <pathelement location="lib/xpp3_min-1.1.4c.jar"/>
         <pathelement location="lib/xstream-1.4.4.jar"/>
     </path>
+
+    <taskdef name="groovyc"
+         classname="org.codehaus.groovy.ant.Groovyc"
+         classpathref="Groovy Libraries.libraryclasspath"/>
+
+
+
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
@@ -79,13 +86,13 @@
     </target>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+        <groovyc  destdir="bin"  >
             <src path="src"/>
             <src path="test"/>
             <src path="resources"/>
             <src path="test-resources"/>
             <classpath refid="NPPN-CLI.classpath"/>
-        </javac>
+        </groovyc>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
     <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
