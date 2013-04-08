@@ -9,12 +9,12 @@ import org.k1s.nppn.generation.TemplateParameters
  * @author kent
  *
  */
-class Service extends Sequence {
+class Service  {
 	def name
 	
 	def start_node
 	def end_node
-	
+	def children = []
 	def node
 	
 	def text

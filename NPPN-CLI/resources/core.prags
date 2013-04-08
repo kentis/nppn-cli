@@ -6,7 +6,7 @@ service(origin: 'explicit', constraints: [[levels: 'principal', connectedTypes: 
 state(origin: 'explicit', constraints: [levels: ['principal','service'], connectedTypes:'Place'])
 _return(origin: 'explicit', constraints: [levels: 'service',connectedTypes:'Transition'] )
 
-branch(origin: 'derived', derviationRules: ['new PNPattern(pragmatics: [\'Id\'], minOutEdges: 2, backLinks: 0)'],block: [type: "branch", ends: "merge"], constraints: [levels: 'service', connectedTypes: 'Place'])
+branch(origin: 'derived', derviationRules: ['new PNPattern(pragmatics: [\'Id\'], minOutEdges: 2, backLinks: 0, forwardLinks: 0)'],block: [type: "branch", ends: "merge"], constraints: [levels: 'service', connectedTypes: 'Place'])
 merge(origin: 'derived', derviationRules: ['new PNPattern(pragmatics: [\'Id\'], minInEdges: 2, backLinks: 0, forwardLinks: 0)'], constraints: [levels: 'service', connectedTypes: 'Place'])
 
 startLoop(origin: 'derived', derviationRules: ['new PNPattern(pragmatics: [\'Id\'], minInEdges: 2, forwardLinks: 1)'], block: [type: "Loop", ends: "endLoop"], constraints: [levels: 'service', connectedTypes:'Place'])

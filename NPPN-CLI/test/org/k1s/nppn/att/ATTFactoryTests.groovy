@@ -116,4 +116,25 @@ class ATTFactoryTests {
 		//println "senderSend.children.size() ${senderSend.children.size()}"
 		assertTrue senderSend.children.size() >= 3	
 	}
+	
+	
+	@Test
+	void testATTForBranch(){
+		def model = this.class.getResourceAsStream("/simplechoice.cpn")
+		def io = new CpnIO()
+		def cpn = io.readCPN(model)
+		io.parsePragmatics(cpn)
+		
+		PragmaticsDerivator.addDerivedPragmatics(cpn, getCorePragmatics())
+		
+		
+		def service = cpn.page[2]
+		
+		def names = service.object.pragmatics.name.flatten()
+		println names
+		
+		assertTrue names.contains("branch")
+		assertTrue names.contains("merge")
+		assertFalse names.contains("startLoop")
+	}
 }

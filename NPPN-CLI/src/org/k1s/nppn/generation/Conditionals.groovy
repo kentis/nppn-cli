@@ -2,10 +2,14 @@
 
 package org.k1s.nppn.generation
 
+import java.util.logging.Logger;
+
 import groovy.lang.GroovyShell;
 import groovy.text.SimpleTemplateEngine;
 import groovy.text.Template;
+import groovy.util.logging.*;
 
+@Log
 class Conditionals {
 	
 	def conds = []
@@ -94,6 +98,9 @@ class Conditionals {
 		def trueTmpl = new File(bindings.bindings.TRUE.template).text
 		Template exprTemplate = engine.createTemplate(exprTmpl)
 		
+		println exprStr
+		def stmt = parseExpr(exprStr)
+		println stmt
 		def exprText = exprTemplate.make([stmt: parseExpr(exprStr), t: trueTmpl]).toString()
 		
 		//println "exprText: ${exprText}"
@@ -135,8 +142,8 @@ class Conditionals {
 			}
 		}
 		
-		//println exprs[0]
-		//println "-------------------------------------"
+		println exprs[0]
+		println "-------------------------------------"
 		return exprs[0]
 	}
 	
@@ -168,11 +175,13 @@ class Conditionals {
 					currToken = ""
 					currCond = null
 				}
-			}else if(it == ' ' && state == COND){
+			}else if(it == ' ' && state == COND && currCond != null){
 			    if(currCond.e == null) currCond.e = currToken
 				else currCond.p = currToken
 				
 				currToken = ""
+			} else  if(it == ' ' && currCond == null){
+				//noop
 			} else {
 			    currToken += it
 			}

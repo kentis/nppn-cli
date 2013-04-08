@@ -34,6 +34,7 @@ class VarsVisitor extends ODGVisitor{
 	}
 	
 	def getVarNames(element) {
+		//println element
 		
 		def vars = element.text.indexOf( "%%VARS:" )
 		if(vars > -1 ) vars = vars + 7

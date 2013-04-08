@@ -102,7 +102,7 @@ class  PNPattern {
 		}
 		
 		if(forwardLinks != null){
-			if(!checkLinks(node, forwardLinks,( node.page.object - visited ) )){
+			if(!checkForwardLinks(node, forwardLinks,( node.page.object - visited ) )){
 				return false
 			}
 		}
@@ -174,8 +174,23 @@ class  PNPattern {
 				}
 			}
 		}
-		//println "backlinksCheck for ${node.name.text}: $numBackLinks == $backLinks with $visited"
+		println "linksCheck for ${node.name.text}: $numLinks == $links"
 		return numLinks == links
+	}
+	
+	def checkForwardLinks(node, numForwardLinks, linksFrom){
+		def numLinks = 0
+		node.targetArc.each {
+			
+			if(linksFrom.contains(it.source)){ numLinks++  }
+//			else if(it.source.targetArc.size() == 1){
+//				if ( linksFrom.contains(it.source.targetArc[0].source)){
+//					numLinks++
+//				}
+//			}
+		}
+		//println "linksCheck for ${node.name.text}: $numLinks == $links"
+		return numLinks == numForwardLinks
 	}
 	
 	def match(p, retval = []){

@@ -59,15 +59,31 @@ class CodeGenerator {
 	def attToFile(node){
 		def yieald = new StringBuffer()
 		if(node.metaClass.hasProperty(node, "children") || node.metaClass.respondsTo(node, "getChildren")){
+			println "children for $node: ${node.children}"
 			node.children.each{
 				yieald.append attToFile(it).toString()
 			}
+			
 		}
 		
 		def text = node.text.toString().replace("%%yield%%", yieald.toString())
 		if(text.contains("%%yield_declarations%%")){
 			text = text.replace("%%yield_declarations%%", node.declarationsText ? node.declarationsText : "/*no decls found*/")
 		}
+		
+	//println "WÆÆÆÆ: '$text'"
+		if(text =~ /%%yeild_(.+)%%/){
+			println "yields"
+			def y = text =~ /%%yeild_(.+)%%/
+			y.each{
+					println it
+					def tt = node.sequences[it[1]] == null ? "" : node.sequences[it[1]]
+					println node.sequences
+					println tt
+					text = text.replace(it[0], attToFile(tt))
+			}
+		}
+		
 		return text
 	}
 	

@@ -22,7 +22,7 @@ class PragmaticsChecker {
 		def violations = []
 		def retval = true
 		
-		def root = cpn.page[0]
+		def root = cpn.page[0] 
 		if(!PragmaticsChecker.checkPage(root, prags, violations, PageLevels.PROTOCOL)){
 			retval = false
 		}

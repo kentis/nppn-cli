@@ -1,5 +1,6 @@
 package org.k1s.cpn.nppn.att;
 
+import org.cpntools.accesscpn.model.Arc;
 import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.Page
 import org.cpntools.accesscpn.model.PetriNet
@@ -8,6 +9,7 @@ import org.cpntools.accesscpn.model.Transition;
 
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 import org.k1s.nppn.blocks.*
+import org.k1s.nppn.generation.CodeGenerator;
 
 /**
  * Generator class for ATTs
@@ -232,7 +234,7 @@ class ATTFactory {
 	 * @return
 	 */
 	def createBlock(Place node, parent){
-		
+		println node.pragmatics.name.flatten()
 		if(node.pragmatics.name.flatten().contains("startLoop")){
 			//println "creating loop for: $node"
 			def loop = new Loop()
@@ -267,7 +269,34 @@ class ATTFactory {
 			visited << loop.end
 			return loop
 		} else if(node.pragmatics.name.flatten().contains("branch")){
-			throw new Exception("branching not yet supported")
+			//throw new Exception("branching not yet supported")
+			def branch = new Conditional()
+			branch.start = node
+			branch.parent = parent
+			
+			node.sourceArc.each { Arc outArc ->
+				def nexts = findFollowingControlflowPlaces(outArc.target)
+				//if(nexts.size() > 0){
+					
+					def sequence = new Sequence()
+					sequence.start = node
+					
+					def block = createAtomic(node, branch, outArc.target)
+					if(block != null) sequence.children << block
+					def firstBlock = block
+					while(block != null && block.end != null &&
+						! (block.end.pragmatics.flatten().name.contains("merge"))) {
+						
+						block = findNextBlock(block.end, branch)
+						if(block != null) sequence.children << block
+						
+					}
+					
+					branch.sequences[CodeGenerator.nameToFilename(firstBlock.transition.name.asString()).trim()] = sequence
+				//}
+			}
+			
+			return branch
 		}
 		throw new Exception("block type for ${node.name} not yet supported")
 	}
