@@ -42,6 +42,17 @@
         <pathelement location="lib/xpp3_min-1.1.4c.jar"/>
         <pathelement location="lib/xstream-1.4.4.jar"/>
 	<pathelement location="lib/gr-sexp.jar"/>
+
+	<pathelement location="lib/jung/jung-api-2.0.1.jar"/>
+	<pathelement location="lib/jung/jung-algorithms-2.0.1.jar"/>
+	<pathelement location="lib/jung/jung-graph-impl-2.0.2-SNAPSHOT.jar"/>
+	<pathelement location="lib/jung/jung-io-2.0.1.jar"/>
+	<pathelement location="lib/jung/jung-jai-2.0.1.jar"/>
+<pathelement location="lib/jung/jung-visualization-2.0.1.jar"/>
+<pathelement location="lib/jung/jung-api-2.0.1.jar"/>
+<pathelement location="lib/jung/jung-api-2.0.1.jar"/>
+
+
     </path>
 
     <taskdef name="groovyc"
