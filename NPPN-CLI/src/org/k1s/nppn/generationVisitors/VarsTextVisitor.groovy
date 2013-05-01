@@ -18,8 +18,15 @@ class VarsTextVisitor extends ODGVisitor{
 			SimpleTemplateEngine engine = new SimpleTemplateEngine()
 
 			def template = bindings.bindings['DECLARATIONS']
-			//println "DECLARING: for ${element.correspondingNetElement.name.text} ${element.declarations}"
-			def text = engine.createTemplate(new File(template.template)).make([vars: element.declarations.unique()])
+			
+			def decls = element.declarations.unique()
+			if(element.metaClass.hasProperty(element, 'parent') && element.parent){
+				//remove previously defined variables
+				
+				decls = decls - element.parent.declarations
+				
+			}
+			def text = engine.createTemplate(new File(template.template)).make([vars: decls])
 			
 			element.declarationsText = text.toString()
 		}

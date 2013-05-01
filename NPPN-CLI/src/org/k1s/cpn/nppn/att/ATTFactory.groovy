@@ -234,7 +234,7 @@ class ATTFactory {
 	 * @return
 	 */
 	def createBlock(Place node, parent){
-		println node.pragmatics.name.flatten()
+		//println node.pragmatics.name.flatten()
 		if(node.pragmatics.name.flatten().contains("startLoop")){
 			//println "creating loop for: $node"
 			def loop = new Loop()
@@ -291,11 +291,13 @@ class ATTFactory {
 						if(block != null) sequence.children << block
 						
 					}
-					
+					sequence.end = block.end
 					branch.sequences[CodeGenerator.nameToFilename(firstBlock.transition.name.asString()).trim()] = sequence
 				//}
 			}
-			
+			visited << branch.end
+			branch.end = branch.sequences.values().toArray()[0].end
+			visited << branch.end
 			return branch
 		}
 		throw new Exception("block type for ${node.name} not yet supported")

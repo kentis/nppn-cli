@@ -13,7 +13,7 @@ class Principal {
 	def channels = []
 	
 	//services = children
-	def services = []
+	List<Service> services = []
 	
 	def getChildren(){
 		return services
@@ -41,5 +41,9 @@ class Principal {
 		this.text = new TemplateManager().runTemplate(binding.template,['name':CodeGenerator.nameToFilename(name), 'lcvs': lcvs, 'fields': states]).toString()
 		//println this.text
 		return this.text
+	}
+	
+	String toGraphString(i=0){
+		return "${CodeGenerator.nameToFilename(name)}"
 	}
 }

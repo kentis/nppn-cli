@@ -14,7 +14,7 @@ import org.k1s.nppn.generation.Conditionals
 class Conditional extends Block {
 	def pragmatic
 	def parent
-	def sequences = [:]
+	Map<Object, Sequence> sequences = [:]
 	
 
 	def declarationsText
@@ -77,7 +77,7 @@ class Conditional extends Block {
 //		
 //		this.text = retval
 //		return retval
-		println start.pragmatics[0].arguments
+		
 		def conds = Conditionals.translatePrags(start.pragmatics[0], bindings)
 		
 		println conds

@@ -15,6 +15,44 @@ import static org.junit.matchers.JUnitMatchers.*
 
 class CodeGeneratorTests {
 
+	
+	@Test
+	void testEuler(){
+		def model = this.class.getResourceAsStream("/eulers.cpn")
+		def io = new CpnIO()
+		def cpn = io.readCPN(model)
+		io.parsePragmatics(cpn)
+		
+		PragmaticsDerivator.addDerivedPragmatics(cpn, ATTFactoryTests.getCorePragmatics())
+		
+		def factory = new ATTFactory(ATTFactoryTests.getCorePragmatics())
+		def att = factory.createATT(cpn, null, null)
+		def bindings = getGroovyBindings()
+		def generator = new CodeGenerator(att, bindings)
+		def file = generator.generate()
+		
+		println file
+		
+		assertThat file, is(not(null))
+		assertThat file, is(not([]))
+		
+		
+		def eulers = new ProtcolRun().run(file[0], "new eulers()")
+		
+		
+		def buf = new ByteArrayOutputStream()
+		def newOut = new PrintStream(buf)
+		def saveOut = System.out
+			
+		System.out = newOut
+		
+		eulers.euler1(1000)
+		
+		System.out = saveOut
+		println buf.toString().trim()
+		assertEquals("233168", buf.toString().trim() )
+	}
+	
 	@Test
 	void testMessageSendingProtocol(){
 		//fail "NYW"

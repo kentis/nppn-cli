@@ -14,7 +14,7 @@ class Service  {
 	
 	def start_node
 	def end_node
-	def children = []
+	List<Block> children = []
 	def node
 	
 	def text
@@ -39,5 +39,9 @@ class Service  {
 		this.text = new TemplateManager().runTemplate(binding.template,params).toString()
     //	println this.text
 		return this.text
+	}
+	
+	String toGraphString(i=1){
+		"${CodeGenerator.nameToFilename(name)}"
 	}
 }

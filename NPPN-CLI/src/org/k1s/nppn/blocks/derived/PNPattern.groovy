@@ -174,7 +174,7 @@ class  PNPattern {
 				}
 			}
 		}
-		println "linksCheck for ${node.name.text}: $numLinks == $links"
+		
 		return numLinks == links
 	}
 	
@@ -198,7 +198,7 @@ class  PNPattern {
 		if(p instanceof PetriNet) nodes = p.page
 		else if(p instanceof Page) nodes = p.object
 		
-		println "matching nodes: $nodes"
+		
 		nodes.each { 
 			if(!(it instanceof Arc)){
 				

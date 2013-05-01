@@ -36,13 +36,16 @@ class VarsVisitor extends ODGVisitor{
 	def getVarNames(element) {
 		//println element
 		
+		def retval = []
 		def vars = element.text.indexOf( "%%VARS:" )
-		if(vars > -1 ) vars = vars + 7
-		else return []
+		while(vars > -1 ) {
+			vars = vars + 7
+		//else return []
 		
-		def endVars = element.text.indexOf( "%%", vars)
-		return element.text.substring(vars, endVars).split(",").collect { it.trim() }.findAll { it != "" }
-		
-		
+			def endVars = element.text.indexOf( "%%", vars)
+			retval +=  element.text.substring(vars, endVars).split(",").collect { it.trim() }.findAll { it != "" }
+			vars = element.text.indexOf( "%%VARS:", vars )
+		}
+		return retval
 	}
 }

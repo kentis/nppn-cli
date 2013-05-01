@@ -29,10 +29,10 @@ class Atomic extends Block{
 		transition.pragmatics.each{
 			if(it.name != 'service'){
 				def binding = bindings.prag2Binding[it.name]
-				//println it.name
+				
 				if(binding){
 					def params = new TemplateParameters(bindings).getParamtersFor(it, transition, binding.parameterStrategy)
-					//println params
+				
 					text.append tm.runTemplate(binding.template,params ? params : [:])
 				} else {
 					//throw new Exception("Unknown pragmatic: ${it.name}")
@@ -43,5 +43,9 @@ class Atomic extends Block{
 		
 		this.text = text.toString() 
 		return this.text
+	}
+	
+	String toGraphString(i=0){
+		return "$i: ${CodeGenerator.nameToFilename(transition.name.text)}"
 	}
 }

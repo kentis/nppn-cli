@@ -25,14 +25,50 @@ class ChoiceCodeGeneratorTests {
 		println pragmatic.arguments
 		def cond = org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
 		println "COND: $cond"
-		assertTrue cond.contains('if( a ){ ')
-		assertTrue cond.contains('else if( true )')
+		assertTrue cond.contains('if( a  ){ ')
+		assertTrue cond.contains('else if( true  )')
 		
 		
 		pragmatic = "Id(cond: '(a hei) (t hallo)')"
 		pragmatic = Pragmatics.parse(pragmatic)
 		assertEquals cond, org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
 	}
+	
+	@Test
+	void testUnNestedConds(){
+		
+		def pragmatic = "Id(cond: '((eq a b hei) (eq a c hei) (t hallo)')"
+		pragmatic = Pragmatics.parse(pragmatic)
+		
+		def bindings = getGroovyBindings()
+		println pragmatic.arguments
+		def cond = org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
+		println "COND: $cond"
+		assertTrue cond.contains('if( a ==  b  )')
+		assertTrue cond.contains('else if( true  )')
+		
+		
+	}
+	
+	
+	@Test
+	void testNestedConds(){
+		
+		def pragmatic = "Id(cond: '(or (eq a b) (eq a c) hei) (t hallo)')"
+		pragmatic = Pragmatics.parse(pragmatic)
+		
+		def bindings = getGroovyBindings()
+		println pragmatic.arguments
+		def cond = org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
+		println "COND: $cond"
+		assertTrue cond.contains(' a ==  b ')
+		assertTrue cond.contains('||')
+		assertTrue cond.contains('else if( true  )')
+		
+		
+	}
+	
+	
 	
 	@Test
 	void testGeneratechoiceCode(){
@@ -57,7 +93,7 @@ class ChoiceCodeGeneratorTests {
 		
 		assertThat file, containsString("def doSomething")
 		
-		assertThat file, containsString("if( a )")
+		assertThat file, containsString("if( a  )")
 		assertThat file, containsString("else")
 	}
 	

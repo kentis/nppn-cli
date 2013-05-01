@@ -41,11 +41,16 @@ class TemplateManager {
 	 * @return
 	 */
 	def runTemplate(template, params){
-		def tmpl = new File(template).text
+		def retval = null
+		try{
+			def tmpl = new File(template).text
 		
-		SimpleTemplateEngine engine = new SimpleTemplateEngine()
-		Template simpleTemplate = engine.createTemplate(tmpl)
-		def retval = simpleTemplate.make(params).toString()
+			SimpleTemplateEngine engine = new SimpleTemplateEngine()
+			Template simpleTemplate = engine.createTemplate(tmpl)
+			retval = simpleTemplate.make(params).toString()
+		} catch(Exception e){
+			throw new RuntimeException("Exception running template: $template with $params", e)
+		}
 		return retval
 	}
 	

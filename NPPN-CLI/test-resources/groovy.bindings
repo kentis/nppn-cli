@@ -40,8 +40,13 @@ ClassTemplate(pragmatic: 'Principal', template: '/home/kent/ws-ePNK/OntologyReas
 			
 			SetField(pragmatic: 'SetField', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setField.tmpl')
 			Append(pragmatic: 'Append', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/append.tmpl')
-			SetValue(pragmatic: 'SetValue', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setValue.tmpl')
+			SetValue(pragmatic: 'setValue', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setValue.tmpl')
 			OpenChannel(pragmatic: 'OpenChannel', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/openChannel.tmpl')
 			OpenServerChannel(pragmatic: 'OpenServerChannel', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/openServerChannel.tmpl')
 			
 			STMT(pragmatic: 'Stmt', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/stmt.tmpl')
+			
+			getAndIncCounter(pragmatic: 'getAndIncCounter', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/getAndIncCounter.tmpl')
+			inc(pragmatic: 'inc', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/inc.tmpl')
+			mod(pragmatic: 'mod', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/mod.tmpl')
+			add(pragmatic: 'add', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/add.tmpl')

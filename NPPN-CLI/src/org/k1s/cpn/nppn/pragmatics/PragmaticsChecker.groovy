@@ -91,28 +91,28 @@ class PragmaticsChecker {
 	 */
 	static boolean checkObject(obj, pragDescs, page, violations, pageType){
 		def retval = true
-		println "checking obj: $obj"
+		
 		obj.pragmatics.each { prag ->
-			println "\tfor ${prag.name}"
+			
 			def desc = pragDescs[prag.name]
-			println "\t\t constraints: ${desc == null ? 'nodesc' : desc.constraints}"
+			
 			if(desc && desc.constraints instanceof List){
 				
 			} else if(desc && desc.constraints instanceof PragmaticsConstraints ){
 				//println "\t\t constraint ${desc.constraints}"
 				if(desc.constraints.connectedTypes && desc.constraints.connectedTypes instanceof String){
 					if(!PragmaticsChecker.checkConnectedType(desc.constraints.connectedTypes, obj)){
-						println "not ok"
+						
 						retval = false
 					} else{
-						println "ok"
+						
 					}
 					
 					if(!PragmaticsChecker.checklevel(desc.constraints.levels, pageType)){
-						println "not ok"
+						
 						retval = false
 					} else{
-						println "ok"
+						
 					}
 				}
 			}
@@ -128,8 +128,7 @@ class PragmaticsChecker {
 	 * @return
 	 */
 	static boolean checklevel(levels, pageType){
-		println "levels: $levels"
-		println "levels: ${levels.class}"
+		
 		if(levels){
 			return PageLevels.checkSame(levels, pageType)
 		}

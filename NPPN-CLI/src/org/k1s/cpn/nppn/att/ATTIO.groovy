@@ -43,4 +43,8 @@ class ATTIO {
 		return xml
 	}
 	
+	static def writeATTImage(att, filename){
+		new ATTVisualizer().writeATTImage(att, filename)
+		
+	}
 }

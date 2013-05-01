@@ -3,6 +3,8 @@ import static org.k1s.nppn.Conditionals.*
 
 import org.apache.commons.cli.Option;
 import org.k1s.cpn.nppn.att.ATTFactory
+import org.k1s.cpn.nppn.att.ATTIO;
+import org.k1s.cpn.nppn.pragmatics.PragmaticsChecker;
 import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL;
 import org.k1s.nppn.blocks.derived.PragmaticsDerivator;
 import org.k1s.nppn.cpn.io.CpnIO
@@ -64,6 +66,14 @@ class NPPN {
 			PragmaticsDerivator.addDerivedPragmatics(cpn, pragmaticsDescriptor)
 		}
 		
+		unless(options.hasOption('no-constraint-checks')){
+			def constraintsOk = PragmaticsChecker.check(cpn, pragmaticsDescriptor)
+			unless(constraintsOk){
+				println "Pragmatics constraints not fulfilled" 
+				System.exit(1);
+			}
+		}
+		
 		/************ Module 2: Generate ATT ****************/
 		if(options.hasOption('output-annotated-net') || options.hasOption('only-output-annotated-net')  ){
 			throw new Exception("nyi")
@@ -73,6 +83,16 @@ class NPPN {
 		def att = factory.createATT(cpn, null, null)
 		
 		
+		if(options.hasOption('output-att') || options.hasOption('only-output-att')){
+				ATTIO.writeATT(att, new File("att.xml"))
+		}
+		if(options.hasOption('output-att-image') || options.hasOption('only-output-att-image')){
+			ATTIO.writeATTImage(att, "att.png")
+		}
+		
+		if(options.hasOption('only-output-att') ||options.hasOption('only-output-att-image') ){
+			return
+		}
 		
 		/********** Module 3: Generate code ***************/
 		def bindings = new File(options.b)
@@ -112,6 +132,9 @@ class NPPN {
 			
 			//ATT generation options
 			_(longOpt: 'output-att','Outputs the ATT as an xml document')
+			_(longOpt: 'output-att-image','Outputs the ATT as an image')
+			_(longOpt: 'only-output-att-image','Outputs the ATT as an image')
+			
 			_(longOpt: 'only-output-att','Outputs the ATT as an xml document and exit')
 			a(longOpt: 'use-att','Uses the ATT given as an argument and bypasses deriving pragmatics and ATT generation.')
 			
