@@ -2483,7 +2483,6 @@
                   bold="false"/>
         <text>Packet Sent
 &lt;&lt;Id(cond: &apos;(eq 0 __TOKEN__[0])&apos; )&gt;&gt;</text>
-
         <ellipse w="332.000000"
                  h="66.000000"/>
         <token x="-10.000000"
@@ -3020,8 +3019,7 @@ Completed
         <text>NextMessage
 &lt;&lt;Pop(OutgoingMessage, m)&gt;&gt;
 &lt;&lt;SetToken(cond: &apos; (isEmpty OutgoingMessage)&apos;,  
-[1_m], [0_m], ) &gt;&gt;
-</text>
+[1_m], [0_m], ) &gt;&gt;</text>
         <box w="234.000000"
              h="60.000000"/>
         <binding x="7.200000"
@@ -7050,7 +7048,7 @@ Messages</text>
                   bold="false"/>
         <text>Receive
 &lt;&lt;service()&gt;&gt;
-&lt;&lt;SetValue(mss, [])&gt;&gt;</text>
+&lt;&lt;setValue(mss, [])&gt;&gt;</text>
         <box w="192.000000"
              h="96.000000"/>
         <binding x="7.200000"
@@ -7142,8 +7140,7 @@ Messages</text>
 Packet
 &lt;&lt;Receive(p, Sender)&gt;&gt;
 &lt;&lt;Append(p,mss)&gt;&gt;
-&lt;&lt;SetToken(p)&gt;&gt;
-</text>
+&lt;&lt;SetToken(p)&gt;&gt;</text>
         <box w="192.000000"
              h="122.000000"/>
         <binding x="7.200000"
@@ -8854,8 +8851,8 @@ FIFOChannel</text>
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1427048388"
-                    panx="-650.000000"
-                    pany="-568.000000"
+                    panx="-671.000000"
+                    pany="-257.000000"
                     zoom="1.000000"
                     instance="ID1427038950">
             <zorder>
@@ -9003,9 +9000,7 @@ FIFOChannel</text>
           </IndexNode>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="true">
-        <IndexNode expanded="false"/>
-      </IndexNode>
+      <IndexNode expanded="true"/>
       <IndexNode expanded="false">
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>
