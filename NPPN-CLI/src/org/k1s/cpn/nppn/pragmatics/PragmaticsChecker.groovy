@@ -109,7 +109,6 @@ class PragmaticsChecker {
 					}
 					
 					if(!PragmaticsChecker.checklevel(desc.constraints.levels, pageType)){
-						
 						retval = false
 					} else{
 						

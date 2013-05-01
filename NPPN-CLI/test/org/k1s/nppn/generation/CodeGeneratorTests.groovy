@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.k1s.cpn.nppn.att.ATTFactory
+import org.k1s.cpn.nppn.pragmatics.PragmaticsChecker;
 import org.k1s.nppn.att.ATTFactoryTests;
 import org.k1s.nppn.blocks.derived.PragmaticsDerivator;
 import org.k1s.nppn.cpn.io.CpnIO
@@ -23,10 +24,14 @@ class CodeGeneratorTests {
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
+		assertTrue PragmaticsChecker.check(cpn, ATTFactoryTests.getCorePragmatics())
+		
 		PragmaticsDerivator.addDerivedPragmatics(cpn, ATTFactoryTests.getCorePragmatics())
 		
 		def factory = new ATTFactory(ATTFactoryTests.getCorePragmatics())
 		def att = factory.createATT(cpn, null, null)
+		println att.children
+		
 		def bindings = getGroovyBindings()
 		def generator = new CodeGenerator(att, bindings)
 		def file = generator.generate()

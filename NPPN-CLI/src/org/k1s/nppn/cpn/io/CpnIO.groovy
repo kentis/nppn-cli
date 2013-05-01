@@ -38,9 +38,8 @@ class CpnIO {
 		try {
 			pn = DOMParser.parse(model, "");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-				throw new RuntimeException(e);
+			throw new RuntimeException(e);
 		}
 	}
 	
