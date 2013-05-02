@@ -4,6 +4,7 @@ import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.Place;
 import org.cpntools.accesscpn.model.Page;
 import org.cpntools.accesscpn.model.Transition;
+import org.k1s.nppn.NPPN;
 
 /**
  * Checks simple constraints for pragmatics
@@ -96,8 +97,13 @@ class PragmaticsChecker {
 			
 			def desc = pragDescs[prag.name]
 			
+			if(NPPN.strict && desc == null){
+				violations << "${prag.name} is not defined in the pragmatics definitions."
+				retval = false
+			}
+			
 			if(desc && desc.constraints instanceof List){
-				
+				//TODO: why is this here
 			} else if(desc && desc.constraints instanceof PragmaticsConstraints ){
 				//println "\t\t constraint ${desc.constraints}"
 				if(desc.constraints.connectedTypes && desc.constraints.connectedTypes instanceof String){

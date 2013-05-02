@@ -14,6 +14,7 @@ import org.k1s.nppn.generation.CodeGenerator
 
 class NPPN {
 
+	static def strict = false
 	
 	/**
 	 * Main method of the program. This is where it all begins.
@@ -30,6 +31,8 @@ class NPPN {
 			cli.usage()
 			return
 		}
+		
+		NPPN.strict = options.hasOption('strict')
 		
 		/****** MODULE 1: Derive pragmaitcs! ***********/
 		
@@ -137,7 +140,8 @@ class NPPN {
 			
 			_(longOpt: 'only-output-att','Outputs the ATT as an xml document and exit')
 			a(longOpt: 'use-att','Uses the ATT given as an argument and bypasses deriving pragmatics and ATT generation.')
-			
+			_(longOpt:'no-constraint-checks', 'Turns off constraint checks on pragmatics')
+			_(longOpt:'strict', 'Forces stricter checks on pragmatic constraints and bindings')
 						
 			//Code generation options
 			b(longOpt: 'template-bindings', args: 1, argName:'bindings', 'specifies template bindigns')
