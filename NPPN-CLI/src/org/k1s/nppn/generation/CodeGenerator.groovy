@@ -96,6 +96,7 @@ class CodeGenerator {
 	}
 	
 	static def nameToFilename(str){
+		if(str == null) return ""
 		str = removePrags(str)
 		str = str.replace(" ", "_")
 		return str

@@ -2826,6 +2826,59 @@ Completed
                 version="3.0.3"/>
         </initmark>
       </place>
+      <place id="ID1430268644">
+        <posattr x="-110.000000"
+                 y="-730.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>end
+&lt;&lt;Id&gt;&gt;</text>
+        <ellipse w="60.000000"
+                 h="40.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="0"
+                anchor.vertical="0"/>
+        </marking>
+        <type id="ID1430268645">
+          <posattr x="-70.000000"
+                   y="-753.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="3.0.3">UNIT</text>
+        </type>
+        <initmark id="ID1430268646">
+          <posattr x="-53.000000"
+                   y="-706.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="3.0.3"/>
+        </initmark>
+      </place>
       <trans id="ID1426780119"
              explicit="false">
         <posattr x="-110.000000"
@@ -4241,6 +4294,38 @@ then (1,m)
 else (0,m)
 (*&lt;&lt; SetToken(cond: &apos; (isEmpty OutgoingMessage)&apos;,  
 [1_m], [0_m], ) &gt;&gt;*)</text>
+        </annot>
+      </arc>
+      <arc id="ID1430269093"
+           orientation="TtoP"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1426796440"/>
+        <placeend idref="ID1430268644"/>
+        <annot id="ID1430269094">
+          <posattr x="-86.500000"
+                   y="-683.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="3.0.3">empty</text>
         </annot>
       </arc>
       <hguideline id="ID1426883415"
@@ -5837,7 +5922,7 @@ else (0,m)
                   type="Solid"/>
         <textattr colour="Black"
                   bold="false"/>
-        <text>RReady&lt;&lt;LCV&gt;&gt;</text>
+        <text>Ready&lt;&lt;LCV&gt;&gt;</text>
         <ellipse w="138.000000"
                  h="40.000000"/>
         <token x="-10.000000"
@@ -6229,7 +6314,7 @@ else (0,m)
                   type="Solid"/>
         <textattr colour="Black"
                   bold="false"/>
-        <text>RReady&lt;&lt;LCV&gt;&gt;</text>
+        <text>Ready&lt;&lt;LCV&gt;&gt;</text>
         <ellipse w="174.000000"
                  h="40.000000"/>
         <token x="-10.000000"
@@ -6915,7 +7000,7 @@ Messages</text>
                   type="Solid"/>
         <textattr colour="Black"
                   bold="false"/>
-        <text>RReady&lt;&lt;LCV&gt;&gt;</text>
+        <text>Ready&lt;&lt;LCV&gt;&gt;</text>
         <ellipse w="174.000000"
                  h="40.000000"/>
         <token x="-10.000000"
@@ -7033,6 +7118,59 @@ Messages</text>
           <textattr colour="Black"
                     bold="false"/>
         </port>
+      </place>
+      <place id="ID1430267930">
+        <posattr x="582.000000"
+                 y="-982.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>end
+&lt;&lt;Id&gt;&gt;</text>
+        <ellipse w="60.000000"
+                 h="40.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="0"
+                anchor.vertical="0"/>
+        </marking>
+        <type id="ID1430267931">
+          <posattr x="621.000000"
+                   y="-1005.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="3.0.3">UNIT</text>
+        </type>
+        <initmark id="ID1430267932">
+          <posattr x="638.000000"
+                   y="-958.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="3.0.3"/>
+        </initmark>
       </place>
       <trans id="ID1427038830"
              explicit="false">
@@ -8146,6 +8284,38 @@ Packet</text>
                 version="3.0.3">(host, port)</text>
         </annot>
       </arc>
+      <arc id="ID1430268010"
+           orientation="TtoP"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1427038848"/>
+        <placeend idref="ID1430267930"/>
+        <annot id="ID1430268011">
+          <posattr x="605.500000"
+                   y="-921.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="3.0.3">empty</text>
+        </annot>
+      </arc>
     </page>
     <page id="ID1426927848">
       <pageattr name="Channel"/>
@@ -8757,189 +8927,63 @@ FIFOChannel</text>
     </options>
     <binders>
       <cpnbinder id="ID1430201323"
-                 x="179"
-                 y="173"
+                 x="286"
+                 y="59"
                  width="1018"
                  height="535">
         <sheets>
           <cpnsheet id="ID1430201316"
-                    panx="229.000000"
-                    pany="9.000000"
-                    zoom="1.000000"
-                    instance="ID1426291823">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-        </sheets>
-        <zorder>
-          <position value="0"/>
-        </zorder>
-      </cpnbinder>
-      <cpnbinder id="ID451750"
-                 x="348"
-                 y="60"
-                 width="1054"
-                 height="721">
-        <sheets>
-          <cpnsheet id="ID1425680960"
-                    panx="-494.640625"
-                    pany="-596.937500"
-                    zoom="1.562500"
-                    instance="ID1425680955">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1426298154"
-                    panx="224.000000"
-                    pany="-8.000000"
-                    zoom="1.000000"
-                    instance="ID1426291823">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1426299979"
-                    panx="-528.000000"
+                    panx="300.000000"
                     pany="-57.000000"
                     zoom="1.000000"
-                    instance="ID1426294293">
+                    instance="ID1426291823">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <textsheet id="ID1426416541"
-                     panx="7.000000"
-                     pany="20.000000"
-                     zoom="1.000000"
-                     decl="ID1425631922">
-            <zorder/>
-          </textsheet>
-          <textsheet id="ID1426767849"
-                     panx="7.000000"
-                     pany="20.000000"
-                     zoom="1.000000"
-                     decl="ID1426767717">
-            <zorder/>
-          </textsheet>
-          <cpnsheet id="ID1426773805"
-                    panx="371.000000"
-                    pany="101.000000"
-                    zoom="1.000000"
-                    instance="ID1426771477">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1426930840"
-                    panx="-225.000000"
-                    pany="-447.000000"
-                    zoom="1.000000"
-                    instance="ID1426927878">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1427032244"
-                    panx="-353.000000"
-                    pany="-82.000000"
+          <cpnsheet id="ID1430267374"
+                    panx="-213.000000"
+                    pany="-62.000000"
                     zoom="1.000000"
                     instance="ID1427031896">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <cpnsheet id="ID1427048388"
-                    panx="-671.000000"
-                    pany="-257.000000"
+          <cpnsheet id="ID1430267428"
+                    panx="-548.000000"
+                    pany="-803.000000"
                     zoom="1.000000"
                     instance="ID1427038950">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <cpnsheet id="ID1427053877"
-                    panx="12.375000"
-                    pany="-119.000000"
-                    zoom="1.000000"
-                    instance="ID1426780286">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1427454404"
-                    panx="-8.000000"
-                    pany="377.000000"
-                    zoom="1.000000"
-                    instance="ID1426782559">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1427462345"
-                    panx="-619.000000"
-                    pany="-149.000000"
+          <cpnsheet id="ID1430267537"
+                    panx="-768.000000"
+                    pany="-23.000000"
                     zoom="1.000000"
                     instance="ID1427035284">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <cpnsheet id="ID1430199088"
-                    panx="78.000000"
-                    pany="368.000000"
+          <cpnsheet id="ID1430268339"
+                    panx="101.000000"
+                    pany="-563.000000"
                     zoom="1.000000"
-                    instance="ID1426782559">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430200461"
-                    panx="-527.000000"
-                    pany="-83.000000"
-                    zoom="1.000000"
-                    instance="ID1426294293">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430201226"
-                    panx="-527.000000"
-                    pany="-83.000000"
-                    zoom="1.000000"
-                    instance="ID1426294293">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430215715"
-                    panx="-527.000000"
-                    pany="-83.000000"
-                    zoom="1.000000"
-                    instance="ID1426294293">
+                    instance="ID1426780286">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
         </sheets>
         <zorder>
-          <position value="4"/>
-          <position value="11"/>
-          <position value="10"/>
-          <position value="12"/>
           <position value="0"/>
-          <position value="3"/>
           <position value="1"/>
-          <position value="13"/>
-          <position value="5"/>
+          <position value="3"/>
           <position value="2"/>
-          <position value="14"/>
-          <position value="6"/>
-          <position value="15"/>
-          <position value="7"/>
-          <position value="9"/>
-          <position value="8"/>
+          <position value="4"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -9000,7 +9044,9 @@ FIFOChannel</text>
           </IndexNode>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="true"/>
+      <IndexNode expanded="true">
+        <IndexNode expanded="false"/>
+      </IndexNode>
       <IndexNode expanded="false">
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>

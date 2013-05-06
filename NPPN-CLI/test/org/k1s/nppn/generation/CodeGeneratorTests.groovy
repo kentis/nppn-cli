@@ -123,6 +123,45 @@ class CodeGeneratorTests {
 		assertEquals("the quick brown fox jumps over the lazy dog", buf.toString().trim() )
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	@Test
+	void testMessageSendingProtocolLCV(){
+		//fail "NYW"
+		
+		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
+		def io = new CpnIO()
+		def cpn = io.readCPN(model)
+		io.parsePragmatics(cpn)
+		
+		PragmaticsDerivator.addDerivedPragmatics(cpn, ATTFactoryTests.getCorePragmatics())
+		
+		def factory = new ATTFactory(ATTFactoryTests.getCorePragmatics())
+		
+		def att = factory.createATT(cpn, null, null)
+		
+		def bindings = getGroovyBindings()
+		
+		def generator = new CodeGenerator(att, bindings)
+		
+		def file = generator.generate()
+		
+		println file
+		
+		assertThat file, is(not(null))
+		
+		def output = []
+		assertTrue(file[0].contains("Idle = "))
+		assertTrue(file[0].contains("Open = "))
+		
+	}
+	
+	
 	def getGroovyBindings(){
 		def string = this.class.getResourceAsStream("/groovy.bindings")
 		return BindingsDSL.makeBindings(string)

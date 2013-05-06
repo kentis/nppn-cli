@@ -119,6 +119,7 @@ class PragmaticsDerivator {
 	 */
 	static def addPrag(node, pragDef){
 		def prag = new Pragmatics(pragDef)
+		println "adding $prag.name to $node.name"
 		node.pragmatics << prag
 	}
 	

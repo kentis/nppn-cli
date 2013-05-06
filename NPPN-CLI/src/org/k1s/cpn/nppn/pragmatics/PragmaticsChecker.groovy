@@ -19,8 +19,7 @@ class PragmaticsChecker {
 	 * @param prags
 	 * @return
 	 */
-	static boolean check(cpn, prags){
-		def violations = []
+	static boolean check(cpn, prags, violations = []){
 		def retval = true
 		
 		def root = cpn.page[0] 
@@ -98,7 +97,7 @@ class PragmaticsChecker {
 			def desc = pragDescs[prag.name]
 			
 			if(NPPN.strict && desc == null){
-				violations << "${prag.name} is not defined in the pragmatics definitions."
+				violations << "Pragmatic named '${prag.name}' is not defined in the pragmatics definitions."
 				retval = false
 			}
 			

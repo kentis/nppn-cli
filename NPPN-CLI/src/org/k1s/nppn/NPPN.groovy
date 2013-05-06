@@ -26,7 +26,8 @@ class NPPN {
 		
 		def options = cli.parse(args)
 		
-		if(options.h){
+		
+		if(options.h || options.arguments().size() != 1  ){
 			
 			cli.usage()
 			return
@@ -34,11 +35,12 @@ class NPPN {
 		
 		NPPN.strict = options.hasOption('strict')
 		
-		/****** MODULE 1: Derive pragmaitcs! ***********/
+		/****** MODULE 1: Derive pragmatics! ***********/
 		
 		//Parse the model
 		//println options.arguments()
 		def model = new File(options.arguments().last())
+		
 		def io = new CpnIO()
 		def cpn = io.readCPN(new FileInputStream(model))
 		io.parsePragmatics(cpn)
@@ -70,14 +72,21 @@ class NPPN {
 		}
 		
 		unless(options.hasOption('no-constraint-checks')){
-			def constraintsOk = PragmaticsChecker.check(cpn, pragmaticsDescriptor)
+			def violations = []
+			def constraintsOk = PragmaticsChecker.check(cpn, pragmaticsDescriptor, violations)
 			unless(constraintsOk){
-				println "Pragmatics constraints not fulfilled" 
+				def sb = new StringBuffer()
+				violations.unique().each {
+					sb.append(it).append('\n')
+				}
+				println "Pragmatics constraints not fulfilled:\n${sb.toString()}"
+				 
 				System.exit(1);
 			}
 		}
 		
 		/************ Module 2: Generate ATT ****************/
+		
 		if(options.hasOption('output-annotated-net') || options.hasOption('only-output-annotated-net')  ){
 			throw new Exception("nyi")
 		}
@@ -105,7 +114,7 @@ class NPPN {
 		if(options.o){
 			generator = new CodeGenerator(att, bindings, options.o)
 		} else {
-			generator = new CodeGenerator(att, bindings, options.o)
+			generator = new CodeGenerator(att, bindings, "./")
 		}
 		def files = generator.generate()
 		generator.write(files)
@@ -121,16 +130,16 @@ class NPPN {
 		cli.with {
 			
 			//General options
-			h(longOpt: 'help', 'useage information')
+			h(longOpt: 'help', 'usage information')
 			o(longOpt: 'output-dir', args: 1, argName:'dir', 'The output directory (default: .)' )
 			
-			//Pragmaticvs derivation options
+			//Pragmatics derivation options
 			_(longOpt: 'no-derived', 'No derived pragmatics will be added')
 			_(longOpt: 'output-annotated-net', 'write the annotated net to the output dir')
 			_(longOpt: 'only-output-annotated-net','write the annotated net to the output dir and exit')
 			//p(longOpt: 'pragmatics-specification', args: Option.UNLIMITED_VALUES, valueSeparator: ',' as char, 'sets an additional set of pragmatics for the model')
 			p(longOpt: 'pragmatics-specification',  'sets an additional set of pragmatics for the model')
-			c(longOpt: 'no-core-pragmatics', 'disables the default core proagmatics')
+			c(longOpt: 'no-core-pragmatics', 'disables the default core pragmatics')
 			
 			
 			//ATT generation options
@@ -144,7 +153,7 @@ class NPPN {
 			_(longOpt:'strict', 'Forces stricter checks on pragmatic constraints and bindings')
 						
 			//Code generation options
-			b(longOpt: 'template-bindings', args: 1, argName:'bindings', 'specifies template bindigns')
+			b(longOpt: 'template-bindings', args: 1, argName:'bindings', 'specifies template bindings')
 		}
 //		cli.t('Specify template bindings')
 //		cli.o('Specify derived pragmatics')

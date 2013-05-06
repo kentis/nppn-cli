@@ -10,6 +10,7 @@ class Binding{
 	def template
 	def pragmatic
 	def dependencies
+	def weight
 	def isContainer = false
 	def isMultiContainer = false
 	def parameterStrategy

@@ -26,8 +26,8 @@ ClassTemplate(pragmatic: 'Principal', template: '/home/kent/ws-ePNK/OntologyReas
 			RemoveHead(pragmatic: 'RemoveHead', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/remHead.tmpl')
 			Merge(pragmatic: 'Merge')
 			LCV(pragmatic: 'LCV')
-			Return(pragmatic: 'return', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/return.tmpl')
-			Return1(pragmatic: 'Return', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/return.tmpl')
+			Return(pragmatic: 'return', weight: Integer.MAX_VALUE, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/return.tmpl')
+			Return1(pragmatic: 'Return', weight: Integer.MAX_VALUE, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/return.tmpl')
 			
 			/**OPERATIONS**/
 			partition(pragmatic: 'partition', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/partition.tmpl')
@@ -37,6 +37,7 @@ ClassTemplate(pragmatic: 'Principal', template: '/home/kent/ws-ePNK/OntologyReas
 			Pop(pragmatic: 'Pop', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/pop.tmpl')
 			SetToken(pragmatic: 'setToken', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setToken.tmpl')
 			SetToken(pragmatic: 'SetToken', parameterStrategy: CONDITIONALS, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setToken.tmpl')
+			setLCV(pragmatic: 'setLCV', parameterStrategy: NET, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setLCV.tmpl', weight: 1000)
 			
 			SetField(pragmatic: 'SetField', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/setField.tmpl')
 			Append(pragmatic: 'Append', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/groovy/opers/append.tmpl')

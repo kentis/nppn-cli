@@ -1,5 +1,6 @@
 package org.k1s.nppn.generation
 
+import org.cpntools.accesscpn.model.Transition;
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 
 /**
@@ -32,6 +33,9 @@ class TemplateParameters {
 			case ParameterStrategy.CONDITIONALS:
 				parameters = getParametersFromPragmaticConditionals(pragmatic)
 				break
+				case ParameterStrategy.NET:
+				parameters = getParametersFromNET(pragmatic, node)
+				break
 			default:
 				throw new Exception("Unimplemented parameter strategy: $strategy")
 		}
@@ -44,8 +48,22 @@ class TemplateParameters {
 	 * gets paramteters using the default strategy
 	 */
 	def getParametersFromPragmatic(Pragmatics pragmatic){
+		if(pragmatic.getArguments() == null) return [params:[]]
 		return [params: pragmatic.getArguments().split(",")]
 	}
+	
+	/**
+	 * gets paramteters using the default strategy
+	 */
+	def getParametersFromNET(Pragmatics pragmatic, node){
+		def retval = getParametersFromPragmatic(pragmatic)
+		retval.node = node
+		if(node instanceof Transition) retval.transition = node
+		if(node.hasProperty("transition")) retval.transition = transition
+		if(node.hasProperty("start_node")) retval.start = transition
+		return retval	
+	}
+	
 	
 	/**
 	 * gets paramteters using the Conditionals strategy
@@ -53,6 +71,7 @@ class TemplateParameters {
 	def getParametersFromPragmaticConditionals(prag){
 		def retval = [:]
 		def addParams = []
+		if(prag.arguments == null) return retval
 		def pragParams = prag.arguments.split(",")
 		prag.arguments = pragParams[0]
 		pragParams.each {
@@ -85,5 +104,5 @@ class TemplateParameters {
  */
 enum ParameterStrategy{
 	FROM_PRAGMATIC, COMBINED_PRAGMATICS, CUSTOM,
-	CONDITIONALS,
+	CONDITIONALS, NET,
 }

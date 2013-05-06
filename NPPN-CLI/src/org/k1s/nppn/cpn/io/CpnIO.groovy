@@ -10,6 +10,7 @@ import org.cpntools.accesscpn.model.RefPlace
 import org.cpntools.accesscpn.model.importer.DOMParser;
 import org.cpntools.accesscpn.model.exporter.DOMGenerator;
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
+import org.k1s.nppn.generation.CodeGenerator;
 
 class CpnIO {
 	
@@ -55,6 +56,11 @@ class CpnIO {
 		Instance.metaClass.pragmatics = null
 		RefPlace.metaClass.pragmatics = null
 		
+		Transition.metaClass.cleanName = null
+		Place.metaClass.cleanName = null
+		Instance.metaClass.cleanName = null
+		RefPlace.metaClass.cleanName = null
+		
 		pn.getPage().each{ parsePragmatics(it)}
 		
 	}
@@ -71,7 +77,7 @@ class CpnIO {
 			getPrags(it.name.text).each { pragDef ->
 				it.pragmatics << Pragmatics.parse(pragDef)
 			}
-			
+			it.cleanName = CodeGenerator.nameToFilename(it.name.text)
 		}
 	}
 	

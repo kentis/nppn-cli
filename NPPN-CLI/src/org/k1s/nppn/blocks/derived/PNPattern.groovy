@@ -62,9 +62,13 @@ class  PNPattern {
 			//println node.pragmatics
 			def pragNode = node
 			//if(node instanceof RefPlace) {
-			while(pragNode instanceof RefPlace) {
-				pragNode = pragNode.ref
-			}
+//			if(pragNode.ref == null){
+//				//work-around for ACCESS/CPN bug
+//			} else {
+//				while(pragNode instanceof RefPlace) {
+//					pragNode = pragNode.ref
+//				}
+//			}
 			//}
 			if(pragNode == null || pragNode.pragmatics == null || pragmatics.size() != pragNode.pragmatics.size()) return false
 			def pragsOk = true
@@ -78,15 +82,18 @@ class  PNPattern {
 		}
 		
 		if(adjacentPatterns != null){
+			println "chekig adjacentPatterns"
 			if(node instanceof Page) return false 
 			def adjOk = true
 			adjacentPatterns.each { adjPattern -> 
 				def hasMatchingAdj = false
 				if(node != null && node.getSourceArc() != null){
-				node.getSourceArc().each { adjArc ->
-					adjPattern.backLinks?.contains( node )
-					if(adjPattern.matchNode(adjArc.target)) hasMatchingAdj = true
-				}
+					println "found outgoings"
+					node.getSourceArc().each { adjArc ->
+						println "checking ${adjArc.target}"
+						if(adjPattern.matchNode(adjArc.target)) hasMatchingAdj = true
+						println hasMatchingAdj
+					}
 				}
 				if(!hasMatchingAdj) adjOk = false
 			}

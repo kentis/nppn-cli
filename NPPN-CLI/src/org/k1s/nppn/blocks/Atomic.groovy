@@ -26,7 +26,7 @@ class Atomic extends Block{
 		
 		def tm = new TemplateManager()
 		def text = new StringBuffer()
-		transition.pragmatics.each{
+		transition.pragmatics.sort{ bindings.prag2Binding[it.name].weight }.each{
 			if(it.name != 'service'){
 				def binding = bindings.prag2Binding[it.name]
 				
