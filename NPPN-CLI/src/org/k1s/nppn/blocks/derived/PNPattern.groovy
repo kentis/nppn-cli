@@ -82,17 +82,17 @@ class  PNPattern {
 		}
 		
 		if(adjacentPatterns != null){
-			println "chekig adjacentPatterns"
+			//println "chekig adjacentPatterns"
 			if(node instanceof Page) return false 
 			def adjOk = true
 			adjacentPatterns.each { adjPattern -> 
 				def hasMatchingAdj = false
 				if(node != null && node.getSourceArc() != null){
-					println "found outgoings"
+					//println "found outgoings"
 					node.getSourceArc().each { adjArc ->
-						println "checking ${adjArc.target}"
+						//println "checking ${adjArc.target}"
 						if(adjPattern.matchNode(adjArc.target)) hasMatchingAdj = true
-						println hasMatchingAdj
+						//println hasMatchingAdj
 					}
 				}
 				if(!hasMatchingAdj) adjOk = false

@@ -80,7 +80,7 @@ class Conditional extends Block {
 		
 		def conds = Conditionals.translatePrags(start.pragmatics[0], bindings)
 		
-		println conds
+		
 		this.text = conds
 		return conds
 	}

@@ -22,24 +22,19 @@ class Conditionals {
 		SimpleTemplateEngine engine = new SimpleTemplateEngine()
 		
 		def condStr = null
-		/*println "prag name: ${pragmatic.name}"
-		println "prag args: ${pragmatic.arguments}"
-		println "prag text: ${pragmatic.text}"*/
+
 		if(pragmatic.name == "Id"){
-			//println pragmatic.arguments
+
 			def args = pragmatic.arguments
 			def map = new GroovyShell().evaluate("return [$args]")
-			//println map
+
 			condStr = map.cond
 		} else if(pragmatic.name == "Cond"){
 			def args = pragmatic.arguments
-			/*println "prag name: ${pragmatic.name}"
-			println "prag args: ${pragmatic.arguments}"
-			println "prag text: ${pragmatic.text}"
-			println "args = '$args'"*/
+			
 			condStr = new GroovyShell().evaluate("return $args")
 		} 
-		//println condStr
+	
 		def conds = parse(condStr)
 		
 		
@@ -69,7 +64,7 @@ class Conditionals {
 			} 
 			for(def i = 1; i < e.size(); i++){%> ${e[i]} ${i < (e.size() -1) ? verb : ''}<%}%>'''  
 		*/
-		//println "BB: ${bindings.bindings}"
+
 		def exprTmpl = new File(bindings.bindings.EXPR.template).text
 		
 		def condTmpl = new File(bindings.bindings.COND.template).text
@@ -98,9 +93,9 @@ class Conditionals {
 	static def translateExpr(pragmatic, bindings){
 		def args = pragmatic.arguments
 		args = args.replaceAll("\n", " ")
-		//println "translating: $args"
+		
 		def map = new GroovyShell().evaluate("return [$args]")
-		//println map
+
 		def exprStr = map.cond
 		def exprTmpl = new File(bindings.bindings.STMT.template).text
 		
@@ -115,13 +110,13 @@ class Conditionals {
 		
 		def exprText = exprTemplate.make([stmt: parseExpr(exprStr), t: trueTmpl]).toString()
 		
-		//println "exprText: ${exprText}"
+
 		return exprText
 		
 	}
 	
 	static def parseExpr(exprStr){
-		//println "-------------------------------------"
+
 		def exprs = []
 		def currExpr
 		def parentExprs = []
