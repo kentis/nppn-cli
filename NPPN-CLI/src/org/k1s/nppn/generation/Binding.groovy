@@ -21,7 +21,7 @@ class Binding{
 	 * @return
 	 */
 	def getTemplate(){
-		if(template instanceof Closure) return template.call()
+		
 		return template
 	}
 	

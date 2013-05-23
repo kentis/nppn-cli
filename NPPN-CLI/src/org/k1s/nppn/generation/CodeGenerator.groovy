@@ -48,8 +48,20 @@ class CodeGenerator {
 		
 		att.children.eachWithIndex { att, index ->
 			
+			def name = nameToFilename(att.name)
 			
-			def file = new File("${outdir}/${nameToFilename(att.name)}")
+			if(bindings && bindings.prag2Binding["__FILENAME__"] ){
+				
+				if(bindings.prag2Binding["__FILENAME__"].template instanceof Closure){
+				
+					name = bindings.prag2Binding["__FILENAME__"].template(["name": name])
+				} else {
+				
+					//TODO: run template
+				}
+			}
+			
+			def file = new File("${outdir}/${name}")
 			file.createNewFile() 
 			
 			file.text = files[index]

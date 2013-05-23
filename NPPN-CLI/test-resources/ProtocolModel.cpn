@@ -250,7 +250,7 @@
     <page id="ID1425680953">
       <pageattr name="Protocol"/>
       <place id="ID1425764163">
-        <posattr x="194.000000"
+        <posattr x="181.000000"
                  y="-422.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -273,7 +273,7 @@
                 anchor.vertical="1"/>
         </marking>
         <type id="ID1425764164">
-          <posattr x="194.000000"
+          <posattr x="181.000000"
                    y="-458.760000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -287,7 +287,7 @@
                 version="3.0.3">Endpoint</text>
         </type>
         <initmark id="ID1426640807">
-          <posattr x="253.000000"
+          <posattr x="240.000000"
                    y="-393.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -302,7 +302,7 @@
         </initmark>
       </place>
       <place id="ID1426729288">
-        <posattr x="457.000000"
+        <posattr x="476.000000"
                  y="-422.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -325,7 +325,7 @@
                 anchor.vertical="1"/>
         </marking>
         <type id="ID1426729289">
-          <posattr x="457.000000"
+          <posattr x="476.000000"
                    y="-453.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -339,7 +339,7 @@
                 version="3.0.3">Endpoint</text>
         </type>
         <initmark id="ID1426729290">
-          <posattr x="518.000000"
+          <posattr x="537.000000"
                    y="-398.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -365,7 +365,8 @@
                   type="solid"/>
         <textattr colour="Black"
                   bold="false"/>
-        <text>Sender &lt;&lt;Principal()&gt;&gt;</text>
+        <text>Sender 
+&lt;&lt;principal()&gt;&gt;</text>
         <box w="104.480000"
              h="102.000000"/>
         <subst subpage="ID1426291639"
@@ -384,8 +385,8 @@
                       bold="false"/>
           </subpageinfo>
         </subst>
-        <binding x="7.200000"
-                 y="-3.000000"/>
+        <binding x="147.200000"
+                 y="-135.000000"/>
         <cond id="ID1426291632">
           <posattr x="3.760000"
                    y="-360.000000"/>
@@ -459,7 +460,7 @@
       </trans>
       <trans id="ID1426294182"
              explicit="false">
-        <posattr x="580.000000"
+        <posattr x="596.000000"
                  y="-422.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -470,14 +471,14 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Receiver
-&lt;&lt;Principal()&gt;&gt;</text>
+&lt;&lt;principal()&gt;&gt;</text>
         <box w="104.480000"
              h="102.000000"/>
         <subst subpage="ID1426294190"
                portsock="(ID1426294245,ID1426729288)">
           <subpageinfo id="ID1426294292"
                        name="Receiver">
-            <posattr x="580.000000"
+            <posattr x="596.000000"
                      y="-477.000000"/>
             <fillattr colour="White"
                       pattern="Solid"
@@ -492,7 +493,7 @@
         <binding x="7.200000"
                  y="-3.000000"/>
         <cond id="ID1426294183">
-          <posattr x="518.760000"
+          <posattr x="534.760000"
                    y="-360.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -506,7 +507,7 @@
                 version="3.0.3"/>
         </cond>
         <time id="ID1426294184">
-          <posattr x="646.740000"
+          <posattr x="662.740000"
                    y="-360.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -520,7 +521,7 @@
                 version="3.0.3"/>
         </time>
         <code id="ID1426294185">
-          <posattr x="666.740000"
+          <posattr x="682.740000"
                    y="-505.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -534,7 +535,7 @@
                 version="3.0.3"/>
         </code>
         <channel id="ID1426294186">
-          <posattr x="665.740000"
+          <posattr x="681.740000"
                    y="-422.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -548,7 +549,7 @@
                 version="3.0.3"/>
         </channel>
         <priority id="ID1426294187">
-          <posattr x="489.760000"
+          <posattr x="505.760000"
                    y="-484.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -575,15 +576,15 @@
         <textattr colour="Black"
                   bold="false"/>
         <text>Channel
-&lt;&lt;Channel(type: FIFO)&gt;&gt;</text>
-        <box w="118.560000"
-             h="102.000000"/>
+&lt;&lt;channel(type: FIFO)&gt;&gt;</text>
+        <box w="168.560000"
+             h="108.000000"/>
         <subst subpage="ID1426927848"
                portsock="(ID1426927856,ID1426729288)(ID1426927861,ID1425764163)">
           <subpageinfo id="ID1426927877"
                        name="Channel">
             <posattr x="328.000000"
-                     y="-477.000000"/>
+                     y="-480.000000"/>
             <fillattr colour="White"
                       pattern="Solid"
                       filled="false"/>
@@ -597,8 +598,8 @@
         <binding x="7.200000"
                  y="-3.000000"/>
         <cond id="ID1426927839">
-          <posattr x="259.720000"
-                   y="-360.000000"/>
+          <posattr x="234.720000"
+                   y="-357.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -611,8 +612,8 @@
                 version="3.0.3"/>
         </cond>
         <time id="ID1426927840">
-          <posattr x="401.780000"
-                   y="-360.000000"/>
+          <posattr x="426.780000"
+                   y="-357.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -625,8 +626,8 @@
                 version="3.0.3"/>
         </time>
         <code id="ID1426927841">
-          <posattr x="421.780000"
-                   y="-505.000000"/>
+          <posattr x="446.780000"
+                   y="-508.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -639,7 +640,7 @@
                 version="3.0.3"/>
         </code>
         <channel id="ID1426927842">
-          <posattr x="420.780000"
+          <posattr x="445.780000"
                    y="-422.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -653,8 +654,8 @@
                 version="3.0.3"/>
         </channel>
         <priority id="ID1426927843">
-          <posattr x="230.720000"
-                   y="-484.000000"/>
+          <posattr x="205.720000"
+                   y="-487.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -8926,53 +8927,17 @@ FIFOChannel</text>
       </option>
     </options>
     <binders>
-      <cpnbinder id="ID1430201323"
-                 x="286"
-                 y="59"
-                 width="1018"
-                 height="535">
+      <cpnbinder id="ID1430270038"
+                 x="329"
+                 y="176"
+                 width="684"
+                 height="223">
         <sheets>
-          <cpnsheet id="ID1430201316"
-                    panx="300.000000"
-                    pany="-57.000000"
+          <cpnsheet id="ID1430270021"
+                    panx="-335.000000"
+                    pany="-427.000000"
                     zoom="1.000000"
-                    instance="ID1426291823">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430267374"
-                    panx="-213.000000"
-                    pany="-62.000000"
-                    zoom="1.000000"
-                    instance="ID1427031896">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430267428"
-                    panx="-548.000000"
-                    pany="-803.000000"
-                    zoom="1.000000"
-                    instance="ID1427038950">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430267537"
-                    panx="-768.000000"
-                    pany="-23.000000"
-                    zoom="1.000000"
-                    instance="ID1427035284">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430268339"
-                    panx="101.000000"
-                    pany="-563.000000"
-                    zoom="1.000000"
-                    instance="ID1426780286">
+                    instance="ID1425680955">
             <zorder>
               <position value="0"/>
             </zorder>
@@ -8980,10 +8945,6 @@ FIFOChannel</text>
         </sheets>
         <zorder>
           <position value="0"/>
-          <position value="1"/>
-          <position value="3"/>
-          <position value="2"/>
-          <position value="4"/>
         </zorder>
       </cpnbinder>
     </binders>
