@@ -38,7 +38,7 @@ class NPPN {
 		/****** MODULE 1: Derive pragmatics! ***********/
 		
 		//Parse the model
-		//println options.arguments()
+
 		def model = new File(options.arguments().last())
 		
 		def io = new CpnIO()
@@ -53,7 +53,7 @@ class NPPN {
 		
 		if(options.'pragmatics-specification'){
 		options.'pragmatics-specifications'.each {
-			//println it
+			
 			pragmaticsDescriptor.append "\n"
 			pragmaticsDescriptor.append new File(it).text
 		}
