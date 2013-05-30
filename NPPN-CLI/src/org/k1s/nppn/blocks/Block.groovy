@@ -15,6 +15,6 @@ abstract class Block {
 	public def pragmatics = []
 	
 	String toGraphString(i=0){
-		return "$i: ${CodeGenerator.nameToFilename( start.name.text)}"
+		return "<html><head><meta name='id' content='${this.hashCode()}'/></head><body><h2>$i: ${CodeGenerator.nameToFilename( start.name.text)}</h2></html></body>"
 	}
 }

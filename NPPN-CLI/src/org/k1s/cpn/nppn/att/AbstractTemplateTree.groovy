@@ -12,6 +12,6 @@ class AbstractTemplateTree {
 	List<Principal> children = []
 	       
 	String toGraphString(i=0){
-		return "ATT Root"
+		return "<html><body><h2>ATT Root</h2></body></html>"
 	}
 }

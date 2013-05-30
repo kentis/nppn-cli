@@ -39,10 +39,11 @@ class PrgamaticsDescriptorDSL {
 	def methodMissing(String methodName, args) {
 		PragmaticsDescriptor prag = new PragmaticsDescriptor(args.size() > 0? args[0] : [:])
 		
+		if(methodName.startsWith('_')) methodName = methodName.substring(1)
+		
 		prag.name = methodName
 		prags[methodName] = prag
-		
-		
+
 	}
 
 		

@@ -44,6 +44,6 @@ class Principal {
 	}
 	
 	String toGraphString(i=0){
-		return "${CodeGenerator.nameToFilename(name)}"
+		return "<html><head><meta name='id' content='${this.hashCode()}'/></head><body><h2>${CodeGenerator.nameToFilename(name)}</h2></body></html>"
 	}
 }

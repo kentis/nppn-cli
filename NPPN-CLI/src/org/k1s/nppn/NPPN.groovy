@@ -138,7 +138,7 @@ class NPPN {
 			_(longOpt: 'output-annotated-net', 'write the annotated net to the output dir')
 			_(longOpt: 'only-output-annotated-net','write the annotated net to the output dir and exit')
 			//p(longOpt: 'pragmatics-specification', args: Option.UNLIMITED_VALUES, valueSeparator: ',' as char, 'sets an additional set of pragmatics for the model')
-			p(longOpt: 'pragmatics-specification',  'sets an additional set of pragmatics for the model')
+			p(longOpt: 'pragmatics-specification', args: 1, argName: "descriptions file", 'sets an additional set of pragmatics for the model')
 			c(longOpt: 'no-core-pragmatics', 'disables the default core pragmatics')
 			
 			

@@ -47,6 +47,6 @@ class Atomic extends Block{
 	}
 	
 	String toGraphString(i=0){
-		return "$i: ${CodeGenerator.nameToFilename(transition.name.text)}"
+		return "<html><head><meta name='id' content='${this.hashCode()}'/></head><body><h2>$i: ${CodeGenerator.nameToFilename(transition.name.text)}</h2></body></html>"
 	}
 }

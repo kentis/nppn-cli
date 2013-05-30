@@ -13,3 +13,14 @@ startLoop(origin: 'derived', derviationRules: ['new PNPattern(pragmatics: [\'Id\
 endLoop(origin: 'derived', derviationRules: ['new PNPattern(pragmatics: [\'Id\'], minOutEdges: 2, backLinks: 1)'], constraints: [levels: 'service', connectedTypes:'Place'])
 
 setLCV(origin: 'derived',derviationRules: ['new PNPattern(adjacentPatterns: [new PNPattern(pragmatics: ["LCV"])])'] )
+
+
+setToken(origin: 'explicit')
+setValue(origin: 'explicit')
+
+openChannel(origin: 'explicit')
+openServerChannel(origin: 'explicit')
+
+setField(origin: 'explicit')
+send(origin: 'explicit')
+receive(origin: 'explicit')
