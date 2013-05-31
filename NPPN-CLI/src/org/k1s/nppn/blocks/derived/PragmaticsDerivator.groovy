@@ -31,7 +31,7 @@ class PragmaticsDerivator {
 		def services = []
 		rootPage.object.each{ node ->
 			//if(node.pragmatics != null) println node.pragmatics.name
-			if(node instanceof Instance && node.pragmatics[0].name == 'Principal') {
+			if(node instanceof Instance && (node.pragmatics[0].name == 'principal' || node.pragmatics[0].name == 'Principal' ) ) {
 				//println "found principal"
 				def page = ATTFactory.getPageForId(node.subPageID, pn)
 				//principals << page

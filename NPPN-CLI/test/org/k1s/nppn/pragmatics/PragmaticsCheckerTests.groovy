@@ -48,9 +48,13 @@ class PragmaticsCheckerTests {
 		PragmaticsConstraints constraint = new PragmaticsConstraints()
 		constraint.levels = 'principal'
 		constraint.connectedTypes = 'Place'
+		corePrags.principal.constraints = constraint
 		corePrags.Principal.constraints = constraint
 		
-		assertFalse PragmaticsChecker.check(cpn, corePrags )
+		def violations = []
+		def res = PragmaticsChecker.check(cpn, corePrags, violations)
+		println violations
+		assertFalse res
 	}
 	
 	@Test
@@ -70,7 +74,7 @@ class PragmaticsCheckerTests {
 		
 		
 		String prags = """
-		Principal(origin: 'explicit', constraints: [levels: 'service', connectedTypes: 'SubstitutionTransition'])
+		principal(origin: 'explicit', constraints: [levels: 'service', connectedTypes: 'SubstitutionTransition'])
 		channel(origin: 'explicit')
 		Id(origin: 'explicit', controlFlow: true, constraints: [levels: 'service', connectedTypes: 'Place'])
 		LCV(origin: 'explicit')

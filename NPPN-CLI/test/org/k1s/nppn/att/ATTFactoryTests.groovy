@@ -26,6 +26,7 @@ class ATTFactoryTests {
 		def factory = new ATTFactory(getCorePragmatics())
 		def att = factory.createATT(cpn, null, null)
 		
+		println att
 		assertThat att, is(not(null))
 		assertThat att.children.size(), is(2) 
 	}

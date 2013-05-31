@@ -48,8 +48,8 @@ class NPPNTests {
 		System.out = saveOut
 		println buf.toString().trim()
 		
-		assertTrue new File("/home/kent/tmp/Sender").exists()
-		assertTrue new File("/home/kent/tmp/Receiver").exists()
+		assertTrue new File("/home/kent/tmp/Sender.groovy").exists()
+		assertTrue new File("/home/kent/tmp/Receiver.groovy").exists()
 		
 		
 	}

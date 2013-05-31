@@ -39,7 +39,7 @@ class PragmaticsDerivatorTests {
 		io.parsePragmatics(cpn)
 		
 		def services  = PragmaticsDerivator.getServicePages(cpn)
-		def senderSend = services.findAll{ it.name.text.contains("SenderSend")}[0]
+		def senderSend = services.findAll{ it.name.text.contains("Send")}[1]
 		
 		def pragsStr = this.class.getResourceAsStream("/core.prags")
 		def prags = new PrgamaticsDescriptorDSL()
@@ -47,6 +47,7 @@ class PragmaticsDerivatorTests {
 		println "prags: $prags.prags"
 		
 		PragmaticsDerivator.addDerivedPragmatics(cpn, prags.prags)
+		println senderSend.name
 		println senderSend.object.pragmatics.name
 		assertTrue senderSend.object.pragmatics.name.flatten().contains("startLoop")
 		assertTrue senderSend.object.pragmatics.name.flatten().contains("endLoop")

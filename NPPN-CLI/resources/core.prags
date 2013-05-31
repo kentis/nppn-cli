@@ -1,4 +1,5 @@
 Principal(origin: 'explicit', constraints: [levels: 'protocol', connectedTypes: 'SubstitutionTransition'])
+principal(origin: 'explicit', constraints: [levels: 'protocol', connectedTypes: 'SubstitutionTransition'])
 channel(origin: 'explicit')
 Id(origin: 'explicit', controlFlow: true, constraints: [levels: 'service', connectedTypes: 'Place'])
 LCV(origin: 'explicit')

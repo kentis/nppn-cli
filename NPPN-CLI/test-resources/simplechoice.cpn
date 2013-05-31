@@ -345,7 +345,7 @@
       <pageattr name="doSomething"/>
       <place id="ID1431392032">
         <posattr x="-105.000000"
-                 y="100.000000"/>
+                 y="98.000000"/>
         <fillattr colour="White"
                   pattern=""
                   filled="false"/>
@@ -369,7 +369,7 @@
         </marking>
         <type id="ID1431392033">
           <posattr x="-65.000000"
-                   y="76.000000"/>
+                   y="74.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -383,7 +383,7 @@
         </type>
         <initmark id="ID1431392034">
           <posattr x="-75.000000"
-                   y="123.000000"/>
+                   y="121.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -398,7 +398,7 @@
         <port id="ID1431392060"
               type="In">
           <posattr x="-129.000000"
-                   y="83.000000"/>
+                   y="81.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -943,7 +943,7 @@
         <placeend idref="ID1431392032"/>
         <annot id="ID1431392036">
           <posattr x="-96.000000"
-                   y="49.000000"/>
+                   y="48.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -1180,6 +1180,64 @@
                 version="3.0.3"/>
         </annot>
       </arc>
+      <arc id="ID1431398132"
+           orientation="TtoP"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1431397174"/>
+        <placeend idref="ID1431392032"/>
+        <bendpoint id="ID1431398134"
+                   serial="1">
+          <posattr x="141.000000"
+                   y="-438.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <bendpoint id="ID1431398135"
+                   serial="2">
+          <posattr x="141.000000"
+                   y="98.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <annot id="ID1431398133">
+          <posattr x="32.000000"
+                   y="-449.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="3.0.3">()</text>
+        </annot>
+      </arc>
     </page>
     <instances>
       <instance id="ID2149"
@@ -1400,10 +1458,10 @@
     </options>
     <binders>
       <cpnbinder id="ID2222"
-                 x="257"
-                 y="122"
-                 width="655"
-                 height="642">
+                 x="255"
+                 y="20"
+                 width="683"
+                 height="701">
         <sheets>
           <cpnsheet id="ID2215"
                     panx="-4.000000"
@@ -1424,8 +1482,8 @@
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1431392251"
-                    panx="89.000000"
-                    pany="-278.000000"
+                    panx="66.000000"
+                    pany="-181.000000"
                     zoom="1.000000"
                     instance="ID1431392048">
             <zorder>

@@ -49,3 +49,6 @@ class PrgamaticsDescriptorDSL {
 		
 	
 }
+enum Roles {
+	
+}

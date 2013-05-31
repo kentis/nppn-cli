@@ -54,7 +54,7 @@ class ATTFactory {
 		//find Principals
 		rootPage.object.each{ node ->
 			//if(node.pragmatics != null) //println node.pragmatics.name
-			if(node instanceof Instance && node.pragmatics[0].name == 'Principal') {
+			if(node instanceof Instance && (node.pragmatics[0].name == 'Principal' || node.pragmatics[0].name == 'principal' )) {
 				////println "found principal"
 				att.children  << attForPrincipal(node, pn, bindings, att)
 			}
