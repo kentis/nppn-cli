@@ -5,4 +5,4 @@
  * @author kent
  *
  */
-package org.k1s.cpn.nppn.att;
+package org.k1s.petriCode.att;

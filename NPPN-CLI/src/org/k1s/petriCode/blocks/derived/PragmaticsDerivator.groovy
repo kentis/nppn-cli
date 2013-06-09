@@ -6,7 +6,7 @@ import org.cpntools.accesscpn.model.Instance
 import org.cpntools.accesscpn.model.PetriNet;
 import org.cpntools.accesscpn.model.Place;
 import org.cpntools.accesscpn.model.Transition;
-import org.k1s.cpn.nppn.att.ATTFactory;
+import org.k1s.petriCode.att.ATTFactory;
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 import org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor;
 

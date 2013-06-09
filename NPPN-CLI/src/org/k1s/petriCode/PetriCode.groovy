@@ -2,8 +2,8 @@ package org.k1s.petriCode
 import static org.k1s.petriCode.Conditionals.*
 
 import org.apache.commons.cli.Option;
-import org.k1s.cpn.nppn.att.ATTFactory
-import org.k1s.cpn.nppn.att.ATTIO;
+import org.k1s.petriCode.att.ATTFactory
+import org.k1s.petriCode.att.ATTIO;
 import org.k1s.cpn.nppn.pragmatics.PragmaticsChecker;
 import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;

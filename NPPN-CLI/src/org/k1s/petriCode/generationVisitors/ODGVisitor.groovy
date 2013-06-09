@@ -1,6 +1,6 @@
 package org.k1s.petriCode.generationVisitors
 
-import org.k1s.cpn.nppn.att.AbstractTemplateTree;
+import org.k1s.petriCode.att.AbstractTemplateTree;
 import org.k1s.petriCode.blocks.Block;
 
 

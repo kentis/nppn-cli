@@ -3,7 +3,7 @@ package org.k1s.nppn.att;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.k1s.cpn.nppn.att.ATTFactory;
+import org.k1s.petriCode.att.ATTFactory;
 import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL;
 import org.k1s.petriCode.blocks.Principal;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;

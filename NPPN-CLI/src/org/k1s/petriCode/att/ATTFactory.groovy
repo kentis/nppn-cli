@@ -1,4 +1,4 @@
-package org.k1s.cpn.nppn.att;
+package org.k1s.petriCode.att;
 
 import org.cpntools.accesscpn.model.Arc;
 import org.cpntools.accesscpn.model.Instance;

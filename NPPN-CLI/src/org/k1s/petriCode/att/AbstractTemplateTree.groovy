@@ -1,4 +1,4 @@
-package org.k1s.cpn.nppn.att
+package org.k1s.petriCode.att
 
 import org.k1s.petriCode.blocks.Block;
 import org.k1s.petriCode.blocks.Principal;
