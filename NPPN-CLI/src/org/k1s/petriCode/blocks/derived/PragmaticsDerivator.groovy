@@ -7,8 +7,8 @@ import org.cpntools.accesscpn.model.PetriNet;
 import org.cpntools.accesscpn.model.Place;
 import org.cpntools.accesscpn.model.Transition;
 import org.k1s.petriCode.att.ATTFactory;
-import org.k1s.cpn.nppn.pragmatics.Pragmatics;
-import org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor;
+import org.k1s.petriCode.pragmatics.Pragmatics;
+import org.k1s.petriCode.pragmatics.PragmaticsDescriptor;
 
 /**
  * Deries derived pragmatics

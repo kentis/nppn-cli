@@ -1,4 +1,4 @@
-package org.k1s.cpn.nppn.pragmatics
+package org.k1s.petriCode.pragmatics
 
 import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.Place;

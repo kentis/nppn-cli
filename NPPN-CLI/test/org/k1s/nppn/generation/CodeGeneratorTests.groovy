@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.k1s.petriCode.att.ATTFactory
-import org.k1s.cpn.nppn.pragmatics.PragmaticsChecker;
+import org.k1s.petriCode.pragmatics.PragmaticsChecker;
 import org.k1s.nppn.att.ATTFactoryTests;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
 import org.k1s.petriCode.PetriCode;

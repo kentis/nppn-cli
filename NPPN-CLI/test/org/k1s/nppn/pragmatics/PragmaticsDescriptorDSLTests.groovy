@@ -5,7 +5,7 @@ import static org.hamcrest.CoreMatchers.*
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.junit.Test;
-import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL
+import org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL
 
 class PragmaticsDescriptorDSLTests {
 

@@ -4,8 +4,8 @@ import static org.k1s.petriCode.Conditionals.*
 import org.apache.commons.cli.Option;
 import org.k1s.petriCode.att.ATTFactory
 import org.k1s.petriCode.att.ATTIO;
-import org.k1s.cpn.nppn.pragmatics.PragmaticsChecker;
-import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL;
+import org.k1s.petriCode.pragmatics.PragmaticsChecker;
+import org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
 import org.k1s.petriCode.generation.BindingsDSL;
 import org.k1s.petriCode.generation.BindingsDSL;

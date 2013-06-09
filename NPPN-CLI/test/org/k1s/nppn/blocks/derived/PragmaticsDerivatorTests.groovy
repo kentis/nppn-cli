@@ -3,8 +3,8 @@ package org.k1s.nppn.blocks.derived;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor;
-import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL;
+import org.k1s.petriCode.pragmatics.PragmaticsDescriptor;
+import org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL;
 
 
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;

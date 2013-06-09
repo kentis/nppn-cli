@@ -4,7 +4,7 @@ import org.cpntools.accesscpn.model.Arc
 import org.cpntools.accesscpn.model.Name
 import org.cpntools.accesscpn.model.Page
 import org.cpntools.accesscpn.model.impl.*
-import org.k1s.cpn.nppn.pragmatics.Pragmatics;
+import org.k1s.petriCode.pragmatics.Pragmatics;
 
 class CPNBuilder {
 	def pn

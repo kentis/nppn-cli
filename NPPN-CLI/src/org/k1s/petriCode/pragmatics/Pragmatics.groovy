@@ -1,4 +1,4 @@
-package org.k1s.cpn.nppn.pragmatics
+package org.k1s.petriCode.pragmatics
 
 /**
  * Pragmatics are instances of this class

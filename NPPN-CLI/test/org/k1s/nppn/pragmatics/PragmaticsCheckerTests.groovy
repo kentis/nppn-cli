@@ -3,9 +3,9 @@ package org.k1s.nppn.pragmatics;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.k1s.cpn.nppn.pragmatics.PragmaticsChecker;
-import org.k1s.cpn.nppn.pragmatics.PragmaticsConstraints;
-import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL
+import org.k1s.petriCode.pragmatics.PragmaticsChecker;
+import org.k1s.petriCode.pragmatics.PragmaticsConstraints;
+import org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL
 import org.k1s.nppn.att.ATTFactoryTests;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
 import org.k1s.petriCode.cpn.io.CpnIO

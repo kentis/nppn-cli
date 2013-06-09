@@ -9,7 +9,7 @@ import org.cpntools.accesscpn.model.RefPlace
 
 import org.cpntools.accesscpn.model.importer.DOMParser;
 import org.cpntools.accesscpn.model.exporter.DOMGenerator;
-import org.k1s.cpn.nppn.pragmatics.Pragmatics;
+import org.k1s.petriCode.pragmatics.Pragmatics;
 import org.k1s.petriCode.generation.CodeGenerator;
 
 class CpnIO {

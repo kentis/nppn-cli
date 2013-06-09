@@ -46,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <enumeration id="6" language="java" name="org.k1s.cpn.nppn.pragmatics.OriginType" project="NPPN-CLI" 
+  <enumeration id="6" language="java" name="org.k1s.petriCode.pragmatics.OriginType" project="NPPN-CLI" 
     file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PragmaticsDescriptor.groovy" binary="false" corner="BOTTOM_RIGHT">    
     <position height="221" width="148" x="1384" y="685"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -55,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </enumeration>  
-  <class id="7" language="java" name="org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL" project="NPPN-CLI" 
+  <class id="7" language="java" name="org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL" project="NPPN-CLI" 
     file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PrgamaticsDescriptorDSL.groovy" binary="false" corner="BOTTOM_RIGHT">    
     <position height="131" width="201" x="628" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -64,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="org.k1s.cpn.nppn.pragmatics.Pragmatics" project="NPPN-CLI" 
+  <class id="8" language="java" name="org.k1s.petriCode.pragmatics.Pragmatics" project="NPPN-CLI" 
     file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/Pragmatics.groovy" binary="false" corner="BOTTOM_RIGHT">    
     <position height="167" width="190" x="1384" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -73,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor" project="NPPN-CLI" 
+  <class id="9" language="java" name="org.k1s.petriCode.pragmatics.PragmaticsDescriptor" project="NPPN-CLI" 
     file="/NPPN-CLI/src/org/k1s/cpn/nppn/pragmatics/PragmaticsDescriptor.groovy" binary="false" corner="BOTTOM_RIGHT">    
     <position height="167" width="150" x="1384" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 

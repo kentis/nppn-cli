@@ -1,7 +1,7 @@
 package org.k1s.petriCode.generation
 
 import org.cpntools.accesscpn.model.Transition;
-import org.k1s.cpn.nppn.pragmatics.Pragmatics;
+import org.k1s.petriCode.pragmatics.Pragmatics;
 
 /**
  * Sets up parameteres for templates
