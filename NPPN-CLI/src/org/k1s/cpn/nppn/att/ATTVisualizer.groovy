@@ -11,10 +11,10 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import org.k1s.nppn.blocks.Atomic;
-import org.k1s.nppn.blocks.Block;
-import org.k1s.nppn.blocks.Principal;
-import org.k1s.nppn.blocks.Service;
+import org.k1s.petriCode.blocks.Atomic;
+import org.k1s.petriCode.blocks.Block;
+import org.k1s.petriCode.blocks.Principal;
+import org.k1s.petriCode.blocks.Service;
 
 import edu.uci.ics.jung.algorithms.layout.BalloonLayout;
 import edu.uci.ics.jung.algorithms.layout.RadialTreeLayout

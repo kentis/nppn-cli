@@ -7,6 +7,7 @@ import static org.junit.matchers.JUnitMatchers.*
 
 import org.cpntools.accesscpn.model.Place
 import org.junit.Test;
+import org.k1s.petriCode.cpn.io.CpnIO
 
 class CpnIOTests {
 	

@@ -6,8 +6,10 @@ import org.junit.Test;
 import org.k1s.cpn.nppn.att.ATTFactory
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
 import org.k1s.nppn.att.ATTFactoryTests;
-import org.k1s.nppn.blocks.derived.PragmaticsDerivator;
-import org.k1s.nppn.cpn.io.CpnIO
+import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
+import org.k1s.petriCode.cpn.io.CpnIO
+import org.k1s.petriCode.generation.BindingsDSL;
+import org.k1s.petriCode.generation.CodeGenerator
 
 import static org.hamcrest.CoreMatchers.*
 
@@ -23,15 +25,15 @@ class ChoiceCodeGeneratorTests {
 		
 		def bindings = getGroovyBindings()
 		println pragmatic.arguments
-		def cond = org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
+		def cond = org.k1s.petriCode.generation.Conditionals.translatePrags(pragmatic, bindings)
 		println "COND: $cond"
-		assertTrue cond.contains('if( a  ){ ')
-		assertTrue cond.contains('else if( true  )')
+		assertTrue cond.contains('if( a ')
+		assertTrue cond.contains('else if( true ')
 		
 		
 		pragmatic = "Id(cond: '(a hei) (t hallo)')"
 		pragmatic = Pragmatics.parse(pragmatic)
-		assertEquals cond, org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
+		assertEquals cond, org.k1s.petriCode.generation.Conditionals.translatePrags(pragmatic, bindings)
 	}
 	
 	@Test
@@ -42,10 +44,10 @@ class ChoiceCodeGeneratorTests {
 		
 		def bindings = getGroovyBindings()
 		println pragmatic.arguments
-		def cond = org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
+		def cond = org.k1s.petriCode.generation.Conditionals.translatePrags(pragmatic, bindings)
 		println "COND: $cond"
-		assertTrue cond.contains('if( a ==  b  )')
-		assertTrue cond.contains('else if( true  )')
+		assertTrue cond.contains('if( a ==  b ')
+		assertTrue cond.contains('else if( true ')
 		
 		
 	}
@@ -59,11 +61,11 @@ class ChoiceCodeGeneratorTests {
 		
 		def bindings = getGroovyBindings()
 		println pragmatic.arguments
-		def cond = org.k1s.nppn.generation.Conditionals.translatePrags(pragmatic, bindings)
+		def cond = org.k1s.petriCode.generation.Conditionals.translatePrags(pragmatic, bindings)
 		println "COND: $cond"
 		assertTrue cond.contains(' a ==  b ')
 		assertTrue cond.contains('||')
-		assertTrue cond.contains('else if( true  )')
+		assertTrue cond.contains('else if( true ')
 		
 		
 	}
@@ -93,7 +95,7 @@ class ChoiceCodeGeneratorTests {
 		
 		assertThat file, containsString("def doSomething")
 		
-		assertThat file, containsString("if( a  )")
+		assertThat file, containsString("if( a ")
 		assertThat file, containsString("else")
 	}
 	

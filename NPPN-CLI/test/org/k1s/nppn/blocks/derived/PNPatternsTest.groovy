@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import org.k1s.nppn.cpnBuilder.CPNBuilder;
+import org.k1s.petriCode.blocks.derived.PNPattern
 class PNPatternsTest {
 	
 	@Before

@@ -1,7 +1,7 @@
 package org.k1s.cpn.nppn.att
 
-import org.k1s.nppn.blocks.Block;
-import org.k1s.nppn.blocks.Principal;
+import org.k1s.petriCode.blocks.Block;
+import org.k1s.petriCode.blocks.Principal;
 
 /**
  * The root and containg class for an ATT

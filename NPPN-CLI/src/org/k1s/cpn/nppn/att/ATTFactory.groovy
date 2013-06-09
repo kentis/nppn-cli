@@ -8,8 +8,8 @@ import org.cpntools.accesscpn.model.Place;
 import org.cpntools.accesscpn.model.Transition;
 
 import org.k1s.cpn.nppn.pragmatics.Pragmatics;
-import org.k1s.nppn.blocks.*
-import org.k1s.nppn.generation.CodeGenerator;
+import org.k1s.petriCode.blocks.*
+import org.k1s.petriCode.generation.CodeGenerator;
 
 /**
  * Generator class for ATTs

@@ -6,7 +6,10 @@ import org.junit.Test;
 import org.k1s.cpn.nppn.pragmatics.PragmaticsDescriptor;
 import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL;
 
-import org.k1s.nppn.cpn.io.CpnIO
+
+import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
+import org.k1s.petriCode.cpn.io.CpnIO
+
 import static org.hamcrest.CoreMatchers.*
 import static org.junit.matchers.JUnitMatchers.*
 class PragmaticsDerivatorTests {

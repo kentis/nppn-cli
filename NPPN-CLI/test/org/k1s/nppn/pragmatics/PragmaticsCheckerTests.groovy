@@ -7,8 +7,8 @@ import org.k1s.cpn.nppn.pragmatics.PragmaticsChecker;
 import org.k1s.cpn.nppn.pragmatics.PragmaticsConstraints;
 import org.k1s.cpn.nppn.pragmatics.PrgamaticsDescriptorDSL
 import org.k1s.nppn.att.ATTFactoryTests;
-import org.k1s.nppn.blocks.derived.PragmaticsDerivator;
-import org.k1s.nppn.cpn.io.CpnIO
+import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
+import org.k1s.petriCode.cpn.io.CpnIO
 
 import static org.hamcrest.CoreMatchers.*
 import org.hamcrest.core.IsNull;

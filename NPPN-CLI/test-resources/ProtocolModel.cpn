@@ -219,6 +219,11 @@
           <layout>fun SendCPacket (p,ep as {name = (sndhost,sndport), inb = inb,outb = outb},host,port) = 
  {name = (sndhost,sndport),inb = inb,outb = outb^^[{src = (sndhost,sndport), dest = (host,port),packet = p}]};</layout>
         </ml>
+        <ml id="ID1430272337">fun SP (p,ep as {name = (sndhost,sndport), inb = inb,outb = outb},host,port) = 
+ {name = (sndhost,sndport),inb = inb,outb = outb^^[{src = (sndhost,sndport), dest = (host,port),packet = p}]};
+          <layout>fun SP (p,ep as {name = (sndhost,sndport), inb = inb,outb = outb},host,port) = 
+ {name = (sndhost,sndport),inb = inb,outb = outb^^[{src = (sndhost,sndport), dest = (host,port),packet = p}]};</layout>
+        </ml>
         <ml id="ID1427015626">fun PacketAvailable (ep : Endpoint) = not (List.null (#inb ep));
           <layout>fun PacketAvailable (ep : Endpoint) = not (List.null (#inb ep));</layout>
         </ml>
@@ -2051,7 +2056,8 @@
         <text>Open
 &lt;&lt;service(rhost, rport)&gt;&gt;
 &lt;&lt;OpenChannel()&gt;&gt;
-&lt;&lt;SetField(Receiver, socket)&gt;&gt;</text>
+&lt;&lt;SetField(Receiver, socket)&gt;&gt;
+&lt;&lt;return()&gt;&gt;</text>
         <box w="282.000000"
              h="90.000000"/>
         <binding x="7.200000"
@@ -2484,7 +2490,7 @@
                   bold="false"/>
         <text>Packet Sent
 &lt;&lt;Id(cond: &apos;(eq 0 __TOKEN__[0])&apos; )&gt;&gt;</text>
-        <ellipse w="332.000000"
+        <ellipse w="300.000000"
                  h="66.000000"/>
         <token x="-10.000000"
                y="0.000000"/>
@@ -2496,7 +2502,7 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1426780117">
-          <posattr x="31.000000"
+          <posattr x="20.000000"
                    y="-329.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2510,7 +2516,7 @@
                 version="3.0.3">Packet</text>
         </type>
         <initmark id="ID1426780118">
-          <posattr x="42.000000"
+          <posattr x="31.000000"
                    y="-262.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2525,7 +2531,7 @@
         </initmark>
       </place>
       <place id="ID1426780185">
-        <posattr x="283.000000"
+        <posattr x="159.000000"
                  y="67.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -2549,8 +2555,8 @@ Messages</text>
                 anchor.vertical="2"/>
         </marking>
         <type id="ID1426780186">
-          <posattr x="353.500000"
-                   y="40.000000"/>
+          <posattr x="174.000000"
+                   y="32.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -2563,7 +2569,7 @@ Messages</text>
                 version="3.0.3">Messages</text>
         </type>
         <initmark id="ID1426780187">
-          <posattr x="354.000000"
+          <posattr x="230.000000"
                    y="93.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2578,7 +2584,7 @@ Messages</text>
         </initmark>
       </place>
       <place id="ID1426780190">
-        <posattr x="-381.000000"
+        <posattr x="-325.000000"
                  y="-184.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -2601,8 +2607,8 @@ Messages</text>
                 anchor.vertical="2"/>
         </marking>
         <type id="ID1426780191">
-          <posattr x="-300.000000"
-                   y="-207.000000"/>
+          <posattr x="-308.000000"
+                   y="-219.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -2615,7 +2621,7 @@ Messages</text>
                 version="3.0.3">EndpointName</text>
         </type>
         <initmark id="ID1426780192">
-          <posattr x="-314.000000"
+          <posattr x="-258.000000"
                    y="-160.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2630,7 +2636,7 @@ Messages</text>
         </initmark>
         <port id="ID1426780347"
               type="I/O">
-          <posattr x="-415.000000"
+          <posattr x="-359.000000"
                    y="-200.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2643,7 +2649,7 @@ Messages</text>
         </port>
       </place>
       <place id="ID1426780197">
-        <posattr x="-499.000000"
+        <posattr x="-388.000000"
                  y="480.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -2667,7 +2673,7 @@ Messages</text>
                 anchor.vertical="0"/>
         </marking>
         <type id="ID1426780198">
-          <posattr x="-468.000000"
+          <posattr x="-357.000000"
                    y="446.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2681,7 +2687,7 @@ Messages</text>
                 version="3.0.3">UNIT</text>
         </type>
         <initmark id="ID1426780199">
-          <posattr x="-433.000000"
+          <posattr x="-322.000000"
                    y="503.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2696,8 +2702,8 @@ Messages</text>
         </initmark>
         <port id="ID1426780351"
               type="I/O">
-          <posattr x="-547.000000"
-                   y="480.000000"/>
+          <posattr x="-421.000000"
+                   y="463.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -2709,7 +2715,7 @@ Messages</text>
         </port>
       </place>
       <place id="ID1426780202">
-        <posattr x="194.000000"
+        <posattr x="106.000000"
                  y="-184.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -2732,8 +2738,8 @@ Messages</text>
                 anchor.vertical="2"/>
         </marking>
         <type id="ID1426780203">
-          <posattr x="253.000000"
-                   y="-211.000000"/>
+          <posattr x="106.000000"
+                   y="-220.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -2746,7 +2752,7 @@ Messages</text>
                 version="3.0.3">Endpoint</text>
         </type>
         <initmark id="ID1426780204">
-          <posattr x="257.000000"
+          <posattr x="169.000000"
                    y="-156.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -2761,8 +2767,8 @@ Messages</text>
         </initmark>
         <port id="ID1426780205"
               type="I/O">
-          <posattr x="162.000000"
-                   y="-204.000000"/>
+          <posattr x="137.000000"
+                   y="-163.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -2982,7 +2988,7 @@ Completed
         <textattr colour="Black"
                   bold="false"/>
         <text>Partition
-&lt;&lt;Partition(msg, OutgoingMessage)&gt;&gt;</text>
+&lt;&lt;partition(msg, OutgoingMessage)&gt;&gt;</text>
         <box w="326.000000"
              h="56.000000"/>
         <binding x="7.200000"
@@ -3071,16 +3077,15 @@ Completed
         <textattr colour="Black"
                   bold="false"/>
         <text>NextMessage
-&lt;&lt;Pop(OutgoingMessage, m)&gt;&gt;
-&lt;&lt;SetToken(cond: &apos; (isEmpty OutgoingMessage)&apos;,  
-[1_m], [0_m], ) &gt;&gt;</text>
-        <box w="234.000000"
-             h="60.000000"/>
+&lt;&lt;pop(OutgoingMessage, m)&gt;&gt;
+&lt;&lt;setToken(cond: &apos; (isEmpty OutgoingMessage)&apos;,  [1_m], [0_m], ) &gt;&gt;</text>
+        <box w="244.000000"
+             h="102.000000"/>
         <binding x="7.200000"
                  y="-3.000000"/>
         <cond id="ID1426780132">
-          <posattr x="-236.000000"
-                   y="108.000000"/>
+          <posattr x="-241.000000"
+                   y="129.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3093,8 +3098,8 @@ Completed
                 version="3.0.3"/>
         </cond>
         <time id="ID1426780133">
-          <posattr x="21.500000"
-                   y="108.000000"/>
+          <posattr x="26.500000"
+                   y="129.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3107,8 +3112,8 @@ Completed
                 version="3.0.3"/>
         </time>
         <code id="ID1426780134">
-          <posattr x="41.500000"
-                   y="5.000000"/>
+          <posattr x="46.500000"
+                   y="-16.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3121,7 +3126,7 @@ Completed
                 version="3.0.3"/>
         </code>
         <channel id="ID1426780135">
-          <posattr x="40.500000"
+          <posattr x="45.500000"
                    y="67.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3135,8 +3140,8 @@ Completed
                 version="3.0.3"/>
         </channel>
         <priority id="ID1426780136">
-          <posattr x="-265.000000"
-                   y="26.000000"/>
+          <posattr x="-270.000000"
+                   y="5.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3163,14 +3168,14 @@ Completed
                   bold="false"/>
         <text>Send
 Packet
-&lt;&lt;Send(Receiver, __TOKEN__)&gt;&gt;</text>
-        <box w="242.000000"
-             h="64.000000"/>
+&lt;&lt;send(Receiver,__TOKEN__)&gt;&gt;</text>
+        <box w="220.000000"
+             h="60.000000"/>
         <binding x="7.200000"
                  y="-3.000000"/>
         <cond id="ID1426780144">
-          <posattr x="-240.000000"
-                   y="-141.000000"/>
+          <posattr x="-229.000000"
+                   y="-143.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3183,8 +3188,8 @@ Packet
                 version="3.0.3"/>
         </cond>
         <time id="ID1426780145">
-          <posattr x="25.500000"
-                   y="-141.000000"/>
+          <posattr x="14.500000"
+                   y="-143.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3197,8 +3202,8 @@ Packet
                 version="3.0.3"/>
         </time>
         <code id="ID1426780146">
-          <posattr x="45.500000"
-                   y="-248.000000"/>
+          <posattr x="34.500000"
+                   y="-246.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3211,7 +3216,7 @@ Packet
                 version="3.0.3"/>
         </code>
         <channel id="ID1426780147">
-          <posattr x="44.500000"
+          <posattr x="33.500000"
                    y="-184.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3225,8 +3230,8 @@ Packet
                 version="3.0.3"/>
         </channel>
         <priority id="ID1426780148">
-          <posattr x="-269.000000"
-                   y="-227.000000"/>
+          <posattr x="-258.000000"
+                   y="-225.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3329,7 +3334,7 @@ Packet
       </trans>
       <trans id="ID1426780155"
              explicit="false">
-        <posattr x="-379.000000"
+        <posattr x="-322.000000"
                  y="-296.000000"/>
         <fillattr colour="White"
                   pattern=""
@@ -3340,12 +3345,12 @@ Packet
         <textattr colour="Black"
                   bold="false"/>
         <text>Next</text>
-        <box w="104.000000"
+        <box w="64.000000"
              h="48.000000"/>
         <binding x="7.200000"
                  y="-3.000000"/>
         <cond id="ID1426780156">
-          <posattr x="-440.000000"
+          <posattr x="-363.000000"
                    y="-261.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3359,7 +3364,7 @@ Packet
                 version="3.0.3"/>
         </cond>
         <time id="ID1426780157">
-          <posattr x="-312.500000"
+          <posattr x="-275.500000"
                    y="-261.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3373,7 +3378,7 @@ Packet
                 version="3.0.3"/>
         </time>
         <code id="ID1426780158">
-          <posattr x="-292.500000"
+          <posattr x="-255.500000"
                    y="-352.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3387,7 +3392,7 @@ Packet
                 version="3.0.3"/>
         </code>
         <channel id="ID1426780159">
-          <posattr x="-293.500000"
+          <posattr x="-256.500000"
                    y="-296.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3401,7 +3406,7 @@ Packet
                 version="3.0.3"/>
         </channel>
         <priority id="ID1426780160">
-          <posattr x="-469.000000"
+          <posattr x="-392.000000"
                    y="-331.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3428,7 +3433,7 @@ Packet
         <textattr colour="Black"
                   bold="false"/>
         <text>Completed
-&lt;&lt;Return()&gt;&gt;</text>
+&lt;&lt;return()&gt;&gt;</text>
         <box w="104.000000"
              h="46.000000"/>
         <binding x="7.200000"
@@ -3632,7 +3637,7 @@ Packet
         <placeend idref="ID1426780113"/>
         <annot id="ID1426780174">
           <posattr x="-102.000000"
-                   y="-125.000000"/>
+                   y="-126.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3664,7 +3669,7 @@ Packet
         <placeend idref="ID1426780107"/>
         <bendpoint id="ID1426780081"
                    serial="1">
-          <posattr x="-463.000000"
+          <posattr x="-378.000000"
                    y="-296.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3677,7 +3682,7 @@ Packet
         </bendpoint>
         <bendpoint id="ID1426780082"
                    serial="2">
-          <posattr x="-463.000000"
+          <posattr x="-378.000000"
                    y="172.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3689,7 +3694,7 @@ Packet
                     bold="false"/>
         </bendpoint>
         <annot id="ID1426780176">
-          <posattr x="-448.000000"
+          <posattr x="-362.000000"
                    y="-285.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3786,7 +3791,7 @@ Packet
         <placeend idref="ID1426780107"/>
         <annot id="ID1426780182">
           <posattr x="-101.000000"
-                   y="123.000000"/>
+                   y="133.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3818,7 +3823,7 @@ Packet
         <placeend idref="ID1426780116"/>
         <annot id="ID1426780184">
           <posattr x="-102.000000"
-                   y="-237.000000"/>
+                   y="-236.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3850,7 +3855,7 @@ Packet
         <placeend idref="ID1426780185"/>
         <bendpoint id="ID1426780083"
                    serial="1">
-          <posattr x="283.000000"
+          <posattr x="159.000000"
                    y="266.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3862,7 +3867,7 @@ Packet
                     bold="false"/>
         </bendpoint>
         <annot id="ID1426780189">
-          <posattr x="168.000000"
+          <posattr x="106.000000"
                    y="277.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3894,8 +3899,8 @@ Packet
         <transend idref="ID1426780143"/>
         <placeend idref="ID1426780190"/>
         <annot id="ID1426780194">
-          <posattr x="-284.000000"
-                   y="-173.000000"/>
+          <posattr x="-249.000000"
+                   y="-166.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3905,7 +3910,8 @@ Packet
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.0.3">(host,port)</text>
+                version="3.0.3">(host,
+port)</text>
         </annot>
       </arc>
       <arc id="ID1426780200"
@@ -3926,7 +3932,7 @@ Packet
         <transend idref="ID1426780119"/>
         <placeend idref="ID1426780197"/>
         <annot id="ID1426780201">
-          <posattr x="-424.000000"
+          <posattr x="-326.000000"
                    y="468.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -3959,8 +3965,8 @@ Packet
         <placeend idref="ID1426780202"/>
         <bendpoint id="ID1426780085"
                    serial="1">
-          <posattr x="80.000000"
-                   y="-223.000000"/>
+          <posattr x="40.000000"
+                   y="-205.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3971,8 +3977,8 @@ Packet
                     bold="false"/>
         </bendpoint>
         <annot id="ID1426780207">
-          <posattr x="90.000000"
-                   y="-205.000000"/>
+          <posattr x="30.000000"
+                   y="-194.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3987,7 +3993,7 @@ Packet
       </arc>
       <arc id="ID1426780208"
            orientation="TtoP"
-           order="1">
+           order="2">
         <posattr x="0.000000"
                  y="0.000000"/>
         <fillattr colour="White"
@@ -4003,8 +4009,8 @@ Packet
         <transend idref="ID1426780143"/>
         <placeend idref="ID1426780202"/>
         <annot id="ID1426780209">
-          <posattr x="119.000000"
-                   y="-145.000000"/>
+          <posattr x="52.000000"
+                   y="-150.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -4014,7 +4020,8 @@ Packet
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.0.3">SendCPacket(p,ep,host,port)</text>
+                version="3.0.3">SendCPacket(p,ep,
+host,port)</text>
         </annot>
       </arc>
       <arc id="ID1426780210"
@@ -4048,7 +4055,7 @@ Packet
                     bold="false"/>
         </bendpoint>
         <annot id="ID1426780211">
-          <posattr x="94.000000"
+          <posattr x="70.000000"
                    y="40.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -4093,7 +4100,7 @@ Packet
                     bold="false"/>
         </bendpoint>
         <annot id="ID1426780213">
-          <posattr x="95.000000"
+          <posattr x="64.000000"
                    y="78.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -4190,7 +4197,7 @@ Packet
         <placeend idref="ID1426780185"/>
         <bendpoint id="ID1426801388"
                    serial="1">
-          <posattr x="283.000000"
+          <posattr x="159.000000"
                    y="-633.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -4202,7 +4209,7 @@ Packet
                     bold="false"/>
         </bendpoint>
         <annot id="ID1426801387">
-          <posattr x="113.000000"
+          <posattr x="51.000000"
                    y="-622.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -4235,7 +4242,7 @@ Packet
         <placeend idref="ID1426780197"/>
         <bendpoint id="ID1427063700"
                    serial="1">
-          <posattr x="-499.000000"
+          <posattr x="-388.000000"
                    y="-633.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -4247,7 +4254,7 @@ Packet
                     bold="false"/>
         </bendpoint>
         <annot id="ID1427063699">
-          <posattr x="-330.000000"
+          <posattr x="-275.000000"
                    y="-622.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
@@ -4279,8 +4286,8 @@ Packet
         <transend idref="ID1426780131"/>
         <placeend idref="ID1426780113"/>
         <annot id="ID1427298610">
-          <posattr x="79.500000"
-                   y="-10.000000"/>
+          <posattr x="12.000000"
+                   y="-21.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -4293,7 +4300,8 @@ Packet
                 version="3.0.3">if mss = []
 then (1,m)
 else (0,m)
-(*&lt;&lt; SetToken(cond: &apos; (isEmpty OutgoingMessage)&apos;,  
+(*&lt;&lt; setToken(cond: &apos; (isEmpty 
+OutgoingMessage)&apos;,  
 [1_m], [0_m], ) &gt;&gt;*)</text>
         </annot>
       </arc>
@@ -4347,9 +4355,9 @@ else (0,m)
       </hguideline>
       <hguideline id="ID1427327024"
                   y="184.000000">
+        <guideline_elm idref="ID1426780143"/>
         <guideline_elm idref="ID1426780190"/>
         <guideline_elm idref="ID1426780202"/>
-        <guideline_elm idref="ID1426780143"/>
       </hguideline>
       <vguideline id="ID1426909656"
                   x="-463.000000"/>
@@ -4631,7 +4639,8 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>Close
-&lt;&lt;service()&gt;&gt;</text>
+&lt;&lt;service()&gt;&gt;
+&lt;&lt;return()&gt;&gt;</text>
         <box w="140.000000"
              h="40.000000"/>
         <binding x="7.200000"
@@ -6057,7 +6066,8 @@ else (0,m)
         <text>Init
 &lt;&lt;service(rhost, rport)&gt;&gt;
 &lt;&lt;OpenServerChannel(rport,socket)&gt;&gt;
-&lt;&lt;SetField(Sender, socket)&gt;&gt;</text>
+&lt;&lt;SetField(Sender, socket)&gt;&gt;
+&lt;&lt;return()&gt;&gt;</text>
         <box w="250.000000"
              h="76.000000"/>
         <binding x="7.200000"
@@ -6512,7 +6522,8 @@ else (0,m)
         <textattr colour="Black"
                   bold="false"/>
         <text>Close 
-&lt;&lt;service()&gt;&gt;</text>
+&lt;&lt;service()&gt;&gt;
+&lt;&lt;return()&gt;&gt;</text>
         <box w="208.000000"
              h="40.000000"/>
         <binding x="7.200000"
@@ -8927,17 +8938,17 @@ FIFOChannel</text>
       </option>
     </options>
     <binders>
-      <cpnbinder id="ID1430270038"
-                 x="329"
-                 y="176"
-                 width="684"
-                 height="223">
+      <cpnbinder id="ID1430274374"
+                 x="457"
+                 y="90"
+                 width="744"
+                 height="563">
         <sheets>
-          <cpnsheet id="ID1430270021"
-                    panx="-335.000000"
-                    pany="-427.000000"
+          <cpnsheet id="ID1430274357"
+                    panx="79.000000"
+                    pany="-13.000000"
                     zoom="1.000000"
-                    instance="ID1425680955">
+                    instance="ID1426780286">
             <zorder>
               <position value="0"/>
             </zorder>
@@ -9005,10 +9016,8 @@ FIFOChannel</text>
           </IndexNode>
         </IndexNode>
       </IndexNode>
+      <IndexNode expanded="true"/>
       <IndexNode expanded="true">
-        <IndexNode expanded="false"/>
-      </IndexNode>
-      <IndexNode expanded="false">
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
@@ -9023,7 +9032,7 @@ FIFOChannel</text>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -9047,7 +9056,8 @@ FIFOChannel</text>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
