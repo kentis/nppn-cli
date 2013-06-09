@@ -1,4 +1,4 @@
-package org.k1s.nppn.pragmatics;
+package org.k1s.petriCode.pragmatics;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*

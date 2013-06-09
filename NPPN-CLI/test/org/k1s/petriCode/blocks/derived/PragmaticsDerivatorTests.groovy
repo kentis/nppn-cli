@@ -1,4 +1,4 @@
-package org.k1s.nppn.blocks.derived;
+package org.k1s.petriCode.blocks.derived;
 
 import static org.junit.Assert.*;
 

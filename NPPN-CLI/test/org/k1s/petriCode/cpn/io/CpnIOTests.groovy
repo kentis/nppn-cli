@@ -1,4 +1,4 @@
-package org.k1s.nppn.cpn.io;
+package org.k1s.petriCode.cpn.io;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*

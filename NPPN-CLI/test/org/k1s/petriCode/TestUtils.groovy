@@ -1,6 +1,6 @@
-package org.k1s.nppn
+package org.k1s.petriCode
 
-import org.k1s.nppn.cpnBuilder.CPNBuilder
+import org.k1s.petriCode.cpnBuilder.CPNBuilder
 
 class TestUtils {
 

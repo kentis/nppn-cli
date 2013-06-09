@@ -1,11 +1,11 @@
-package org.k1s.nppn.generation;
+package org.k1s.petriCode.generation;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.k1s.petriCode.att.ATTFactory
 import org.k1s.petriCode.pragmatics.Pragmatics;
-import org.k1s.nppn.att.ATTFactoryTests;
+import org.k1s.petriCode.att.ATTFactoryTests;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
 import org.k1s.petriCode.cpn.io.CpnIO
 import org.k1s.petriCode.generation.BindingsDSL;

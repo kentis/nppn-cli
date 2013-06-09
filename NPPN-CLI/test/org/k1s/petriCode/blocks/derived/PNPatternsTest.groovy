@@ -1,4 +1,4 @@
-package org.k1s.nppn.blocks.derived;
+package org.k1s.petriCode.blocks.derived;
 
 import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.RefPlace;
@@ -11,7 +11,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-import org.k1s.nppn.cpnBuilder.CPNBuilder;
+import org.k1s.petriCode.cpnBuilder.CPNBuilder;
 import org.k1s.petriCode.blocks.derived.PNPattern
 class PNPatternsTest {
 	

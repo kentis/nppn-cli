@@ -1,4 +1,4 @@
-package org.k1s.nppn.cpnBuilder;
+package org.k1s.petriCode.cpnBuilder;
 
 
 import org.cpntools.accesscpn.model.Arc

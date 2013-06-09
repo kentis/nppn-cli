@@ -1,4 +1,4 @@
-package org.k1s.nppn.att;
+package org.k1s.petriCode.att;
 
 import static org.junit.Assert.*;
 
