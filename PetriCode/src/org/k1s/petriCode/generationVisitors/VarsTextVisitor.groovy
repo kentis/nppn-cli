@@ -1,5 +1,7 @@
 package org.k1s.petriCode.generationVisitors	
 
+import org.k1s.petriCode.blocks.Principal;
+
 import groovy.text.SimpleTemplateEngine;
 
 
@@ -24,7 +26,7 @@ class VarsTextVisitor extends ODGVisitor{
 			}
 			
 			def decls = element.declarations.unique()
-			if(element.metaClass.hasProperty(element, 'parent') && element.parent){
+			if(element.metaClass.hasProperty(element, 'parent') && element.parent && !(element.parent instanceof Principal)){
 				//remove previously defined variables
 				
 				decls = decls - element.parent.declarations

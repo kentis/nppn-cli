@@ -128,5 +128,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Loop" eSuperTypes="#//Container"/>
   <eClassifiers xsi:type="ecore:EClass" name="Conditional" eSuperTypes="#//Container"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Loop"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Loop" eSuperTypes="#//Container"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conditinoal" eSuperTypes="#//Container"/>
 </ecore:EPackage>

@@ -240,9 +240,9 @@ class CodeGeneratorTests {
 	}
 	
 	
-	//@Test
+	@Test
 	void testMessageSendingProtocolClojure(){
-		PetriCode.strict = true
+		//PetriCode.strict = true
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
 		def io = new CpnIO()
 		def cpn = io.readCPN(model)
@@ -287,7 +287,7 @@ class CodeGeneratorTests {
 		
 		Thread.sleep(1000)
 		
-		RT.var("Sender.Sender", "Open").invoke(31337)
+		RT.var("Sender.Sender", "Open").invoke([port: 31337, host:'localhost'])
 		RT.var("Sender.Sender", "Send").invoke("the quick brown fox jumps over the lazy dog")
 		RT.var("Sender.Sender", "Close").invoke()
 		

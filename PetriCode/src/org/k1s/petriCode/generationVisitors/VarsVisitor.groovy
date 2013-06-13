@@ -1,5 +1,7 @@
 package org.k1s.petriCode.generationVisitors	
 
+import org.k1s.petriCode.blocks.Principal;
+
 
 /**
  * Variables visitos pass 1
@@ -25,7 +27,7 @@ class VarsVisitor extends ODGVisitor{
 		//println "VARS_VISITOR: adding ${varNames} to ${element.parent?.correspondingNetElement?.name?.text}"
 		//println element
 		//println "element.metaClass.hasProperty(element, \"parent\") && element.parent: ${element.metaClass.hasProperty(element,"parent")} && ${element.metaClass.hasProperty(element, "parent") ? element.parent: 'no such field'}"
-		if(element.metaClass.hasProperty(element, "parent") && element.parent){
+		if(element.metaClass.hasProperty(element, "parent") && element.parent && !(element.parent instanceof Principal)){
 			//println "adding vars to ${element.parent}"
 			element.parent.declarations.addAll varNames	
 		}

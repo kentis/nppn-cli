@@ -20,6 +20,7 @@ class Service  {
 	def text
 	def declarationsText
 	def declarations = ['__TOKEN__']
+	def parent
 	
 	/**
 	 * code generator for services

@@ -78,7 +78,7 @@ class ATTFactory {
 		page.object.each{
 			////println it
 			if(it instanceof Instance && it.pragmatics[0].name == 'service') {
-				principal.children << attForService(it,pn)
+				principal.children << attForService(it,pn, principal)
 			}
 		}
 		
@@ -118,8 +118,8 @@ class ATTFactory {
 	 * @param pn
 	 * @return
 	 */
-	def attForService(Instance node, pn){
-		def service = new Service(name: node.name.getText())
+	def attForService(Instance node, pn, principal){
+		def service = new Service(name: node.name.getText(), parent: principal)
 		def page = getPageForId(node.subPageID, pn) 
 		
 		service.node = node

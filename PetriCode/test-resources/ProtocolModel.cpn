@@ -7290,7 +7290,7 @@ Messages</text>
 Packet
 &lt;&lt;Receive(p, Sender)&gt;&gt;
 &lt;&lt;Append(p,mss)&gt;&gt;
-&lt;&lt;SetToken(p)&gt;&gt;</text>
+&lt;&lt;setToken(p)&gt;&gt;</text>
         <box w="192.000000"
              h="122.000000"/>
         <binding x="7.200000"
@@ -7469,7 +7469,7 @@ Packet
         <textattr colour="Black"
                   bold="false"/>
         <text>Complete
-&lt;&lt;Return(__TOKEN__)&gt;&gt;</text>
+&lt;&lt;return(__TOKEN__)&gt;&gt;</text>
         <box w="182.000000"
              h="68.000000"/>
         <binding x="7.200000"

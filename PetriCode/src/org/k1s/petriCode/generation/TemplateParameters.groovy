@@ -1,6 +1,7 @@
 package org.k1s.petriCode.generation
 
 import org.cpntools.accesscpn.model.Transition;
+import org.k1s.petriCode.blocks.Principal;
 import org.k1s.petriCode.pragmatics.Pragmatics;
 
 /**
@@ -23,7 +24,7 @@ class TemplateParameters {
 	/**
 	 *Gets the parameters for a pragmatic using the given strategy 
 	 */
-	def getParamtersFor(pragmatic, node, ParameterStrategy strategy = TemplateParameters.DEFAULT_STRATEGY){
+	def getParamtersFor(pragmatic, node, attNode, ParameterStrategy strategy = TemplateParameters.DEFAULT_STRATEGY){
 		if(strategy == null) strategy = TemplateParameters.DEFAULT_STRATEGY
 		def parameters
 		switch(strategy){
@@ -33,8 +34,14 @@ class TemplateParameters {
 			case ParameterStrategy.CONDITIONALS:
 				parameters = getParametersFromPragmaticConditionals(pragmatic)
 				break
-				case ParameterStrategy.NET:
+			case ParameterStrategy.CONDITIONALS_ATT:
+				parameters = getParametersFromPragmaticConditionalsATT(attNode, pragmatic)
+				break
+			case ParameterStrategy.NET:
 				parameters = getParametersFromNET(pragmatic, node)
+				break
+			case ParameterStrategy.NET_ATT:
+				parameters = getParametersFromNETATT(pragmatic, attNode, node)
 				break
 			default:
 				throw new Exception("Unimplemented parameter strategy: $strategy")
@@ -62,6 +69,28 @@ class TemplateParameters {
 		if(node.hasProperty("transition")) retval.transition = transition
 		if(node.hasProperty("start_node")) retval.start = transition
 		return retval	
+	}
+	
+	def getParametersFromNETATT(Pragmatics pragmatic, attNode, node){
+		def retval = getParametersFromNET(pragmatic, node)
+		def principal = attNode
+		while(!(principal instanceof Principal)){
+			principal = principal.parent
+		}
+		
+		retval['className'] =  principal.name
+		return retval
+	}
+	
+	def getParametersFromPragmaticConditionalsATT(prag, att_node){
+		def retval = getParametersFromPragmaticConditionals(prag)
+		def principal = att_node
+		while(!(principal instanceof Principal)){
+			principal = principal.parent
+		}
+		
+		retval['className'] =  principal.name
+		return retval
 	}
 	
 	
@@ -104,5 +133,8 @@ class TemplateParameters {
  */
 enum ParameterStrategy{
 	FROM_PRAGMATIC, COMBINED_PRAGMATICS, CUSTOM,
-	CONDITIONALS, NET,
+	CONDITIONALS,
+	CONDITIONALS_ATT,
+	NET,
+	NET_ATT, 
 }
