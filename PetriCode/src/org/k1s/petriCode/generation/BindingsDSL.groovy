@@ -57,7 +57,11 @@ Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
 	
 	
 	static def makeBindings(InputStream is){
-		def string = "import static org.k1s.petriCode.generation.ParameterStrategy.* \n return {\n${is.text}\n}"
+		makeBindings(is.text)
+	}
+
+	static def makeBindings(String is){
+		def string = "import static org.k1s.petriCode.generation.ParameterStrategy.* \n return {\n${is}\n}"
 		def closure = new GroovyShell().evaluate(string)
 		return makeBindings(closure)
 	}

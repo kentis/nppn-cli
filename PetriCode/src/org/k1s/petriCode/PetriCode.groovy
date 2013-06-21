@@ -107,9 +107,17 @@ class PetriCode {
 		}
 		
 		/********** Module 3: Generate code ***************/
-		def bindings = new File(options.b)
-		bindings = BindingsDSL.makeBindings(new FileInputStream(bindings))
-		
+		def bindings 
+		if(options.b){
+			def bConcats = new StringBuffer()
+			options.bs.each{
+				bConcats.append( new File(it).text ).append('\n') 
+			}
+			//def bindings = new File(options.b)
+			bindings = BindingsDSL.makeBindings(bConcats.toString())
+		} else {
+			throw RuntimeException("no template bindings found")
+		}
 		def generator
 		if(options.o){
 			generator = new CodeGenerator(att, bindings, options.o)
