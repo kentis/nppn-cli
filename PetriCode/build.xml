@@ -51,6 +51,7 @@
 <pathelement location="lib/jung/jung-visualization-2.0.1.jar"/>
 <pathelement location="lib/jung/jung-api-2.0.1.jar"/>
 <pathelement location="lib/jung/jung-api-2.0.1.jar"/>
+<pathelement location="lib/clojure-1.5.1.jar"/>
 
 
     </path>
