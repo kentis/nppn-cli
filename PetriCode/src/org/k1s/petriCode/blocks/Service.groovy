@@ -21,7 +21,7 @@ class Service  {
 	def declarationsText
 	def declarations = ['__TOKEN__']
 	def parent
-	
+	def level = 2
 	/**
 	 * code generator for services
 	 * @param bindings
@@ -35,7 +35,7 @@ class Service  {
 			throw new RuntimeException("No template found for service.")
 		}
 		
-		def params = new TemplateParameters(bindings).getParamtersFor(node.pragmatics[0], node, binding.parameterStrategy)
+		def params = new TemplateParameters(bindings).getParamtersFor(node.pragmatics[0], node, this, binding.parameterStrategy)
 		params.name = CodeGenerator.nameToFilename(name)
 		params.'pre_conds' = getPreConds()
 		params.'pre_sets' = getPreSets()

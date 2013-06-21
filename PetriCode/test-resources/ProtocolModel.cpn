@@ -2056,7 +2056,7 @@
         <text>Open
 &lt;&lt;service(rhost, rport)&gt;&gt;
 &lt;&lt;OpenChannel()&gt;&gt;
-&lt;&lt;SetField(Receiver, socket)&gt;&gt;
+&lt;&lt;SetField(Receiver, sock)&gt;&gt;
 &lt;&lt;return()&gt;&gt;</text>
         <box w="282.000000"
              h="90.000000"/>
@@ -2177,7 +2177,7 @@
           <text tool="CPN Tools"
                 version="3.0.3">CreateEndpointName
 (rhost,rport)
-(*&lt;&lt;SetField(Reciever, socket)&gt;&gt;*)</text>
+(*&lt;&lt;SetField(Reciever, sock)&gt;&gt;*)</text>
         </annot>
       </arc>
       <arc id="ID1426771449"
@@ -2541,7 +2541,7 @@
                   type="Solid"/>
         <textattr colour="Black"
                   bold="false"/>
-        <text>Outgoing
+        <text>outgoing
 Messages</text>
         <ellipse w="104.000000"
                  h="48.000000"/>
@@ -2988,7 +2988,7 @@ Completed
         <textattr colour="Black"
                   bold="false"/>
         <text>Partition
-&lt;&lt;partition(msg, OutgoingMessage)&gt;&gt;</text>
+&lt;&lt;partition(msg, outgoingMessage)&gt;&gt;</text>
         <box w="326.000000"
              h="56.000000"/>
         <binding x="7.200000"
@@ -3077,8 +3077,8 @@ Completed
         <textattr colour="Black"
                   bold="false"/>
         <text>NextMessage
-&lt;&lt;pop(OutgoingMessage, m)&gt;&gt;
-&lt;&lt;setToken(cond: &apos; (isEmpty OutgoingMessage)&apos;,  [1_m], [0_m], ) &gt;&gt;</text>
+&lt;&lt;pop(outgoingMessage, m)&gt;&gt;
+&lt;&lt;setToken(cond: &apos; (isEmpty outgoingMessage)&apos;,  [1_m], [0_m], ) &gt;&gt;</text>
         <box w="244.000000"
              h="102.000000"/>
         <binding x="7.200000"
@@ -4301,7 +4301,7 @@ host,port)</text>
 then (1,m)
 else (0,m)
 (*&lt;&lt; setToken(cond: &apos; (isEmpty 
-OutgoingMessage)&apos;,  
+outgoingMessage)&apos;,  
 [1_m], [0_m], ) &gt;&gt;*)</text>
         </annot>
       </arc>
@@ -6065,8 +6065,8 @@ OutgoingMessage)&apos;,
                   bold="false"/>
         <text>Init
 &lt;&lt;service(rhost, rport)&gt;&gt;
-&lt;&lt;OpenServerChannel(rport,socket)&gt;&gt;
-&lt;&lt;SetField(Sender, socket)&gt;&gt;
+&lt;&lt;OpenServerChannel(rport,sock)&gt;&gt;
+&lt;&lt;SetField(Sender, sock)&gt;&gt;
 &lt;&lt;return()&gt;&gt;</text>
         <box w="250.000000"
              h="76.000000"/>

@@ -86,7 +86,7 @@ class CodeGenerator {
 				text = text.replace("%%yield_declarations%%", node.declarationsText)// ? node.declarationsText : "/*no decls found*/")
 			} else {
 				def commentTmpl = bindings.prag2Binding["__COMMENTS__"]
-				def declText = new TemplateManager().runTemplate(commentTmpl.template,[params: ['no decls found']])
+				def declText = new TemplateManager().runTemplate(commentTmpl.template,[params: ['no decls found'], indentLevel: node.level])
 				text = text.replace("%%yield_declarations%%", declText)
 			}
 		}
@@ -112,6 +112,10 @@ class CodeGenerator {
 		if(str.indexOf("<") < 0) return str
 		
 		return str.substring(0,str.indexOf("<")).trim()
+	}
+	
+	static def indent(indentLevel){
+		return "  " * indentLevel
 	}
 	
 	static def nameToFilename(str){

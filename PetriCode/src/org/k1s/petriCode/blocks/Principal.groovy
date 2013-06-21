@@ -11,7 +11,7 @@ import org.k1s.petriCode.generation.TemplateManager;
 class Principal {
 	def name
 	def channels = []
-	
+	def level = 1
 	//services = children
 	List<Service> services = []
 	
@@ -38,7 +38,9 @@ class Principal {
 		//println bindings.prag2Binding
 		def binding = bindings.prag2Binding["principal"]
 		//println binding
-		this.text = new TemplateManager().runTemplate(binding.template,['name':CodeGenerator.nameToFilename(name), 'lcvs': lcvs, 'fields': states]).toString()
+		this.text = new TemplateManager().runTemplate(binding.template,['name':CodeGenerator.nameToFilename(name), 
+	                                                                    'lcvs': lcvs, 'fields': states, indentLevel: level -1
+																	   ]).toString()
 		//println this.text
 		return this.text
 	}

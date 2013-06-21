@@ -40,6 +40,7 @@ class Loop extends Block{
 			if(binding == null){
 				if(PetriCode.strict) throw new RuntimeException("unable to find binding for startLoop");
 				else {
+					println "Warning: No binding given for pragmatic: startLoop"
 					this.text = ""
 					return this.text
 				}
@@ -47,7 +48,7 @@ class Loop extends Block{
 			
 			def translateExpr = Conditionals.translateExpr(end.pragmatics[0], bindings)
 			
-			this.text = new TemplateManager().runTemplate(binding.template,['end_cond':translateExpr]).toString()
+			this.text = new TemplateManager().runTemplate(binding.template,['end_cond':translateExpr, indentLevel:this.level]).toString()
 	
 			return this.text
 	}

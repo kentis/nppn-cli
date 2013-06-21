@@ -131,7 +131,8 @@ class PragmaticsDerivator {
 	static def getServiceNode(page){
 		//println "findSerive for ${page.name.text}"
 		//println page.object.pragmatics.name
-		def serviceNode = page.object.findAll{ it.pragmatics.name.contains("service") }
+		def serviceNode = page.object.findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl) &&
+ 						       it.pragmatics.name.contains("service") }
 		if(serviceNode.size() != 1) throw new Exception("Illegal number for service nodes: ${serviceNode}") 
 		return serviceNode[0]
 	}

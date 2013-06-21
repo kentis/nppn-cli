@@ -2,6 +2,8 @@ package org.k1s.petriCode.pragmatics
 
 import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.Place;
+import org.cpntools.accesscpn.model.RefPlace;
+
 import org.cpntools.accesscpn.model.Page;
 import org.cpntools.accesscpn.model.Transition;
 import org.k1s.petriCode.PetriCode;
@@ -70,7 +72,7 @@ class PragmaticsChecker {
 	static boolean checkPage(page, prags, violations, pageType){
 		def retval = true
 		page.object.each{
-			if(it.pragmatics){
+			if(!(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl) && it.pragmatics){
 				if(!PragmaticsChecker.checkObject(it, prags, page, violations, pageType)){
 					retval = false
 				}
@@ -107,13 +109,14 @@ class PragmaticsChecker {
 				//println "\t\t constraint ${desc.constraints}"
 				if(desc.constraints.connectedTypes && desc.constraints.connectedTypes instanceof String){
 					if(!PragmaticsChecker.checkConnectedType(desc.constraints.connectedTypes, obj)){
-						
+						violations << "Pragmatic named '${prag.name}' is connected to illegal element: ${obj}. Only ${desc.constraints.connectedTypes} are allowed"
 						retval = false
 					} else{
 						
 					}
 					
 					if(!PragmaticsChecker.checklevel(desc.constraints.levels, pageType)){
+						violations << "Pragmatic named '${prag.name}' is on the illegal level: ${pageType} instead of  ${desc.constraints.levels}"
 						retval = false
 					} else{
 						
@@ -150,7 +153,7 @@ class PragmaticsChecker {
 		def retval = false
 		switch(typeStr){
 			case 'Place':
-				return obj instanceof Place
+				return obj instanceof Place || obj instanceof RefPlace
 				break
 			case 'Transition':
 				return  obj instanceof Transition
@@ -178,15 +181,28 @@ enum PageLevels{
 	SERVICE
 	
 	static boolean checkSame(levelName, type){
-		switch(levelName){
-			case "protocol":
-				return type == PageLevels.PROTOCOL
-			case "principal":
-				return type == PageLevels.PRINCIPAL
-			case "service":
-				return type == PageLevels.SERVICE
+		switch(type){
+			case PROTOCOL:
+				if(levelName instanceof String){
+					return levelName == "protocol"
+				} else if(levelName instanceof List){
+					return levelName.contains("protocol")
+				}
+
+			case PRINCIPAL:
+				if(levelName instanceof String){
+					return levelName == "principal"
+				} else if(levelName instanceof List){
+					return levelName.contains("principal")
+				}
+			case SERVICE:
+				if(levelName instanceof String){
+					return levelName == "service"
+				} else if(levelName instanceof List){
+					return levelName.contains("service")
+				}
 			default:
-				throw new Exception("unknown level name: ${levelName}")
+				throw new RuntimeException("unknown level type: ${type} of class ${type.class}")
 		}
 	}
 }

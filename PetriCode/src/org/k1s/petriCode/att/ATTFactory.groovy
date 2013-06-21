@@ -71,7 +71,7 @@ class ATTFactory {
 	 * @return
 	 */
 	def attForPrincipal(Instance node, PetriNet pn, bindings, att){
-		def principal = new Principal(name: node.name.text)
+		def principal = new Principal(name: node.name.text, level: 1)
 		
 		
 		def page = getPageForId(node.subPageID, pn) 
@@ -119,7 +119,7 @@ class ATTFactory {
 	 * @return
 	 */
 	def attForService(Instance node, pn, principal){
-		def service = new Service(name: node.name.getText(), parent: principal)
+		def service = new Service(name: node.name.getText(), parent: principal, level: 2)
 		def page = getPageForId(node.subPageID, pn) 
 		
 		service.node = node
@@ -138,6 +138,7 @@ class ATTFactory {
 			atomic.transition = service.start_node
 			atomic.pragmatics = service.start_node.pragmatics.findAll{it.name != "service"}
 			atomic.parent = service
+			atomic.level = atomic.parent.level +1
 			service.children << atomic
 		}
 		
@@ -241,9 +242,10 @@ class ATTFactory {
 			def loop = new Loop()
 			loop.start = node
 			loop.parent = parent
+			loop.level = parent.level + 1
 			visited << node
 			//loop.parent = parent
-			def sequence = new Sequence()
+			def sequence = new Sequence(level: parent.level + 1)
 			sequence.start = node
 			
 			def block = createAtomic(node, loop)
@@ -262,6 +264,9 @@ class ATTFactory {
 				
 			}
 		    //println "escaped loop"
+			if(block == null){
+				throw new RuntimeException("End of loop not found for loop starting at: ${loop.start} in ${node.page.name}")
+			}
 			sequence.end = block.end
 			loop.sequence = sequence
 			loop.end = block.end
@@ -274,14 +279,14 @@ class ATTFactory {
 			def branch = new Conditional()
 			branch.start = node
 			branch.parent = parent
-			
+			branch.level = parent.level + 1
 			node.sourceArc.each { Arc outArc ->
 				def nexts = findFollowingControlflowPlaces(outArc.target)
 				//if(nexts.size() > 0){
 					
 					def sequence = new Sequence()
 					sequence.start = node
-					
+					loop.level = parent.level + 1
 					def block = createAtomic(node, branch, outArc.target)
 					if(block != null) sequence.children << block
 					def firstBlock = block
@@ -316,6 +321,7 @@ class ATTFactory {
 		
 		atomic.start = node
 		atomic.parent = parent
+		atomic.level = parent.level + 1
 		if(transition == null){
 			node.sourceArc.each{
 				if( transition == null
@@ -381,12 +387,13 @@ class ATTFactory {
 	 */
 	private def findNodesInPageByPragmatic(page, pragName){
 		def res = []
-		page.object.each{
+		page.object.findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl)  }.each{
 			if(it.pragmatics.name.contains(pragName)){
 				res << it
 			}
 		}
 		return res
 	}
+
 }
 

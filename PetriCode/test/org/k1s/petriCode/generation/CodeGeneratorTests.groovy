@@ -320,6 +320,87 @@ class CodeGeneratorTests {
 	
 		
 	
+	
+	@Test
+	void testMessageSendingProtocolPython(){
+		//PetriCode.strict = true
+		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
+		def io = new CpnIO()
+		def cpn = io.readCPN(model)
+		io.parsePragmatics(cpn)
+		
+		PragmaticsDerivator.addDerivedPragmatics(cpn, ATTFactoryTests.getCorePragmatics())
+		
+		def factory = new ATTFactory(ATTFactoryTests.getCorePragmatics())
+		
+		def att = factory.createATT(cpn, null, null)
+		
+		def bindings = getPythonBindings()
+		
+		def generator = new CodeGenerator(att, bindings)
+		
+		def file = generator.generate()
+		
+		println file
+		
+		assertThat file, is(not(null))
+		
+		
+		"rm -rf /tmp/codegenTestsTing".execute().waitFor()
+		"mkdir /tmp/codegenTestsTing".execute().waitFor()
+		"mkdir /tmp/codegenTestsTing/Sender".execute().waitFor()
+		"mkdir /tmp/codegenTestsTing/Receiver".execute().waitFor()
+		
+		new File("/tmp/codegenTestsTing/Sender/Sender.py").write(file[0])
+		new File("/tmp/codegenTestsTing/Receiver/Receiver.py").write(file[1])
+		def senderAdd = """
+s = Sender()
+s.Open({'host': 'localhost', 'port': 31337})
+s.Send("the quick brown fox jumps over the lazy dog")
+s.Close()
+"""
+		def recieverAdd = """
+r = Receiver()
+r.Init(31337)
+m = r.ReceiverReceive()
+print m
+"""
+		
+		new File("/tmp/codegenTestsTing/Sender/Sender.py").append(senderAdd)
+		new File("/tmp/codegenTestsTing/Receiver/Receiver.py").append(recieverAdd)
+		
+		def buf = new ByteArrayOutputStream()
+		def newOut = new PrintStream(buf)
+		def saveOut = System.out
+		System.out = newOut
+		
+		
+		def t = Thread.start {
+			
+			def r = "python /tmp/codegenTestsTing/Receiver/Receiver.py".execute()
+			r.waitFor()
+			println r.getInputStream().text
+			println r.getErrorStream().text
+			
+		}
+		
+		Thread.sleep(1000)
+		
+		//client.start("the quick brown fox jumps over the lazy dog",[port: 31337, host:'localhost'])
+		def s = "python /tmp/codegenTestsTing/Sender/Sender.py".execute()
+		s.waitFor()
+		println s.getErrorStream().text
+		Thread.sleep 1000
+		
+		t.stop()
+		
+		System.out = saveOut
+		println buf.toString().trim()
+		assertEquals("the quick brown fox jumps over the lazy dog", buf.toString().trim() )
+	}
+	
+	
+	
 	@Test
 	void testMessageSendingProtocolLCV(){
 		//fail "NYW"
@@ -364,6 +445,11 @@ class CodeGeneratorTests {
 	
 	def getClojureBindings(){
 		def string = this.class.getResourceAsStream("/clojure.bindings")
+		return BindingsDSL.makeBindings(string)
+	}
+	
+	def getPythonBindings(){
+		def string = this.class.getResourceAsStream("/python.bindings")
 		return BindingsDSL.makeBindings(string)
 	}
 }

@@ -94,9 +94,13 @@ class Conditionals {
 		def args = pragmatic.arguments
 		args = args.replaceAll("\n", " ")
 		
+		if(args ==  "") args = "cond: '(t)'"
 		def map = new GroovyShell().evaluate("return [$args]")
 
 		def exprStr = map.cond
+		
+		if(bindings.bindings.STMT == null) throw new RuntimeException("unable to find required template binding: STMT")
+		
 		def exprTmpl = new File(bindings.bindings.STMT.template).text
 		
 		SimpleTemplateEngine engine = new SimpleTemplateEngine()
@@ -107,7 +111,6 @@ class Conditionals {
 		
 		
 		def stmt = parseExpr(exprStr)
-		
 		def exprText = exprTemplate.make([stmt: parseExpr(exprStr), t: trueTmpl]).toString()
 		
 
@@ -115,7 +118,7 @@ class Conditionals {
 		
 	}
 	
-	static def parseExpr(exprStr){
+	static def parseExpr(String exprStr){
 
 		def exprs = []
 		def currExpr

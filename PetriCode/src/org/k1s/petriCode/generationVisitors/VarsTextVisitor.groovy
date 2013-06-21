@@ -32,7 +32,7 @@ class VarsTextVisitor extends ODGVisitor{
 				decls = decls - element.parent.declarations
 				
 			}
-			def text = engine.createTemplate(new File(template.template)).make([vars: decls])
+			def text = engine.createTemplate(new File(template.template)).make([vars: decls, indentLevel: element.level])
 			
 			element.declarationsText = text.toString()
 		}

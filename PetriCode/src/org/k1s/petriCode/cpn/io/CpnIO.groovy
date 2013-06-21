@@ -72,7 +72,7 @@ class CpnIO {
 	 * @return void
 	 */
 	void parsePragmatics(Page page){
-		page.getObject().each{
+		page.getObject().findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl)  }.each{
 			it.pragmatics = []
 			getPrags(it.name.text).each { pragDef ->
 				it.pragmatics << Pragmatics.parse(pragDef)

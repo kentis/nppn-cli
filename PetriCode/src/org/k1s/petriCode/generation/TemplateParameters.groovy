@@ -46,6 +46,7 @@ class TemplateParameters {
 			default:
 				throw new Exception("Unimplemented parameter strategy: $strategy")
 		}
+		parameters['indentLevel'] = attNode.level - 1 
 		return parameters
 	}
 	
