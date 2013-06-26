@@ -93,7 +93,6 @@ class Conditionals {
 	static def translateExpr(pragmatic, bindings){
 		def args = pragmatic.arguments
 		args = args.replaceAll("\n", " ")
-		
 		if(args ==  "") args = "cond: '(t)'"
 		def map = new GroovyShell().evaluate("return [$args]")
 

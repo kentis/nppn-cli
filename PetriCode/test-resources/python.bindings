@@ -1,0 +1,39 @@
+FILENAME(pragmatic: '__FILENAME__', template: {params -> "${params.name}.py"})
+
+
+
+classTemplate(pragmatic: 'principal', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/mainClass.tmpl', isContainer: true)
+ExternalTemplate(pragmatic: 'service', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/service.tmpl', isContainer: true)
+DECLARATIONS(pragmatic: '_-DECLARATIONS-_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/declarations.tmpl')
+COMMENTS(pragmatic:'__COMMENTS__', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/comments.tmpl')
+STMT(pragmatic: 'Stmt', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/stmt.tmpl')
+COND(pragmatic: '_COND_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/cond.tmpl')
+TRUE(pragmatic: '_TRUE_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/true.tmpl')
+EXPR(pragmatic: '_EXPR_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/expr.tmpl')
+
+
+
+
+startLoop(pragmatic: 'startLoop', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/loop.tmpl', isContainer: true, isMultiContainer: true)
+Return(pragmatic: 'return', weight: Integer.MAX_VALUE, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/return.tmpl')
+
+
+setToken(pragmatic: 'setToken', parameterStrategy: CONDITIONALS, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/opers/setToken.tmpl')
+setLCV(pragmatic: 'setLCV', parameterStrategy: NET_ATT, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/opers/setLCV.tmpl', weight: 1000)
+SetField(pragmatic: 'SetField', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/opers/setField.tmpl')			
+setValue(pragmatic: 'setValue', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/opers/setValue.tmpl')
+			
+/** List operations **/			
+pop(pragmatic: 'pop', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/extra/pop.tmpl')
+Append(pragmatic: 'Append', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/opers/append.tmpl')
+
+partition(pragmatic: 'partition', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/extra/partition.tmpl')
+Departition(pragmatic: 'Departition', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/opers/departition.tmpl')
+
+
+
+/** Networking **/
+OpenChannel(pragmatic: 'OpenChannel', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/openChannel.tmpl')
+OpenServerChannel(pragmatic: 'OpenServerChannel', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/openServerChannel.tmpl')
+send(pragmatic: 'send', parameterStrategy: FROM_PRAGMATIC, template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/sendMessageTCP.tmpl', dependencies: 'channels')
+Receive(pragmatic: 'Receive', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/python/recieveMessageTCP.tmpl', dependencies: 'channels')

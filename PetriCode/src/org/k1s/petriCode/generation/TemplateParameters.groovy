@@ -103,25 +103,34 @@ class TemplateParameters {
 		def addParams = []
 		if(prag.arguments == null) return retval
 		def pragParams = prag.arguments.split(",")
-		prag.arguments = pragParams[0]
+		def argBu = prag.arguments
+		//prag.arguments = pragParams[0]
+		int i = 0;
+		int condId = 0;
 		pragParams.each {
-			if(it.startsWith('cond: ')){
+			if(it.trim().startsWith('cond: ')){
 				//println "TRANSLATING EXPR: element.correspondingNetElement.pragmatics[0]"
+				prag.arguments = it.trim()
 				addParams << Conditionals.translateExpr(prag, bindings)
 				//println "TO: ${element.parameters["cond"]}"
+				condId = i
 			}
+			i++
 		}
 		
 		retval['cond'] = addParams
 		if(pragParams.size() >= 3){
-		retval['condTrueExpr'] = pragParams[1].replaceAll("_",",").trim()
-		retval['condFalseExpr'] = pragParams[2].replaceAll("_",",").trim()
+		  retval['condTrueExpr'] = pragParams[condId+1].replaceAll("_",",").trim()
+		  retval['condTrueExpr'] = retval['condTrueExpr'].replaceAll(",,TOKEN,,", "__TOKEN__")
+		  retval['condFalseExpr'] = pragParams[condId+2].replaceAll("_",",").trim()
+                  retval['condFalseExpr'] = retval['condFalseExpr'].replaceAll(",,TOKEN,,", "__TOKEN__")
+
 		}
 		
 		//If no cond was found
-		if(addParams == []){
+		//if(addParams == []){
 			retval.params = pragParams
-		}
+		//}
 		
 		return retval
 	}
