@@ -286,7 +286,7 @@ class ATTFactory {
 					
 					def sequence = new Sequence()
 					sequence.start = node
-					loop.level = parent.level + 1
+					branch.level = parent.level + 1
 					def block = createAtomic(node, branch, outArc.target)
 					if(block != null) sequence.children << block
 					def firstBlock = block

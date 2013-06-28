@@ -1,6 +1,7 @@
 package org.k1s.petriCode.generationVisitors	
 
 import org.k1s.petriCode.blocks.Principal;
+import org.k1s.petriCode.blocks.Service
 import org.k1s.petriCode.generation.CodeGenerator
 
 import groovy.text.SimpleTemplateEngine;
@@ -32,7 +33,18 @@ class VarsTextVisitor extends ODGVisitor{
 				while(parent && !(parent instanceof Principal)){
 					//remove previously defined variables
 					decls = decls - parent.declarations
+					
+					if(parent instanceof Service){
+						parent.node.pragmatics[0].getArguments().split(",").each{
+							
+							decls = decls - it.trim()
+						
+						}
+						
+					}
+					
 					parent = parent.parent
+					
 				}
 				if(parent instanceof Principal){
 					def principalDecls = []
@@ -42,7 +54,18 @@ class VarsTextVisitor extends ODGVisitor{
 					decls = decls - principalDecls
 				}
 				
+				
 			}
+			
+			if(element instanceof Service){
+				element.node.pragmatics[0].getArguments().split(",").each{
+					//println "removing $it from $decls"
+					decls = decls - it.trim()
+					//println "leaving $decls"
+				}
+				
+			}
+			
 			def text = engine.createTemplate(new File(template.template)).make([vars: decls, indentLevel: element.level])
 			
 			element.declarationsText = text.toString()

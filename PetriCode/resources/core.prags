@@ -25,3 +25,8 @@ openServerChannel(origin: 'explicit')
 setField(origin: 'explicit')
 send(origin: 'explicit')
 receive(origin: 'explicit')
+
+
+DataType(name: 'INT')
+DataTypeTYPE(name: 'STING')
+DataType(name: 'LIST')

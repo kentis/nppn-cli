@@ -31,12 +31,12 @@ class PragmaticsDerivator {
 		def services = []
 		rootPage.object.each{ node ->
 			//if(node.pragmatics != null) println node.pragmatics.name
-			if(node instanceof Instance && (node.pragmatics[0].name == 'principal' || node.pragmatics[0].name == 'Principal' ) ) {
+			if(node instanceof Instance && node.pragmatics &&  (node.pragmatics[0].name == 'principal' || node.pragmatics[0].name == 'Principal' ) ) {
 				//println "found principal"
 				def page = ATTFactory.getPageForId(node.subPageID, pn)
 				//principals << page
 				page.object.each { principalNode ->
-					if(principalNode instanceof Instance && principalNode.pragmatics[0].name == 'service'){
+					if(principalNode instanceof Instance && principalNode.pragmatics && principalNode.pragmatics[0].name == 'service'){
 						services << ATTFactory.getPageForId(principalNode.subPageID, pn)
 					}
 					
@@ -133,7 +133,7 @@ class PragmaticsDerivator {
 		//println page.object.pragmatics.name
 		def serviceNode = page.object.findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl) &&
  						       it.pragmatics.name.contains("service") }
-		if(serviceNode.size() != 1) throw new Exception("Illegal number for service nodes: ${serviceNode}") 
+		if(serviceNode.size() != 1) throw new RuntimeException("Illegal number for service nodes: ${serviceNode.size} for ${page.name.text}") 
 		return serviceNode[0]
 	}
 	
