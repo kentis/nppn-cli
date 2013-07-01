@@ -8,6 +8,7 @@ import org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL;
 import org.k1s.petriCode.blocks.Principal;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
 import org.k1s.petriCode.cpn.io.CpnIO
+import org.k1s.petriCode.generation.CodeGeneratorTests;
 
 
 import static org.hamcrest.CoreMatchers.*
@@ -19,7 +20,8 @@ class ATTFactoryTests {
 	@Test
 	void testcreate(){
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -34,7 +36,8 @@ class ATTFactoryTests {
 	@Test
 	void testATTForPrincipal(){
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -54,7 +57,8 @@ class ATTFactoryTests {
 	@Test
 	void testATTForServices(){
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -93,7 +97,8 @@ class ATTFactoryTests {
 	@Test
 	void testATTForSenderSend(){
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -122,7 +127,8 @@ class ATTFactoryTests {
 	@Test
 	void testATTForBranch(){
 		def model = this.class.getResourceAsStream("/simplechoice.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		

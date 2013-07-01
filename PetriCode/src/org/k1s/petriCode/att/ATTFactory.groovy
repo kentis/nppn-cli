@@ -19,6 +19,7 @@ import org.k1s.petriCode.generation.CodeGenerator;
 class ATTFactory {
 	
 	def controlFlowPragmatics = []
+	def servicePragmatics = []
 	def pragmatics
 	def pragmaticsMap
 	
@@ -37,6 +38,8 @@ class ATTFactory {
 			if(it.controlFlow || it.block != null) controlFlowPragmatics << it.name
 			
 		}
+		
+		this.servicePragmatics = this.pragmatics.findAll { it.containsService  }
 	}
 	
 	/**
@@ -77,7 +80,7 @@ class ATTFactory {
 		def page = getPageForId(node.subPageID, pn) 
 		page.object.each{
 			////println it
-			if(it instanceof Instance && it.pragmatics[0].name == 'service') {
+			if(it instanceof Instance && isServiceNode(it)) {
 				principal.children << attForService(it,pn, principal)
 			}
 		}
@@ -136,7 +139,8 @@ class ATTFactory {
 		if(service.start_node.pragmatics.size() > 1){
 			def atomic = new Atomic()
 			atomic.transition = service.start_node
-			atomic.pragmatics = service.start_node.pragmatics.findAll{it.name != "service"}
+			atomic.pragmatics = service.start_node.pragmatics.findAll{ !servicePragmatics.name.contains(it.name)}
+			
 			atomic.parent = service
 			atomic.level = atomic.parent.level +1
 			service.children << atomic
@@ -350,7 +354,8 @@ class ATTFactory {
 	 * @return
 	 */
 	def findServiceNodeInPage(page){
-		def res = findNodesInPageByPragmatic(page, "service")
+		//println servicePragmatics
+		def res = findNodesInPageByPragmaticType(page, servicePragmatics )
 		if(res.size() > 1){
 			throw new Exception("Too many services in $page : $res")
 		}
@@ -385,7 +390,7 @@ class ATTFactory {
 	 * @param pragName
 	 * @return
 	 */
-	private def findNodesInPageByPragmatic(page, pragName){
+	private def findNodesInPageByPragmatic(page, String pragName){
 		def res = []
 		page.object.findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl)  }.each{
 			if(it.pragmatics.name.contains(pragName)){
@@ -395,5 +400,44 @@ class ATTFactory {
 		return res
 	}
 
+	
+	private boolean isServiceNode(node){
+		def retVal = false
+		node.pragmatics.each{
+			if(servicePragmatics.name.contains(it.name)) retVal = true
+		}
+		return retVal
+	}
+
+	
+	/**
+	 * Finds a node in a page with the given pragmatic
+	 * @param page
+	 * @param pragName
+	 * @return
+	 */
+	private def findNodesInPageByPragmaticType(page, pragTypes){
+		def res = []
+		//println pragTypes
+		page.object.findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl)  }.each{
+			//println it.pragmatics
+			//println "type '${it.pragmatics.type}'"
+			def hasPragType = false
+			it.pragmatics.each{ prag ->
+				//println "checking ${prag.name}"
+				if(pragTypes.name.contains(prag.type?.name)){
+					hasPragType = true
+					//println "$pragTypes contains ${prag.type}"
+				}else{
+					//println "$pragTypes !contains ${prag.type}"
+				}
+				
+			}
+			if(hasPragType) res << it
+		}
+		//println "res: $res"
+		return res
+	}
+	
 }
 

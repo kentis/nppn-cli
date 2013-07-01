@@ -19,6 +19,10 @@ class PragmaticsDescriptor {
 	List derviationRules
 	//List validationRules
 	
+	//indicates wether or not this pragatic idicates that the underlying element
+	//is a service layer page
+	boolean containsService = false
+	
 	//indicates wether or not this pragatic indicates the control flow path
 	boolean controlFlow = false
 	Map block
@@ -53,9 +57,19 @@ class PragmaticsDescriptor {
 	}
 		
 	
+	String toString(){
+		return "$name($paramters)"
+	}
 	
-
+	boolean equals(PragmaticsDescriptor pragDesc){
+		
+		this.name.equals(pragDesc.name)
+	}
 	
+	int hashCode(){
+		
+		this.name.hashCode()
+	}
 }
 
 enum OriginType {

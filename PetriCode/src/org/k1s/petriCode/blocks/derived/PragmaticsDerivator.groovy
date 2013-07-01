@@ -6,6 +6,7 @@ import org.cpntools.accesscpn.model.Instance
 import org.cpntools.accesscpn.model.PetriNet;
 import org.cpntools.accesscpn.model.Place;
 import org.cpntools.accesscpn.model.Transition;
+import org.k1s.petriCode.PetriCode;
 import org.k1s.petriCode.att.ATTFactory;
 import org.k1s.petriCode.pragmatics.Pragmatics;
 import org.k1s.petriCode.pragmatics.PragmaticsDescriptor;
@@ -36,17 +37,13 @@ class PragmaticsDerivator {
 				def page = ATTFactory.getPageForId(node.subPageID, pn)
 				//principals << page
 				page.object.each { principalNode ->
-					if(principalNode instanceof Instance && principalNode.pragmatics && principalNode.pragmatics[0].name == 'service'){
+					if(principalNode instanceof Instance && principalNode.pragmatics && PetriCode.hasServicePragmatic(principalNode)){//.pragmatics[0].name == 'service'){
 						services << ATTFactory.getPageForId(principalNode.subPageID, pn)
 					}
-					
 				}
 			}
-			
 		}
-		
 		return services
-	
 	}
 
 	/**
@@ -131,8 +128,9 @@ class PragmaticsDerivator {
 	static def getServiceNode(page){
 		//println "findSerive for ${page.name.text}"
 		//println page.object.pragmatics.name
-		def serviceNode = page.object.findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl) &&
- 						       it.pragmatics.name.contains("service") }
+		def serviceNode = page.object.findAll{ 
+			!(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl) && PetriCode.hasServicePragmatic(it) 
+		}
 		if(serviceNode.size() != 1) throw new RuntimeException("Illegal number for service nodes: ${serviceNode.size} for ${page.name.text}") 
 		return serviceNode[0]
 	}

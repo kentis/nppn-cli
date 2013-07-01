@@ -8,6 +8,7 @@ import static org.junit.matchers.JUnitMatchers.*
 import org.cpntools.accesscpn.model.Place
 import org.junit.Test;
 import org.k1s.petriCode.cpn.io.CpnIO
+import org.k1s.petriCode.generation.CodeGeneratorTests;
 
 class CpnIOTests {
 	
@@ -48,7 +49,8 @@ class CpnIOTests {
 	void testParsePragmatics(){
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
 		
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		
 		def cpn = io.readCPN(model)
 		

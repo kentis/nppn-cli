@@ -14,6 +14,12 @@ import org.k1s.petriCode.generation.CodeGenerator;
 
 class CpnIO {
 	
+	def pragmaticsDescriptors
+	
+	public CpnIO(pragmaticsDescriptors){
+		this.pragmaticsDescriptors = pragmaticsDescriptors
+	}
+	
 	/**
 	 * Reads and parses a CPN model and its pragmatics.
 	 * 
@@ -75,7 +81,9 @@ class CpnIO {
 		page.getObject().findAll{ !(it instanceof org.cpntools.accesscpn.model.auxgraphics.impl.TextImpl)  }.each{
 			it.pragmatics = []
 			getPrags(it.name.text).each { pragDef ->
-				it.pragmatics << Pragmatics.parse(pragDef)
+				def prag = Pragmatics.parse(pragDef)
+				prag.type = this.pragmaticsDescriptors[prag.name]
+				it.pragmatics << prag
 			}
 			it.cleanName = CodeGenerator.nameToFilename(it.name.text)
 		}

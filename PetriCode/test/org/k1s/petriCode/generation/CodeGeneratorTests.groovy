@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.k1s.petriCode.att.ATTFactory
 import org.k1s.petriCode.pragmatics.PragmaticsChecker;
+import org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL
 import org.k1s.petriCode.att.ATTFactoryTests;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
 import org.k1s.petriCode.PetriCode;
@@ -28,7 +29,9 @@ class CodeGeneratorTests {
 	@Test
 	void testEuler(){
 		def model = this.class.getResourceAsStream("/eulers.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -71,7 +74,9 @@ class CodeGeneratorTests {
 		//fail "NYW"
 		
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -141,7 +146,9 @@ class CodeGeneratorTests {
 		//fail "NYW"
 		
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -244,7 +251,10 @@ class CodeGeneratorTests {
 	void testMessageSendingProtocolClojure(){
 		//PetriCode.strict = true
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
+		//println pragmaticsDescriptor
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -325,7 +335,9 @@ class CodeGeneratorTests {
 	void testMessageSendingProtocolPython(){
 		//PetriCode.strict = true
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -355,13 +367,13 @@ class CodeGeneratorTests {
 		new File("/tmp/codegenTestsTing/Receiver/Receiver.py").write(file[1])
 		def senderAdd = """
 s = Sender()
-s.Open({'host': 'localhost', 'port': 31337})
+s.Open({'host': 'localhost', 'port': 31338})
 s.Send("the quick brown fox jumps over the lazy dog")
 s.Close()
 """
 		def recieverAdd = """
 r = Receiver()
-r.Init(31337)
+r.Init(31338)
 m = r.ReceiverReceive()
 print m
 """
@@ -406,7 +418,8 @@ print m
 		//fail "NYW"
 		
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -451,6 +464,13 @@ print m
 	def getPythonBindings(){
 		def string = this.class.getResourceAsStream("/python.bindings")
 		return BindingsDSL.makeBindings(string)
+	}
+	
+	static def getPragmaticsDesciptors(){
+		def pragDefStr = PetriCode.getCorePragmaticsStr()
+		def prags = new PrgamaticsDescriptorDSL()
+		prags.build(pragDefStr)
+		def pragmaticsDescriptor = prags.prags
 	}
 }
 

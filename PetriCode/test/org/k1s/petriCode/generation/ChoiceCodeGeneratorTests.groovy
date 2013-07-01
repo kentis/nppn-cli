@@ -75,7 +75,8 @@ class ChoiceCodeGeneratorTests {
 	@Test
 	void testGeneratechoiceCode(){
 		def model = this.class.getResourceAsStream("/simplechoice.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -102,7 +103,8 @@ class ChoiceCodeGeneratorTests {
 	@Test
 	void testGeneratechoice(){
 		def model = this.class.getResourceAsStream("/simplechoice.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		

@@ -3,7 +3,7 @@ principal(origin: 'explicit', constraints: [levels: 'protocol', connectedTypes: 
 channel(origin: 'explicit')
 Id(origin: 'explicit', controlFlow: true, constraints: [levels: 'service', connectedTypes: 'Place'])
 LCV(origin: 'explicit')
-service(origin: 'explicit', constraints: [[levels: 'principal', connectedTypes: 'SubstitutionTransition'],[levels: 'service',connectedTypes:'Transition']])
+service(origin: 'explicit', containsService: true, constraints: [[levels: 'principal', connectedTypes: 'SubstitutionTransition'],[levels: 'service',connectedTypes:'Transition']])
 state(origin: 'explicit', constraints: [levels: ['principal','service'], connectedTypes:'Place'])
 _return(origin: 'explicit', constraints: [levels: 'service',connectedTypes:'Transition'] )
 

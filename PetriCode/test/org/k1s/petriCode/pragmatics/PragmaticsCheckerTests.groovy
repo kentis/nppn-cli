@@ -9,6 +9,7 @@ import org.k1s.petriCode.pragmatics.PrgamaticsDescriptorDSL
 import org.k1s.petriCode.att.ATTFactoryTests;
 import org.k1s.petriCode.blocks.derived.PragmaticsDerivator;
 import org.k1s.petriCode.cpn.io.CpnIO
+import org.k1s.petriCode.generation.CodeGeneratorTests;
 
 import static org.hamcrest.CoreMatchers.*
 import org.hamcrest.core.IsNull;
@@ -19,7 +20,8 @@ class PragmaticsCheckerTests {
 		//fail "NYW"
 		
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -34,7 +36,8 @@ class PragmaticsCheckerTests {
 		//fail "NYW"
 		
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		
@@ -62,7 +65,8 @@ class PragmaticsCheckerTests {
 		//fail "NYW"
 		
 		def model = this.class.getResourceAsStream("/ProtocolModel.cpn")
-		def io = new CpnIO()
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
 		

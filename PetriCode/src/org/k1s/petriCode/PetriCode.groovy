@@ -15,6 +15,7 @@ import org.k1s.petriCode.cpn.io.CpnIO;
 class PetriCode {
 
 	static def strict = false
+	static def pragmaticsDescriptors
 	
 	/**
 	 * Main method of the program. This is where it all begins.
@@ -37,14 +38,6 @@ class PetriCode {
 		
 		/****** MODULE 1: Derive pragmatics! ***********/
 		
-		//Parse the model
-
-		def model = new File(options.arguments().last())
-		
-		def io = new CpnIO()
-		def cpn = io.readCPN(new FileInputStream(model))
-		io.parsePragmatics(cpn)
-		
 		//get pragmatics descriptions
 		def pragmaticsDescriptor = new StringBuffer()
 		unless(options.hasOption('no-core-pragmatics')){
@@ -52,18 +45,27 @@ class PetriCode {
 		}
 		
 		if(options.'pragmatics-specification'){
-		options.'pragmatics-specifications'.each {
-			
-			pragmaticsDescriptor.append "\n"
-			pragmaticsDescriptor.append new File(it).text
-		}
+			options.'pragmatics-specifications'.each {
+				
+				pragmaticsDescriptor.append "\n"
+				pragmaticsDescriptor.append new File(it).text
+			}
 		}
 		//Parse pragmatics descriptions
 		def prags = new PrgamaticsDescriptorDSL()
 		prags.build(pragmaticsDescriptor.toString())
 		pragmaticsDescriptor = prags.prags
+		this.pragmaticsDescriptors = pragmaticsDescriptor
 		
+		//Parse the model
+
+		def model = new File(options.arguments().last())
+		//println "pragmaticsDescriptors: $pragmaticsDescriptor"
+		def io = new CpnIO(pragmaticsDescriptor)
+		def cpn = io.readCPN(new FileInputStream(model))
+		io.parsePragmatics(cpn)
 		
+
 		//Add derived pragmatics
 		
 		unless(options.hasOption('no-derived')){
@@ -169,6 +171,18 @@ class PetriCode {
 //		cli.u('Print usage statement')
 		
 		return cli
+	}
+	
+	
+	static hasServicePragmatic(node){
+		def servicePragmatics = this.pragmaticsDescriptors.collect{ it.value }.findAll { it.containsService  }
+		//println this.pragmaticsDescriptors
+		//println "servicePrags: ${servicePragmatics}"
+		def retVal = false
+		node.pragmatics.each{
+			if(servicePragmatics.name.contains(it.name)) retVal = true
+		}
+		return retVal
 	}
 	
 	/**
