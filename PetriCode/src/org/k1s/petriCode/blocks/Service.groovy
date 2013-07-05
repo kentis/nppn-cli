@@ -19,7 +19,7 @@ class Service  {
 	
 	def text
 	def declarationsText
-	def declarations = ['__TOKEN__']
+	def declarations = ['__TOKEN__':""]
 	def parent
 	def level = 2
 	/**

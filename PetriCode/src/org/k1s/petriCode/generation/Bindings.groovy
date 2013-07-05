@@ -12,6 +12,8 @@ class Bindings {
 	def bindings = [:]
 	def prag2Binding = [:]
 	
+	def typeMap
+	
 	/**
 	 * Adds a binding using the leftShift operator
 	 * @param binding

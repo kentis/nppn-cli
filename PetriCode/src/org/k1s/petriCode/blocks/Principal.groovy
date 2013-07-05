@@ -39,8 +39,8 @@ class Principal {
 		def binding = bindings.prag2Binding["principal"]
 		//println binding
 		this.text = new TemplateManager().runTemplate(binding.template,['name':CodeGenerator.nameToFilename(name), 
-	                                                                    'lcvs': lcvs, 'fields': states, indentLevel: level -1
-																	   ]).toString()
+	                                                                    'lcvs': lcvs, 'fields': states, indentLevel: level -1,
+																	   typeMap: bindings.typeMap]).toString()
 		//println this.text
 		return this.text
 	}

@@ -147,4 +147,5 @@ enum ParameterStrategy{
 	CONDITIONALS_ATT,
 	NET,
 	NET_ATT, 
+	DECLARATIONS_AND_TYPES,
 }

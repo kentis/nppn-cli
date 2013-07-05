@@ -80,42 +80,16 @@ Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
 	}
 	
 	def methodMissing(String methodName, args) {
-		if(style == "OWL"){
-			def binding = new Binding(args.size() > 0? args[0] : [:])	
-			binding.name = methodName
-			sb.append binding.toFowl()
-		} else if(style == "BINDINGS"){
-			def binding = new Binding(args.size() > 0? args[0] : [:])
-			binding.name = methodName
-			bindings << binding
+		if(style == "BINDINGS"){
+			if(methodName == "typeMap"){
+				bindings.typeMap = args[0]
+			} else {
+				def binding = new Binding(args.size() > 0? args[0] : [:])
+				binding.name = methodName
+				bindings << binding
+			}
 		}
 	}
 	
 	
-	String getFowl(){
-		sb.toString()
-	}
 }
-
-//class Binding {
-//	def name
-//	def template
-//	def pragmatic
-//	def dependencies
-//	def isContainer = false
-//	
-//	def toFowl(){
-//		StringBuilder fowl = new StringBuilder()
-//		fowl.append """Declaration( NamedIndividual( :${name}))
-//	ClassAssertion( :TemplateBinding :${name}) 
-//	ObjectPropertyAssertion( :pragmatic :${name} nppn:${pragmatic} )
-//	DataPropertyAssertion(:template :${name} \"${template}\"^^xsd:string)
-//	DataPropertyAssertion(:container :${name} "${isContainer}"^^xsd:boolean)
-//	"""
-//		if(dependencies != null){
-//			fowl.append "DataPropertyAssertion(:dependencies :${name} \"${dependencies}\"^^xsd:string)"
-//		}
-//		fowl.append "\n\n"
-//		return fowl.toString()
-//	}
-//}

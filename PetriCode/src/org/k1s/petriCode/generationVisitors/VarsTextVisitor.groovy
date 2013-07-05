@@ -27,18 +27,18 @@ class VarsTextVisitor extends ODGVisitor{
 				throw new RuntimeException("DECLARATIONS template not found.")
 			}
 			
-			def decls = element.declarations.unique()
-			if(element.metaClass.hasProperty(element, 'parent') && element.parent && !(element.parent instanceof Principal)){
+			def decls = element.declarations.clone()
+			if(element.metaClass.hasProperty(element, 'parent') && element.parent){
 				def parent  = element.parent
 				while(parent && !(parent instanceof Principal)){
 					//remove previously defined variables
-					decls = decls - parent.declarations
+					parent.declarations.each{key, value ->
+						decls.remove(key) 
+					}
 					
 					if(parent instanceof Service){
 						parent.node.pragmatics[0].getArguments().split(",").each{
-							
-							decls = decls - it.trim()
-						
+							decls.remove(it.trim())
 						}
 						
 					}
@@ -47,11 +47,13 @@ class VarsTextVisitor extends ODGVisitor{
 					
 				}
 				if(parent instanceof Principal){
-					def principalDecls = []
+					//def principalDecls = []
 					parent.states.each{
-						principalDecls << CodeGenerator.removePrags(it.name.text.toString()).trim()
+						//println "removing $it from $decls"
+						decls.remove(CodeGenerator.removePrags(it.name.text.toString()).trim())
+						//println "resulting in $decls"
 					}
-					decls = decls - principalDecls
+					//decls = decls - principalDecls
 				}
 				
 				
@@ -60,13 +62,13 @@ class VarsTextVisitor extends ODGVisitor{
 			if(element instanceof Service){
 				element.node.pragmatics[0].getArguments().split(",").each{
 					//println "removing $it from $decls"
-					decls = decls - it.trim()
+					decls.remove it.trim()
 					//println "leaving $decls"
 				}
 				
 			}
 			
-			def text = engine.createTemplate(new File(template.template)).make([vars: decls, indentLevel: element.level])
+			def text = engine.createTemplate(new File(template.template)).make([vars: decls, indentLevel: element.level, typeMap: bindings.typeMap])
 			
 			element.declarationsText = text.toString()
 		}

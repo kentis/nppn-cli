@@ -17,7 +17,7 @@ Send(pragmatic: 'Send', parameterStrategy: FROM_PRAGMATIC, template: '/home/kent
 			EXPR(pragmatic: '_EXPR_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/java/expr.tmpl')
 			
 			TOKEN(pragmatic: '_-TOKEN-_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/java/__TOKEN__.tmpl')
-			DECLARATIONS(pragmatic: '_-DECLARATIONS-_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/java/__DECLARATIONS__.tmpl')
+			DECLARATIONS(pragmatic: '_-DECLARATIONS-_', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/java/__DECLARATIONS__.tmpl', parameterStrategy: DECLARATIONS_AND_TYPES)
 			
 			Id(pragmatic: 'Id')
 			Cond(pragmatic: 'Cond', template: '/home/kent/ws-ePNK/OntologyReastrictedNets/plattforms/java/cond.tmpl', isContainer: true, isMultiContainer: true)

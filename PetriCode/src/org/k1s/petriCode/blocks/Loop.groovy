@@ -16,7 +16,7 @@ class Loop extends Block{
 	def sequence
 	def endPragmmatic
 	def declarationsText
-	def declarations = []
+	def declarations = [:]
 	List<Block> children = []
 	
 	/**

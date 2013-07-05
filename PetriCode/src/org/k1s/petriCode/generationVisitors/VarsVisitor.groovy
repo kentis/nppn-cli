@@ -29,7 +29,7 @@ class VarsVisitor extends ODGVisitor{
 		//println "element.metaClass.hasProperty(element, \"parent\") && element.parent: ${element.metaClass.hasProperty(element,"parent")} && ${element.metaClass.hasProperty(element, "parent") ? element.parent: 'no such field'}"
 		if(element.metaClass.hasProperty(element, "parent") && element.parent && !(element.parent instanceof Principal)){
 			//println "adding vars to ${element.parent}"
-			element.parent.declarations.addAll varNames	
+			element.parent.declarations += varNames	
 		}
 		
 		
@@ -38,16 +38,29 @@ class VarsVisitor extends ODGVisitor{
 	def getVarNames(element) {
 		//println element
 		
-		def retval = []
+		def allVars = []
 		def vars = element.text.indexOf( "%%VARS:" )
 		while(vars > -1 ) {
 			vars = vars + 7
 		//else return []
 		
 			def endVars = element.text.indexOf( "%%", vars)
-			retval +=  element.text.substring(vars, endVars).split(",").collect { it.trim() }.findAll { it != "" }
+			allVars +=  element.text.substring(vars, endVars).split(",").collect { it.trim() }.findAll { it != "" }
 			vars = element.text.indexOf( "%%VARS:", vars )
 		}
+		
+		def retval = [:]
+		
+		allVars.each{
+			it = it.trim()
+			if(it.contains("::")){
+				retval[it.substring(0,it.indexOf("::")).trim()] = it.substring(it.indexOf("::")+2).trim()
+			} else {
+				retval[it] = ""
+			}
+			
+		}
+		
 		return retval
 	}
 }
