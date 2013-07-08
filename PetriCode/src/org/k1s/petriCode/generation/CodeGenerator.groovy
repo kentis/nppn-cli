@@ -1,5 +1,6 @@
 package org.k1s.petriCode.generation
 
+import org.k1s.petriCode.blocks.Principal;
 import org.k1s.petriCode.generationVisitors.ODGVisitor;
 
 /**
@@ -73,7 +74,8 @@ class CodeGenerator {
 		def yieald = new StringBuffer()
 		if(node.metaClass.hasProperty(node, "children") || node.metaClass.respondsTo(node, "getChildren")){
 			
-			node.children.each{
+			
+			sortChildren(node).each{
 				yieald.append attToFile(it).toString()
 			}
 			
@@ -90,7 +92,6 @@ class CodeGenerator {
 				text = text.replace("%%yield_declarations%%", declText)
 			}
 		}
-		
 	
 		if(text =~ /%%yeild_(.+)%%/){
 			
@@ -103,10 +104,18 @@ class CodeGenerator {
 					text = text.replace(it[0], attToFile(tt))
 			}
 		}
-		
 		return text
 	}
 	
+	def sortChildren(node){
+		if(node instanceof Principal){
+			return node.children.sort{
+				if(it.node.pragmatics[0].name == 'remote') return 0
+				return 1
+			}	
+		}
+		return node.children
+	}
 	
 	static def removePrags(str){
 		if(str.indexOf("<") < 0) return str
