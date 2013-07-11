@@ -18,7 +18,7 @@ class Conditional extends Block {
 	
 
 	def declarationsText
-	def declarations = []
+	def declarations = [:]
 
 	
 	def getChildren(){

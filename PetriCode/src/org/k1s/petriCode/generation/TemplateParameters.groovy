@@ -57,7 +57,8 @@ class TemplateParameters {
 	 */
 	def getParametersFromPragmatic(Pragmatics pragmatic){
 		if(pragmatic.getArguments() == null) return [params:[]]
-		return [params: pragmatic.getArguments().split(",")]
+		
+		return [params: pragmatic.getArguments().split(",").collect{ it.trim()}]
 	}
 	
 	/**

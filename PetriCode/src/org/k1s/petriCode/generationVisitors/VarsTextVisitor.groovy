@@ -28,6 +28,8 @@ class VarsTextVisitor extends ODGVisitor{
 			}
 			
 			def decls = element.declarations.clone()
+			//println "element: $element"
+			//println "element.decl: $decls"
 			if(element.metaClass.hasProperty(element, 'parent') && element.parent){
 				def parent  = element.parent
 				while(parent && !(parent instanceof Principal)){
@@ -67,10 +69,14 @@ class VarsTextVisitor extends ODGVisitor{
 				}
 				
 			}
-			
-			def text = engine.createTemplate(new File(template.template)).make([vars: decls, indentLevel: element.level, typeMap: bindings.typeMap])
-			
+			def tmpl = engine.createTemplate(new File(template.template))
+			def text = tmpl.make([vars: decls, indentLevel: element.level, typeMap: bindings.typeMap])
+			//println new File(template.template).text 
+			//println decls
+			//println bindings.typeMap
+			//println "text: $text"
 			element.declarationsText = text.toString()
+			//println "done"
 		}
 	}
 

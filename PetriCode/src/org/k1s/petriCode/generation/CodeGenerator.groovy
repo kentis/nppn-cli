@@ -112,14 +112,13 @@ class CodeGenerator {
 			return node.children.sort{
 				if(it.node.pragmatics[0].name == 'remote') return 0
 				return 1
-			}	
+			}
 		}
 		return node.children
 	}
 	
 	static def removePrags(str){
 		if(str.indexOf("<") < 0) return str
-		
 		return str.substring(0,str.indexOf("<")).trim()
 	}
 	
