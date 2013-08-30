@@ -27,7 +27,7 @@ class CLITests {
 	
 	@Test
 	void testMainPacketProtocol(){
-		def arguments = "-o /home/kent/tmp -b /home/kent/ws-ePNK/NPPN-CLI/test-resources/groovy.bindings /home/kent/ws-ePNK/NPPN-CLI/test-resources/ProtocolModel.cpn"
+		def arguments = "-o /home/kent/tmp -b /home/kent/projects/nppn-cli/PetriCode/test-resources/groovy.bindings /home/kent/projects/nppn-cli/PetriCode/test-resources/ProtocolModel.cpn"
 		
 		def senderFile = new File("/home/kent/tmp/Sender")
 		def recieverFile = new File("/home/kent/tmp/Receiver")

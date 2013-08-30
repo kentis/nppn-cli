@@ -15,6 +15,11 @@ class Principal {
 	//services = children
 	List<Service> services = []
 	
+	def lcvs = []
+	def states = []
+	
+	def text
+	
 	def getChildren(){
 		return services
 	}
@@ -23,10 +28,7 @@ class Principal {
 		services = children
 	}
 	
-	def lcvs = []
-	def states = []
 	
-	def text
 	
 	/**
 	 * Code generator for principals

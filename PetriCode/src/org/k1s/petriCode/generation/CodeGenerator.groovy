@@ -46,7 +46,7 @@ class CodeGenerator {
 	 * @param files
 	 */
 	def write(files){
-		
+		//println "writing"
 		att.children.eachWithIndex { att, index ->
 			
 			def name = nameToFilename(att.name)
@@ -66,6 +66,14 @@ class CodeGenerator {
 			file.createNewFile() 
 			
 			file.text = files[index]
+			println bindings.prag2Binding
+			println "Beautyfier: ${bindings.prag2Binding["__BEAUTYFIER__"]}"
+			if(bindings && bindings.prag2Binding["__BEAUTYFIER__"] ){
+				if(bindings.prag2Binding["__BEAUTYFIER__"].template instanceof Closure ){
+					println "running beautyfier"
+					bindings.prag2Binding["__BEAUTYFIER__"].template.call(file.toString())
+				}
+			}
 		}
 	}
 	

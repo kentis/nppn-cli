@@ -1,12 +1,12 @@
 package org.k1s.petriCode.att;
 
+import org.codehaus.groovy.transform.LogASTTransformation;
 import org.cpntools.accesscpn.model.Arc;
 import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.Page
 import org.cpntools.accesscpn.model.PetriNet
 import org.cpntools.accesscpn.model.Place;
 import org.cpntools.accesscpn.model.Transition;
-
 import org.k1s.petriCode.pragmatics.Pragmatics;
 import org.k1s.petriCode.blocks.*
 import org.k1s.petriCode.generation.CodeGenerator;
@@ -51,7 +51,7 @@ class ATTFactory {
 	 * @return AbstractTemplateTree
 	 */
 	AbstractTemplateTree createATT(pn, pragmatics, bindings){
-		def rootPage = pn.page[0]
+		def rootPage = findRootPage pn
 		def att = new AbstractTemplateTree()
 		
 		//find Principals
@@ -63,6 +63,29 @@ class ATTFactory {
 			}
 		}
 		return att
+	}
+	
+	def findRootPage(pn){
+		def roots = []
+		def pages = [:]
+		pn.page.each{ Page p ->
+			roots << p
+			pages[p.getId()] = p
+		}
+		
+		pn.page.each{ Page p ->
+			p.instance().each { Instance i ->
+				def page = pages[i.getSubPageID()]
+				if(roots.contains(page)) roots.remove(page)
+			}
+		}
+		
+		if(roots.size() > 1)
+			throw new IllegalArgumentException("Too many root pages: ${roots.name.text}")
+		if(roots.size() < 1)
+			throw new IllegalArgumentException("No root pages found")
+		return roots[0]
+		
 	}
 	
 	/**

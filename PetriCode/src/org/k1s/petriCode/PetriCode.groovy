@@ -1,7 +1,15 @@
 package org.k1s.petriCode
 import static org.k1s.petriCode.Conditionals.*
 
-import org.apache.commons.cli.Option;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+import java.util.logging.StreamHandler;
+
+import groovy.util.logging.Commons;
+import groovy.util.logging.Log;
+import groovy.util.logging.Log4j;
+
 import org.k1s.petriCode.att.ATTFactory
 import org.k1s.petriCode.att.ATTIO;
 import org.k1s.petriCode.pragmatics.PragmaticsChecker;
@@ -12,24 +20,39 @@ import org.k1s.petriCode.generation.BindingsDSL;
 import org.k1s.petriCode.generation.CodeGenerator
 import org.k1s.petriCode.cpn.io.CpnIO;
 
+//@Log
 class PetriCode {
 
 	static def strict = false
 	static def pragmaticsDescriptors
+	static def LOG_LEVEL
 	
+	static def log
 	/**
 	 * Main method of the program. This is where it all begins.
 	 * @param args The arguments as a String array as per tradition.
 	 */
 	public static void main(String[] args){
+		log = Logger.getLogger("PetriCode")
+		log.addHandler(new StreamHandler(System.out, new SimpleFormatter()))
 		
 		def cli = getCli()
 		
 		def options = cli.parse(args)
+
+		if(options.v){
+			this.LOG_LEVEL = java.util.logging.Level.FINEST
+		}else {
+			this.LOG_LEVEL = java.util.logging.Level.WARNING
+		}
 		
+		log.level = this.LOG_LEVEL
+		log.getHandlers()[0].level =this.LOG_LEVEL 
+		
+		log.fine "Starting PetriCode"
+		log.finest "Log level ${log.level}"
 		
 		if(options.h || options.arguments().size() != 1  ){
-			
 			cli.usage()
 			return
 		}
@@ -37,7 +60,7 @@ class PetriCode {
 		PetriCode.strict = options.hasOption('strict')
 		
 		/****** MODULE 1: Derive pragmatics! ***********/
-		
+		log.finest "Parsing pragmatics"
 		//get pragmatics descriptions
 		def pragmaticsDescriptor = new StringBuffer()
 		unless(options.hasOption('no-core-pragmatics')){
@@ -58,7 +81,7 @@ class PetriCode {
 		this.pragmaticsDescriptors = pragmaticsDescriptor
 		
 		//Parse the model
-
+		log.finest "Parsing the model"
 		def model = new File(options.arguments().last())
 		//println "pragmaticsDescriptors: $pragmaticsDescriptor"
 		def io = new CpnIO(pragmaticsDescriptor)
@@ -69,11 +92,13 @@ class PetriCode {
 		//Add derived pragmatics
 		
 		unless(options.hasOption('no-derived')){
+			log.finest "Adding derived pragmatics"
 			//do derivition stuff
 			PragmaticsDerivator.addDerivedPragmatics(cpn, pragmaticsDescriptor)
 		}
 		
 		unless(options.hasOption('no-constraint-checks')){
+			log.finest "Checking model/pramatic constraints"
 			def violations = []
 			def constraintsOk = PragmaticsChecker.check(cpn, pragmaticsDescriptor, violations)
 			unless(constraintsOk){
@@ -81,7 +106,7 @@ class PetriCode {
 				violations.unique().each {
 					sb.append(it).append('\n')
 				}
-				println "Pragmatics constraints not fulfilled:\n${sb.toString()}"
+				Log.severe "Pragmatics constraints not fulfilled:\n${sb.toString()}"
 				 
 				System.exit(1);
 			}
@@ -92,7 +117,7 @@ class PetriCode {
 		if(options.hasOption('output-annotated-net') || options.hasOption('only-output-annotated-net')  ){
 			throw new Exception("nyi")
 		}
-			
+		log.finest "Generating ATT"
 		def factory = new ATTFactory(pragmaticsDescriptor)
 		def att = factory.createATT(cpn, null, null)
 		
@@ -120,6 +145,7 @@ class PetriCode {
 		} else {
 			throw RuntimeException("no template bindings found")
 		}
+		log.finest "Generating code"
 		def generator
 		if(options.o){
 			generator = new CodeGenerator(att, bindings, options.o)
@@ -127,6 +153,8 @@ class PetriCode {
 			generator = new CodeGenerator(att, bindings, "./")
 		}
 		def files = generator.generate()
+		//println "calling write"
+		log.finest "Writeing ${files.size()} files"
 		generator.write(files)
 		//files.each{ println it; println "\n\n\n\n\n"}
 	}
@@ -164,6 +192,8 @@ class PetriCode {
 						
 			//Code generation options
 			b(longOpt: 'template-bindings', args: 1, argName:'bindings', 'specifies template bindings')
+			
+			v(longOpt: 'verbose', 'Verbose logging')
 		}
 //		cli.t('Specify template bindings')
 //		cli.o('Specify derived pragmatics')

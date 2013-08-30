@@ -5,30 +5,30 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="NPPN-CLI">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="/home/kent/usr/eclipse-4.2/eclipse"/>
+    <property name="ECLIPSE_HOME" value="/opt/kent/eclipse/"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
     <path id="Groovy Libraries.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/groovy-all-2.0.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/ivy-2.2.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/antlr-2.7.7.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/bsf-2.4.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/asm-tree-4.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/jline-1.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/commons-cli-1.2.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/servlet-api-2.4.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/lib/asm-4.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/groovy-all-2.1.5.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/ivy-2.2.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/antlr-2.7.7.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/bsf-2.4.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/asm-tree-4.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/jline-1.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/commons-cli-1.2.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/servlet-api-2.4.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20130703-1600-e43-RELEASE/lib/asm-4.0.jar"/>
     </path>
     <path id="Groovy DSL Support.libraryclasspath">
         <pathelement location="../../.groovy/greclipse/global_dsld_support"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.0.0.xx-20120703-1400-e42-RELEASE/plugin_dsld_support/"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.codehaus.groovy_2.1.5.xx-20120703-1400-e42-RELEASE/plugin_dsld_support/"/>
     </path>
     <path id="Plug-in Dependencies.libraryclasspath"/>
     <path id="JUnit 4.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.3.0.v201303031735.jar" />
     </path>
     <path id="NPPN-CLI.classpath">
         <pathelement location="bin"/>
