@@ -1,0 +1,9 @@
+<%
+def getListValue = { param ->
+
+if(param.trim() == "[]") return "(list )"
+return "@${param}"
+}
+%>
+(swap! ${params[0]} (fn [x] ${getListValue(params[1])}))
+%%VARS:${params[0]}%%

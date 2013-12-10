@@ -1,0 +1,6 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+%>${indent(indentLevel-1)}LOOP_VAR = True
+${indent(indentLevel-1)}while(LOOP_VAR):
+%%yield_declarations%%
+%%yield%%
+<%if(binding.variables.containsKey("end_cond") && end_cond){%>${indent(indentLevel)}LOOP_VAR = ( ${end_cond.trim()} ) <%}%>

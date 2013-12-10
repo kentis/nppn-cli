@@ -1,0 +1,20 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+def getTokenValue = { valueString ->
+	def sb = new StringBuffer()
+	if(valueString[0] == "[" ){
+		sb.append("${indent(indentLevel+1)}__TOKEN__ = [")
+		valueString.substring(1, valueString.size() -1).split(",").each{ value ->
+			sb.append("$value,")
+		}
+		sb.append("]")
+		return sb.toString()
+	}
+	
+	return valueString
+}
+if(cond){%>${indent(indentLevel)}if(${cond[0]}):
+${getTokenValue(condTrueExpr)}
+${indent(indentLevel)}else:
+${getTokenValue(condFalseExpr)}<%
+} else {
+%>${indent(indentLevel)}__TOKEN__ = ${params[0]}<%}%>

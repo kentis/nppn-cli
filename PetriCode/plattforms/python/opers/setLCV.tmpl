@@ -1,0 +1,10 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+params.each{%>${indent(indentLevel)}self.$it = True
+<%}
+if(binding.variables.containsKey('transition')){
+	transition.getSourceArc().each{
+		if(it.target.pragmatics.name.contains("LCV")){
+			%>${indent(indentLevel)}self.$it.target.cleanName = True${"\n"}<%
+		}
+	}
+}

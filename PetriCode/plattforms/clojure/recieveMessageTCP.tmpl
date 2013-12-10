@@ -1,0 +1,12 @@
+
+(def ${params[0]} (atom 
+	
+		(.readObject 
+			(ObjectInputStream. 
+				(.getInputStream @${params[1].trim()})
+			)
+		)
+	
+))
+
+%%VARS:${params[0]}%%

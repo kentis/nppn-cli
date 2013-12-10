@@ -1,0 +1,11 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+%>${indent(indentLevel)}rest = ${params[0]}
+${indent(indentLevel)}${params[1].trim()} = []
+${indent(indentLevel)}while(len(rest) > 0):
+${indent(indentLevel+1)}if(len(rest) >= 5):	
+${indent(indentLevel+2)}${params[1].trim()}.append(rest[0:5])
+${indent(indentLevel+2)}rest = rest[5:]
+${indent(indentLevel+1)}else:
+${indent(indentLevel+2)}${params[1].trim()}.append(rest)
+${indent(indentLevel+2)}rest = ""
+%%VARS:${params[0]}}%%

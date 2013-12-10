@@ -1,0 +1,5 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+%>${indent(indentLevel)}${params[1]} = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+${indent(indentLevel)}${params[1]}.bind(('localhost',${params[0]}))
+${indent(indentLevel)}${params[1]}.listen(1)
+${indent(indentLevel)}(${params[1]}, throwaway) = ${params[1]}.accept()

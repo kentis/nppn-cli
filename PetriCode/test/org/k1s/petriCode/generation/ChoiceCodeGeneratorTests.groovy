@@ -3,6 +3,7 @@ package org.k1s.petriCode.generation;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.k1s.petriCode.PetriCode;
 import org.k1s.petriCode.att.ATTFactory
 import org.k1s.petriCode.pragmatics.Pragmatics;
 import org.k1s.petriCode.att.ATTFactoryTests;
@@ -12,7 +13,6 @@ import org.k1s.petriCode.generation.BindingsDSL;
 import org.k1s.petriCode.generation.CodeGenerator
 
 import static org.hamcrest.CoreMatchers.*
-
 import static org.junit.matchers.JUnitMatchers.*
 class ChoiceCodeGeneratorTests {
 
@@ -70,12 +70,29 @@ class ChoiceCodeGeneratorTests {
 		
 	}
 	
-	
+	@Test
+	void testGeneratechoiceDerivation(){
+		def model = this.class.getResourceAsStream("/simplechoice.cpn")
+		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
+		def io = new CpnIO(pragmaticsDescriptor)
+		def cpn = io.readCPN(model)
+		io.parsePragmatics(cpn)
+		//println PragmaticsDerivator.getServicePages(cpn)
+		PragmaticsDerivator.addDerivedPragmatics(cpn, ATTFactoryTests.getCorePragmatics())
+		
+		println PragmaticsDerivator.getServicePages(cpn).object[0][1].pragmatics.name
+		
+		assertTrue PragmaticsDerivator.getServicePages(cpn).object[0][1].pragmatics.name.contains("branch")
+		
+	}
 	
 	@Test
 	void testGeneratechoiceCode(){
 		def model = this.class.getResourceAsStream("/simplechoice.cpn")
 		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
+		
 		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
@@ -104,6 +121,7 @@ class ChoiceCodeGeneratorTests {
 	void testGeneratechoice(){
 		def model = this.class.getResourceAsStream("/simplechoice.cpn")
 		def pragmaticsDescriptor = CodeGeneratorTests.getPragmaticsDesciptors()
+		PetriCode.pragmaticsDescriptors = pragmaticsDescriptor
 		def io = new CpnIO(pragmaticsDescriptor)
 		def cpn = io.readCPN(model)
 		io.parsePragmatics(cpn)
@@ -136,12 +154,14 @@ class ChoiceCodeGeneratorTests {
 		System.out = newOut
 		
 		client.doSomething(true)
+		client.ready = true
 		client.doSomething(false)
+		
 		//fail('nyi')
 		
 		def out = buf.toString().trim()
 		
-		assertEquals out, "hei\nhallo"
+		assertEquals "hei\nhallo", out
 		
 		System.out = saveOut
 		println buf.toString().trim()

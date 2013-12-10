@@ -1,0 +1,5 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+%>${indent(indentLevel)}self.${params[1].trim()}.setblocking(True)
+${indent(indentLevel)}${params[0]} = self.${params[1].trim()}.recv(1024)
+${indent(indentLevel)}${params[0]} = pickle.loads(${params[0]}) 
+%%VARS:${params[0]}%%

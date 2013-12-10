@@ -1,0 +1,15 @@
+
+(defn ${name} <% 
+def paramsVal = ""
+def params2 = []
+if(binding.getVariables().containsKey("params")){
+	
+	params.each{  
+		if(it.trim() != "") params2 << "$it"
+	}
+	paramsVal = params2.join(", ")
+%>[$paramsVal]<%
+}%>
+(%%yield_declarations%%
+%%yield%%
+))

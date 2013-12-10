@@ -1,0 +1,28 @@
+<%
+def getTokenValue = { valueString ->
+	def sb = new StringBuffer()
+	if(valueString[0] == "[" ){
+		sb.append("(swap! __TOKEN__ (fn [x] (list ")
+		valueString.substring(1, valueString.size() -1).split(",").each{ value ->
+			sb.append("$value ")
+		}
+		sb.append(") ))")
+		return sb.toString()
+	}
+	
+	return "@${valueString}"
+}
+
+%>
+<%if(cond){%>
+  (if ${cond[0]}
+    ${getTokenValue(condTrueExpr)}
+  	${getTokenValue(condFalseExpr)}
+  )
+  %%VARS:__TOKEN__%% 
+<%} else {
+%>
+  (swap! __TOKEN__ (fn [x] @${params[0]}))
+  %%VARS:${params[0]}, __TOKEN__%% 
+<%}%>
+

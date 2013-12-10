@@ -1,0 +1,11 @@
+
+${params[0]} = new ObjectInputStream(((Socket)${params[1]}).getInputStream()).readObject();
+
+//((List)${params[0]}).set(0, Integer.parseInt((String) ((List)${params[0]}).get(0)));
+
+/*System.out.println("Recieved: "+ ${params[0]}.toString());
+System.out.println("Recieved_0: "+ ((List)${params[0]}).get(0).toString());
+
+System.out.println("Recieved eq 0: "+ (((List)${params[0]}).get(0) == 0));
+*/
+%%VARS:${params[0]}%%

@@ -1,0 +1,12 @@
+
+<%import static org.k1s.petriCode.generation.CodeGenerator.removePrags%>
+<%params.each{%>
+$it = true
+<%}
+if(binding.variables.containsKey('transition')){
+	transition.getSourceArc().each{
+		if(it.target.pragmatics.name.contains("LCV")){
+			%>(swap! ${removePrags(className)}.${removePrags(className)}/${it.target.cleanName}_LCV (fn [x] true))${"\n"}<%
+		}
+	}
+}

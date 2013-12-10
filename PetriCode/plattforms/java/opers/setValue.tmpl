@@ -1,0 +1,44 @@
+<%import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+def getListValue = { param, name ->
+
+  if(param.trim() == "[]"){ return "$name = new ArrayList();"}
+  else if(param.trim().startsWith('[')){
+	def val = param.trim()
+	def retval = new StringBuffer()
+	retval.append("List new$name = new ArrayList();\n")
+	val.substring(val.indexOf('[')+1,val.lastIndexOf(']')).tokenize('|').each{
+		def str = it
+		if(str.trim().endsWith(']')){
+			str = "((List)${str.substring(0,str.indexOf('['))}).get(${str.substring(str.indexOf('[')+1, str.indexOf(']'))})"
+		}else if(str ==~  ".*\\[\\d+\\].*" ){ //matches for brackets with a number inside anywhere in the string 
+			if(str.contains("+") || str.contains("-"))
+				str = "(Integer)((List)$str"
+			else
+				str = "((List)$str"
+			str = str.replaceAll("\\[",").get(")
+			str = str.replaceAll("\\]",")")
+
+		}
+		retval.append("new${name}.add($str);\n")
+	}
+	retval.append("$name = new$name;")
+	return retval.toString()
+  }else if(param.trim().endsWith(']')){
+	return "$name = ((List)${param.substring(0,param.indexOf('['))}).get(${param.substring(param.indexOf('['), param.indexOf(']'))})"
+  }
+return "$name = $param;"
+}
+if(binding.hasVariable('cond') && cond != []){%>
+  if(${cond[0].trim()}){
+    ${getListValue(condTrueExpr, params[0].trim())}
+  } else {
+    ${getListValue(condFalseExpr, params[0].trim())}
+  }
+  %%VARS:${params[0]}%% 
+<%} else { %>
+{
+${getListValue(params[1], params[0].trim())}
+}
+%%VARS:${params[0]}%%<%}%>

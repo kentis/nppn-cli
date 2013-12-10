@@ -1,0 +1,4 @@
+/*vars: ${vars}*/
+<%vars.each{key, value -> %>
+<%if( key != '[]'){%>${value != null && value != ""? value : "Object"} ${key} = null;
+<%}}%>

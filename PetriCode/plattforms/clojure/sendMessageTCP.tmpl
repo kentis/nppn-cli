@@ -1,0 +1,8 @@
+ 
+( .writeObject
+   (ObjectOutputStream. 
+ 	(.getOutputStream @${params[0]})  
+   )
+   @${params[1]}
+)
+  %%VARS:${params[1]}%%

@@ -18,7 +18,11 @@ class GenerationVisitor extends ODGVisitor{
 	 */
 	def visitElement(element, bindings){
 		//println "visiting $element"
-		element.generateCode(bindings)
+		try{
+			element.generateCode(bindings)
+		}catch(Exception ex){
+			throw new RuntimeException("Error generating code for $element",ex)
+		}
 	}
 
 	

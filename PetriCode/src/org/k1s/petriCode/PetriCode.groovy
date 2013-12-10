@@ -27,7 +27,7 @@ class PetriCode {
 	static def pragmaticsDescriptors
 	static def LOG_LEVEL
 	
-	static def log
+	static Logger log 
 	/**
 	 * Main method of the program. This is where it all begins.
 	 * @param args The arguments as a String array as per tradition.
@@ -106,7 +106,7 @@ class PetriCode {
 				violations.unique().each {
 					sb.append(it).append('\n')
 				}
-				Log.severe "Pragmatics constraints not fulfilled:\n${sb.toString()}"
+				log.severe "Pragmatics constraints not fulfilled:\n${sb.toString()}"
 				 
 				System.exit(1);
 			}
@@ -206,8 +206,7 @@ class PetriCode {
 	
 	static hasServicePragmatic(node){
 		def servicePragmatics = this.pragmaticsDescriptors.collect{ it.value }.findAll { it.containsService  }
-		//println this.pragmaticsDescriptors
-		//println "servicePrags: ${servicePragmatics}"
+		
 		def retVal = false
 		node.pragmatics.each{
 			if(servicePragmatics.name.contains(it.name)) retVal = true

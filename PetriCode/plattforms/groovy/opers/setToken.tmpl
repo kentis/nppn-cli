@@ -1,0 +1,13 @@
+
+<%if(cond){%>
+  if(${cond[0]}){
+    __TOKEN__ = $condTrueExpr
+  } else {
+    __TOKEN__ = $condFalseExpr
+  }
+  %%VARS:__TOKEN__%% 
+<%} else {%>
+  __TOKEN__ = ${params[0]}
+  %%VARS:${params[0]}, __TOKEN__%% 
+<%}%>
+

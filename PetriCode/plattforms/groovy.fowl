@@ -1,0 +1,38 @@
+Prefix(:=<http://k1s.org/orn/plattform/groovy/>)
+Prefix(basic:=<http://t.k1s.org/OntologyReastrictedNets/basic/>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(cpn:=<http://hib.no/SADLTest/cpn>)
+ 
+Ontology(<http://k1s.org/orn/plattform/groovy/>
+Import( <http://t.k1s.org/OntologyReastrictedNets/basic.owl> )
+Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
+Import( <http://org.k1s/orn/nppn/> )
+
+	Declaration(Class(TemplateBinding))
+	SubClassOf( :TemplateBinding ObjectAllValuesFrom( :pragmatic basic:Pragmatic ) )
+	SubClassOf( :TemplateBinding ObjectAllValuesFrom( :template xsd:string ) )
+	SubClassOf( :TemplateBinding ObjectAllValuesFrom( :container xsd:Boolean ) )
+	SubClassOf( :TemplateBinding ObjectAllValuesFrom( :depends xsd:string ) )
+	
+	
+	Declaration( NamedIndividual( :ClassTemplate))
+	ClassAssertion( :TemplateBinding :ClassTemplate) 
+	ObjectPropertyAssertion( :ragmatic :ClassTemplate nppn:Principal )
+	DataPropertyAssertion(:template :ClassTemplate "mainClass.tmpl"^^xsd:string)
+	
+	Declaration( NamedIndividual( :Send))
+	ClassAssertion( :TemplateBinding :Send) 
+	ObjectPropertyAssertion( :Pragmatic :ClassTemplate nppn:Send )
+	DataPropertyAssertion(:template :TemplateBinding "send.tmpl"^^xsd:string)
+	
+	Declaration( NamedIndividual( :Recieve))
+	ClassAssertion( :TemplateBinding :Recieve) 
+	ObjectPropertyAssertion( :Pragmatic :ClassTemplate nppn:External )
+	DataPropertyAssertion(:template :TemplateBinding "externalMethod.tmpl"^^xsd:string)
+	
+	Declaration( NamedIndividual( :ExternalTemplate))
+	ClassAssertion( :TemplateBinding :ExternalTemplate) 
+	ObjectPropertyAssertion( :Pragmatic :ClassTemplate nppn:External )
+	DataPropertyAssertion(:template :TemplateBinding "externalMethod.tmpl"^^xsd:string)
+)

@@ -41,6 +41,7 @@ FILENAME(pragmatic: '__FILENAME__', template: {params -> "${params.name}.groovy"
 			setLCV(pragmatic: 'setLCV', parameterStrategy: NET, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setLCV.tmpl', weight: 1000)
 			
 			SetField(pragmatic: 'SetField', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setField.tmpl')
+			setField(pragmatic: 'setField', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setField.tmpl')
 			Append(pragmatic: 'Append', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/append.tmpl')
 			SetValue(pragmatic: 'setValue', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setValue.tmpl')
 			OpenChannel(pragmatic: 'OpenChannel', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/openChannel.tmpl')

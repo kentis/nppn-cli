@@ -1,0 +1,14 @@
+;(println  (first (first @${params[0]})))
+
+(def sb (StringBuffer. ) )
+(loop [x @${params[0]}] 
+	(when (> (.size x) 0)
+		
+		(.append sb (last (first x)))
+		(recur (rest x))
+	)
+)
+(swap! ${params[1]} (fn [x] (.toString sb)))
+;(println sb)
+;(println @${params[1].trim()})
+%%VARS:${params[0]}, ${params[1]}%% 

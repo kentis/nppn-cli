@@ -1,0 +1,9 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+if(binding.hasVariable('cond') && cond != [] ){ 
+%>${indent(indentLevel)}if(${cond[0].trim()}):
+${indent(indentLevel+1)}${params[0]} = ${condTrueExpr.replaceAll("\\|",", ")}
+${indent(indentLevel)}else:
+${indent(indentLevel+1)}${params[0]} = ${condFalseExpr.replaceAll("\\|",", ")}
+%%VARS:${params[0]}%%<%
+} else {%>${indent(indentLevel)}${params[0]} = ${params[1].replaceAll("\\|",", ")}
+%%VARS:${params[0]}%%<%}%>

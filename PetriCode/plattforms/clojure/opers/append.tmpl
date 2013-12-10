@@ -1,0 +1,5 @@
+;(println @p)
+(swap! ${params[1]} (fn [x] (concat @${params[1]} (list @${params[0]}))))
+;(println @${params[1]})
+%%VARS:${params[1]}, ${params[0]}%%
+ 

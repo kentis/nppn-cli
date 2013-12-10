@@ -1,0 +1,13 @@
+<%if(binding.hasVariable('cond') && cond != []){%>
+  if(${cond[0].trim()}){
+    ${params[0]} = $condTrueExpr
+  } else {
+    ${params[0]} = $condFalseExpr
+  }
+  %%VARS:${params[0]}%% 
+<%} else {%>
+${params[0]} = ${params[1].replace('|',',')}
+%%VARS:${params[0]}%%
+<%}%>
+
+

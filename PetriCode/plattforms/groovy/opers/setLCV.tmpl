@@ -1,0 +1,14 @@
+
+/*setLCV $node*/
+
+
+<%params.each{%>
+$it = true
+<%}
+if(binding.variables.containsKey('transition')){
+	transition.getSourceArc().each{
+		if(it.target.pragmatics.name.contains("LCV")){
+			%>$it.target.cleanName = true${"\n"}<%
+		}
+	}
+}

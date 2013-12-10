@@ -1,0 +1,25 @@
+<%
+			def e = cond.e.split(' ')
+			def verb = null
+			def verbPrefix = ''
+			def verbPostfix = ''
+			switch(e[0]){
+				case 'eq':
+				 verb = ".equals("
+				 verbPostfix = ')'
+				 break
+				case 'neq':
+				verbPrefix = '!' 
+				 verb = ".equals("
+				 verbPostfix = ')'
+				 break
+				case 't':
+				 verb = ''
+				 e = [verb, 'true']
+				 break
+				default:
+				 verb = ''
+				 e = [verb, e[0] + ' != null || ' + e[0] ]
+				 break
+			} 
+			%>$verbPrefix<%for(def i = 1; i < e.size(); i++){%> ${e[i]}${i < (e.size() -1) ? verb : ''} <%}%>$verbPostfix

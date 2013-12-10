@@ -1,0 +1,3 @@
+(def ${params[1]} (first @${params[0]}) )
+(swap! ${params[0]} (fn [x] (rest @${params[0]}) ) )
+%%VARS:${params[0]}, ${params[1]}%% 

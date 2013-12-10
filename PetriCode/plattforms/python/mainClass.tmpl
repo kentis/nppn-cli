@@ -1,0 +1,21 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.removePrags%>
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent%>
+${indent(indentLevel)}import socket
+${indent(indentLevel)}import pickle
+${indent(indentLevel)}import time
+${indent(indentLevel)}from threading import Thread
+${indent(indentLevel)}class ${name}:
+<%
+	if(binding.variables.containsKey('lcvs')){
+		for(lcv in lcvs){
+		%>${indent(indentLevel + 1)}${removePrags(lcv.name.text)} ${lcv.initialMarking.asString() == '()' ? '= True' : '= False'}\n<%
+		}
+	}
+	if(binding.variables.containsKey('fields')){
+		for(field in fields){
+		%>${indent(indentLevel + 1)}${removePrags(field.name.text)} = None
+<%
+		}
+	}
+	%>
+%%yield%%

@@ -1,0 +1,28 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.removePrags%>
+package $name;
+
+import java.io.*;
+import java.net.*;
+import java.util.*; 
+public class ${name} {
+<%
+	if(binding.variables.containsKey('lcvs')){
+		for(lcv in lcvs){
+		%>public boolean ${removePrags(lcv.name.text)} ${lcv.initialMarking.asString() == '()' ? '= true' : ''};\n<%
+		}
+	}
+	if(binding.variables.containsKey('fields')){
+		for(field in fields){
+			def type = "Object"
+			def statePrag = field.pragmatics[0]
+			if(statePrag && statePrag.arguments != null && statePrag.arguments.trim() != ""){
+				//Try to find type of object
+				def t = typeMap["${statePrag.arguments.trim()}"]
+				if(t != null && t != "") type = t
+			}
+		%>$type ${removePrags(field.name.text)};<%
+		}
+	}
+	%>
+	%%yield%%
+}

@@ -1,0 +1,15 @@
+
+{
+String rest = ${params[0]}.toString();
+${params[1]} = new ArrayList();
+while(rest.length() > 0){
+	if(rest.length() >= 5){
+		${params[1]}.add(rest.substring(0,5));
+		rest = rest.substring(5);
+	} else {
+		${params[1]}.add(rest);
+		rest = "";
+	}
+}
+} 
+%%VARS:${params[0]}, ${params[1]}::List%% 

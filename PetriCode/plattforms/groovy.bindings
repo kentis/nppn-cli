@@ -1,0 +1,8 @@
+
+ClassTemplate(pragmatic: 'Principal', template: 'platform/groovy/mainClass.tmpl', isContainer: true)
+
+ExternalTemplate(pragmatic: 'External', template: 'platform/groovy/externalMethod.tmpl', isContainer: true)
+
+Send(pragmatic: 'Send', template: 'platform/groovy/sendMessage.tmpl', dependencies: 'channels')
+
+Recieve(pragmatic: 'Revieve', template: 'platform/groovy/recieveMessage.tmpl', dependencies: 'channels')

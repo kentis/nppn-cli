@@ -1,0 +1,4 @@
+StringBuffer sb = new StringBuffer()
+${params[0]}.each{ sb.append(it[1].toString() ) }
+${params[1]} = sb.toString()
+%%VARS:${params[0]}, ${params[1]}%% 

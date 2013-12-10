@@ -1,0 +1,3 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+%>${indent(indentLevel)}self.${params[0].trim()}.send(pickle.dumps(${params[1]}))
+${indent(indentLevel)}time.sleep(2)

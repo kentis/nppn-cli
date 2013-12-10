@@ -2,6 +2,7 @@ package org.k1s.petriCode.generation
 
 import org.k1s.petriCode.blocks.Principal;
 import org.k1s.petriCode.generationVisitors.ODGVisitor;
+import org.k1s.petriCode.PetriCode
 
 /**
  * Main driver for the code generation
@@ -33,6 +34,7 @@ class CodeGenerator {
 	def generate(){
 
 		att.children.each{
+			if(PetriCode.log)PetriCode.log.finest("Generaring code for Principal: ${it.name}")
 			ODGVisitor.visitATT(it, bindings)
 		}
 		
@@ -66,11 +68,11 @@ class CodeGenerator {
 			file.createNewFile() 
 			
 			file.text = files[index]
-			println bindings.prag2Binding
-			println "Beautyfier: ${bindings.prag2Binding["__BEAUTYFIER__"]}"
+			//println bindings.prag2Binding
+			//println "Beautyfier: ${bindings.prag2Binding["__BEAUTYFIER__"]}"
 			if(bindings && bindings.prag2Binding["__BEAUTYFIER__"] ){
 				if(bindings.prag2Binding["__BEAUTYFIER__"].template instanceof Closure ){
-					println "running beautyfier"
+					//println "running beautyfier"
 					bindings.prag2Binding["__BEAUTYFIER__"].template.call(file.toString())
 				}
 			}
@@ -118,7 +120,7 @@ class CodeGenerator {
 	def sortChildren(node){
 		if(node instanceof Principal){
 			return node.children.sort{
-				if(it.node.pragmatics[0].name == 'remote') return 0
+				if(it.node.pragmatics[0].name == 'remote' || it.node.pragmatics[0].name == 'internal') return 0
 				return 1
 			}
 		}

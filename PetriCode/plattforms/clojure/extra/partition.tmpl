@@ -1,0 +1,12 @@
+(def ${params[1]} (atom (list ) ) )
+(loop [s ${params[0]}]
+(when (< 0 (.length s) )
+(if (< 1 (.length s))
+(swap! ${params[1]} ( fn [x] (concat @${params[1].trim()} [(.substring s 0 2)] ) ) ) 
+(swap! ${params[1]} ( fn [x] (concat @${params[1].trim()} [ s ] ))) 
+)
+(recur (if (< 1 (.length s)) (.substring s 2) "" ) )
+))
+
+
+%%VARS:${params[0]}, ${params[1]}%% 

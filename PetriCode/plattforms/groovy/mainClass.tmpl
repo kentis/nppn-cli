@@ -1,0 +1,15 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.removePrags%>class ${name} {
+<%
+	if(binding.variables.containsKey('lcvs')){
+		for(lcv in lcvs){
+		%>def ${removePrags(lcv.name.text)} ${lcv.initialMarking.asString() == '()' ? '= true' : ''}\n<%
+		}
+	}
+	if(binding.variables.containsKey('fields')){
+		for(field in fields){
+		%>def ${removePrags(field.name.text)}${'\n'}<%
+		}
+	}
+	%>
+	%%yield%%
+}

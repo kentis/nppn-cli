@@ -1,0 +1,11 @@
+<%
+	if(binding.variables.containsKey('post_conds')){
+		for(post_cond in post_conds){
+		%>
+			${post_cond} = true
+		<%
+		}
+	}
+	%>
+return ${params.size() == 1 && params[0].trim() != "" ? params[0] : '__TOKEN__'};
+%%VARS:__TOKEN__%%

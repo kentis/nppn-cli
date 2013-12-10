@@ -1,0 +1,5 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+%>${indent(indentLevel)}${params[1].trim()} = ""
+${indent(indentLevel)}for item in ${params[0]}:
+${indent(indentLevel+1)}${params[1].trim()} = ${params[1]} + item[1]
+%%VARS:${params[0]}, ${params[1]}%%

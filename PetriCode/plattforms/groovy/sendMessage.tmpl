@@ -1,0 +1,3 @@
+                DatagramSocket sock = new DatagramSocket()
+                DatagramPacket pack = new DatagramPacket(msg.bytes, msg.bytes.length, InetAddress.getByName(server.host), server.port)
+                sock.send pack

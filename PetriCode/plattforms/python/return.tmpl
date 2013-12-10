@@ -1,0 +1,10 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.indent
+	if(binding.variables.containsKey('post_conds')){
+		for(post_cond in post_conds){
+		%>
+${indent(indentLevel)}self.${post_cond} = True
+		<%
+		}
+	}
+	%>${indent(indentLevel)}return ${params.size() == 1 && params[0].trim() != "" ? params[0] : ''}
+%%VARS:__TOKEN__%%

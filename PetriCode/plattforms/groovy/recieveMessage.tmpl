@@ -1,0 +1,7 @@
+                DatagramSocket sock = new DatagramSocket(portNo)
+               
+               
+                byte[] buff = new byte[2048]
+                DatagramPacket pack = new  DatagramPacket(buff, 2048)
+                sock.receive pack
+                println new String(pack.data)

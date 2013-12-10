@@ -38,6 +38,7 @@ class PragmaticsDerivator {
 				//principals << page
 				page.object.each { principalNode ->
 					if(principalNode instanceof Instance && principalNode.pragmatics && PetriCode.hasServicePragmatic(principalNode)){//.pragmatics[0].name == 'service'){
+						println "found service"
 						services << ATTFactory.getPageForId(principalNode.subPageID, pn)
 					}
 				}

@@ -3,7 +3,7 @@ package org.k1s.petriCode.blocks
 import org.k1s.petriCode.generation.CodeGenerator;
 import org.k1s.petriCode.generation.TemplateManager
 import org.k1s.petriCode.generation.TemplateParameters
-
+import org.k1s.petriCode.PetriCode
 /**
  * Service
  * @author kent
@@ -28,7 +28,7 @@ class Service  {
 	 * @return
 	 */
 	def generateCode(bindings){
-		
+		if(PetriCode.log)PetriCode.log.finest("Generate code for Service ${name}")
 		def binding = bindings.prag2Binding["service"]
 		
 		if(binding == null){

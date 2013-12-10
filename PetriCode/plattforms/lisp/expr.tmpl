@@ -1,0 +1,20 @@
+<%
+			def e = cond.e.split(' ')
+			def verb = null
+			switch(e[0]){
+				case 'eq':
+				 verb = "=="
+				 break
+				case 'neq': 
+				 verb = "!="
+				 break
+				case 't':
+				 verb = ''
+				 e = [verb, 'true']
+				 break
+				default:
+				 verb = ''
+				 e = [verb, e[0]]
+				 break
+			} 
+			for(def i = 1; i < e.size(); i++){%> ${e[i]} ${i < (e.size() -1) ? verb : ''}<%}%>

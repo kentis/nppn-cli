@@ -1,0 +1,9 @@
+<% if(node.pragmatics[0].structure.name != 'Return'){ %>
+__TOKEN__<%
+if(binding.variables.containsKey('controlflow_outgoing_arc') && controlflow_outgoing_arc != null  ){
+ if(controlflow_outgoing_arc.inscription.text == '()') {%> = null//${controlflow_outgoing_arc.inscription.text}<%
+ }
+}
+}
+%>
+%%VARS:__TOKEN__%%

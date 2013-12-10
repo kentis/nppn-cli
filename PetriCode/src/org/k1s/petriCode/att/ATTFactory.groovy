@@ -10,7 +10,7 @@ import org.cpntools.accesscpn.model.Transition;
 import org.k1s.petriCode.pragmatics.Pragmatics;
 import org.k1s.petriCode.blocks.*
 import org.k1s.petriCode.generation.CodeGenerator;
-
+import org.k1s.petriCode.PetriCode
 /**
  * Generator class for ATTs
  * @author kent
@@ -98,7 +98,7 @@ class ATTFactory {
 	 */
 	def attForPrincipal(Instance node, PetriNet pn, bindings, att){
 		def principal = new Principal(name: node.name.text, level: 1)
-		
+		if(PetriCode.log != null){ PetriCode.log.finest("Creating ATT for Principal: ${node.name.text}") }
 		
 		def page = getPageForId(node.subPageID, pn) 
 		page.object.each{
@@ -146,6 +146,7 @@ class ATTFactory {
 	 */
 	def attForService(Instance node, pn, principal){
 		def service = new Service(name: node.name.getText(), parent: principal, level: 2)
+		if(PetriCode.log)PetriCode.log.finest("Generating ATT for: ${node.name.getText()}")
 		def page = getPageForId(node.subPageID, pn) 
 		
 		service.node = node
@@ -303,13 +304,16 @@ class ATTFactory {
 			return loop
 		} else if(node.pragmatics.name.flatten().contains("branch")){
 			//throw new Exception("branching not yet supported")
+			if(PetriCode.log)PetriCode.log.finest("creating branch: ${node.pragmatics.name}")
 			def branch = new Conditional()
 			branch.start = node
 			branch.parent = parent
 			branch.level = parent.level + 1
+			println "sourceArc: ${ node.sourceArc}"
 			node.sourceArc.each { Arc outArc ->
-				def nexts = findFollowingControlflowPlaces(outArc.target)
-				//if(nexts.size() > 0){
+				try{
+					def nexts = findFollowingControlflowPlaces(outArc.target)
+					//if(nexts.size() > 0){
 					
 					def sequence = new Sequence()
 					sequence.start = node
@@ -324,9 +328,12 @@ class ATTFactory {
 						if(block != null) sequence.children << block
 						
 					}
-					sequence.end = block.end
+					if(block != null) sequence.end = block.end
 					branch.sequences[CodeGenerator.nameToFilename(firstBlock.transition.name.asString()).trim()] = sequence
-				//}
+				} catch(Exception e){
+					e.printStackTrace()
+					throw e
+				}
 			}
 			visited << branch.end
 			branch.end = branch.sequences.values().toArray()[0].end

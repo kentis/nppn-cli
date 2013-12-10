@@ -1,0 +1,77 @@
+<%
+import org.k1s.petriCode.generation.*
+/*		def e = cond.e.split(' ')
+			def verb = null
+			switch(e[0]){
+				case 'eq':
+				 verb = "=="
+				 break
+				case 'neq': 
+				 verb = "!="
+				 break
+				case 't':
+				 verb = ''
+				 e = [verb, 'true']
+				 break
+				case 'isEmpty':
+				 verb = ".size() == 0"
+				 e = [verb, 'true']
+				 break
+				default:
+				 verb = ''
+				 e = [verb, e[0]]
+				 break
+			} 
+			for(def i = 1; i < e.size(); i++){%> ${e[i]} ${i < (e.size() -1) ? verb : ''}<%}*/
+			
+//def e = cond.e			
+
+
+def execTmpl = {e ->
+  //out.println e
+  def sb = new StringBuilder()
+  def verb = null
+  switch(e.oper.toString()){
+	case 'eq':
+	case '<eq>':
+		verb = "=="
+		break
+	case 'neq': 
+	case '<neq>':
+		verb = "!="
+		break
+	case 't':
+	case '<t>':
+		verb = ''
+		e = [verb, 'true']
+		break
+	case 'isEmpty':
+	case '<isEmpty>':
+		verb = ".size() == 0"
+		e = [verb, 'true']
+		break
+	case 'or':
+	case '<or>':
+		verb = "||"
+		break
+	case 'gt':
+	case '<gt>':
+		verb = '>'
+		break
+	default:
+		verb = ''
+		e = [verb, e.oper.text]
+		break
+  }
+  if(e instanceof List) {
+	for(def i = 1; i < e.size(); i++){ sb.append(" ${e[i]} ${i < (e.size()-1) ? verb : ''} ")}
+  }else{
+  	
+	for(def i = 0; i < e.args.size(); i++){sb.append(" ${e.args[i] instanceof Expr ? call(e.args[i]) : e.args[i].text} ${i < (e.args.size() -1) ? verb : ''} ")}
+  }
+  return sb.toString()
+}
+
+def str = execTmpl(cond.e)
+
+%>${str}

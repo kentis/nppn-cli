@@ -36,7 +36,7 @@ class Conditionals {
 		} 
 	
 		def conds = parse(condStr)
-		
+		//println conds
 		
 		/*def iftmpl = '''
 			${first ? '' : 'else '}if(${cond.e == 't'? t : cond.e}){ ${cond.p} }
@@ -107,7 +107,6 @@ class Conditionals {
 		
 		def trueTmpl = new File(bindings.bindings.TRUE.template).text
 		Template exprTemplate = engine.createTemplate(exprTmpl)
-		
 		
 		def stmt = parseExpr(exprStr)
 		def exprText = exprTemplate.make([stmt: parseExpr(exprStr), t: trueTmpl]).toString()

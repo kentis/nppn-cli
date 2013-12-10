@@ -1,0 +1,63 @@
+<%
+import java.util.regex.Pattern
+
+def pr
+
+
+def toListOpers = { arg ->
+	if(arg.endsWith("]")){
+		def root = arg.substring(0, arg.indexOf("["))
+		def getArg = arg.substring(arg.indexOf("[")+1, arg.indexOf("]"))
+		return "((List)${root}).get(${getArg})"
+	}
+	if(Pattern.compile("-?\\d+").matcher(arg).matches()) {
+	    	return "Integer.valueOf($arg)"
+	}
+	
+	return arg
+}
+
+def translate 
+translate = { oper, args ->
+	for(int i = 0; i < args.size(); i++){
+		if(!(args[i] instanceof String)){
+			//not a string, assuming Expr
+			args[i] = translate(args[i].oper, args[i].args)
+		}
+	}  
+	switch(oper){
+		case 'eq':
+			return "${toListOpers(args[0])}.equals(${toListOpers(args[1])})"
+		break
+		case 'neq':
+			return "${args[0]} != ${toListOpers(args[1])}"
+		break
+		case 'lt':
+			return "(Number)${args[0]} < (Number)${toListOpers(args[1])}"
+		break
+		case 'gt':
+                        return "(Integer)${args[0]} > (Integer)${toListOpers(args[1])}"
+                break
+		case 'sizeOf':
+			return "((Collection)${args[0]}).size()"
+			break
+		case 'notNull':
+			return "${args[0]} != null"
+			break
+		case 'isEmpty':
+			return "((Collection)${args[0]}).size() == 0"
+		break
+		case 'or':
+			return "${args[0]} || ${args[1]}"
+			break
+		case 'and':
+			return "${args[0]} && ${args[1]}"
+			break
+		default:
+			throw new RuntimeException("unknown operator: $oper")
+	}
+}
+
+pr = translate.call(stmt.oper,stmt.args)
+
+%>$pr

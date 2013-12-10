@@ -1,0 +1,19 @@
+<%import static org.k1s.petriCode.generation.CodeGenerator.removePrags%>
+(ns ${name}.${name} (:gen-class))
+(import '(java.net ServerSocket Socket SocketException DatagramSocket DatagramPacket InetAddress)
+		'(java.util List)
+		'(java.io InputStream OutputStream ObjectOutputStream ObjectInputStream ByteArrayInputStream ByteArrayOutputStream))
+<%
+	if(binding.variables.containsKey('lcvs')){
+		for(lcv in lcvs){
+		%>(def ${removePrags(lcv.name.text)}_LCV ${lcv.initialMarking.asString() == '()' ? '(atom true)' : '(atom false)'})\n<%
+		}
+	}
+	if(binding.variables.containsKey('fields')){
+		for(field in fields){
+		%>(def ${removePrags(field.name.text)} (atom nil))\n<%
+		}
+	}
+	%>
+
+%%yield%%

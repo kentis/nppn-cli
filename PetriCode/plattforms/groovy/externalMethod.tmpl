@@ -1,0 +1,22 @@
+def ${name}(${binding.getVariables().containsKey("params") ? params.join(", ") : ""}){
+<%
+	if(binding.variables.containsKey('pre_conds')){
+		for(pre_cond in pre_conds){
+			%>if(!$pre_cond) throw new Exception('unfulfilled precondition: $pre_cond')
+<%
+			if(!pre_sets.contains("$pre_cond")){%>$pre_cond = false<%}
+		}
+	}
+	
+	
+	%>
+	%%yield_declarations%%
+	%%yield%%
+	
+	<%if(binding.variables.containsKey('post_sets')){
+		for(post_set in post_sets){
+			%>$post_set = true<%
+		}
+	}%>
+
+}

@@ -1,0 +1,58 @@
+<%
+def pr
+
+
+def translate 
+translate = { oper, args ->
+	for(int i = 0; i < args.size(); i++){
+		if(!(args[i] instanceof String)){
+			//not a string, assuming Expr
+			args[i] = translate(args[i].oper, args[i].args)
+		}
+	}  
+	switch(oper.trim()){
+		case 'eq':
+			return "${args[0]} == ${args[1]}"
+			break
+		case 'neq':
+			return "${args[0]} != ${args[1]}"
+			break
+		case 'lt':
+			return "${args[0]} < ${args[1]}"
+			break
+		case 'sizeOf':
+			return "${args[0]}.size()"
+		case 'isEmpty':
+			return "${args[0]}.size() == 0"
+			break
+		case 'isTrue':
+			return "${args[0]} == true"
+			break
+		case 'gt':
+			return "${args[0]} > ${args[1]}"
+			break
+		case 'lt':
+                        return "${args[0]} < ${args[1]}"
+                        break
+		case 'notNull':
+			return "${args[0]} != null"
+         		break
+		case 'and':
+			return "(${args[0]}) && (${args[1]})"
+			break
+		case 'or':
+			return "(${args[0]}) || (${args[1]})"
+			break
+
+		case 'null':
+		case null: //no operator, single boolean value
+			return "args[0]"
+			break
+		default:
+			throw new RuntimeException("stmt.tmpl encountered unknown operator: '$oper'")
+	}
+}
+
+pr = translate.call(stmt.oper,stmt.args)
+
+%>$pr
