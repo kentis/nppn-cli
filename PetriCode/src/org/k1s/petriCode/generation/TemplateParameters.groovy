@@ -74,12 +74,15 @@ class TemplateParameters {
 	}
 	
 	def getParametersFromNETATT(Pragmatics pragmatic, attNode, node){
+		println "using the NET_ATT parameter strategy"
 		def retval = getParametersFromNET(pragmatic, node)
 		def principal = attNode
 		while(!(principal instanceof Principal)){
 			principal = principal.parent
 		}
 		
+		retval['attNode'] = attNode
+                retval['principal'] = principal
 		retval['className'] =  principal.name
 		return retval
 	}
@@ -90,7 +93,8 @@ class TemplateParameters {
 		while(!(principal instanceof Principal)){
 			principal = principal.parent
 		}
-		
+		retval['attNode'] = att_node
+		retval['principal'] = principal
 		retval['className'] =  principal.name
 		return retval
 	}

@@ -99,6 +99,8 @@ class PragmaticsDerivator {
 	static def derivePrags(node, page, pragmaticsDefinitions, visited){
 		pragmaticsDefinitions.each{ key, PragmaticsDescriptor pragDef ->
 			pragDef.derviationRules.each{
+				def cl = this.getClass().getClassLoader()
+				if(cl == null ) cl = ClassLoader.getSystemClassLoader()
 				PNPattern pd = new GroovyShell(this.getClass().getClassLoader()).evaluate("import org.k1s.petriCode.blocks.derived.PNPattern; $it")
 				
 				if(pd.matchNode(node, visited)){

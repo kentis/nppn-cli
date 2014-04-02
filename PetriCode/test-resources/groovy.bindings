@@ -53,3 +53,5 @@ FILENAME(pragmatic: '__FILENAME__', template: {params -> "${params.name}.groovy"
 			inc(pragmatic: 'inc', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/inc.tmpl')
 			mod(pragmatic: 'mod', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/mod.tmpl')
 			add(pragmatic: 'add', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/add.tmpl')
+
+Pop(pragmatic: 'wait', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/wait.tmpl')

@@ -34,12 +34,14 @@ class Service  {
 		if(binding == null){
 			throw new RuntimeException("No template found for service.")
 		}
-		
+	        println "strategy for service: ${binding.parameterStrategy}"
 		def params = new TemplateParameters(bindings).getParamtersFor(node.pragmatics[0], node, this, binding.parameterStrategy)
 		params.name = CodeGenerator.nameToFilename(name)
 		params.'pre_conds' = getPreConds()
 		params.'pre_sets' = getPreSets()
 		if(end_node) params.'post_sets' = getPostSets()
+		
+		println "params: $params"		
 		
 		this.text = new TemplateManager().runTemplate(binding.template,params).toString()
 
