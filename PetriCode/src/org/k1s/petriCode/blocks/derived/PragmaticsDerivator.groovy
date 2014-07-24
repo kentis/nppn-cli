@@ -101,7 +101,7 @@ class PragmaticsDerivator {
 			pragDef.derviationRules.each{
 				def cl = this.getClass().getClassLoader()
 				if(cl == null ) cl = ClassLoader.getSystemClassLoader()
-				PNPattern pd = new GroovyShell(this.getClass().getClassLoader()).evaluate("import org.k1s.petriCode.blocks.derived.PNPattern; $it")
+				PNPattern pd = new GroovyShell().evaluate("import org.k1s.petriCode.blocks.derived.PNPattern; $it")
 				
 				if(pd.matchNode(node, visited)){
 					addPrag(node, pragDef)
