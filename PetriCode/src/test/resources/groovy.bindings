@@ -1,0 +1,57 @@
+ClassTemplate(pragmatic: 'Principal', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/mainClass.tmpl', isContainer: true)
+classTemplate(pragmatic: 'principal', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/mainClass.tmpl', isContainer: true)
+FILENAME(pragmatic: '__FILENAME__', template: {params -> "${params.name}.groovy"}) 	
+			ExternalTemplate(pragmatic: 'service', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/externalMethod.tmpl', isContainer: true)
+			
+			send(pragmatic: 'send', parameterStrategy: FROM_PRAGMATIC, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/sendMessageTCP.tmpl', dependencies: 'channels')
+			
+			Send(pragmatic: 'Send', parameterStrategy: FROM_PRAGMATIC, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/sendMessageTCP.tmpl', dependencies: 'channels')
+			Receive(pragmatic: 'Receive', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/recieveMessageTCP.tmpl', dependencies: 'channels')
+			
+			
+			COND(pragmatic: '_COND_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/cond.tmpl')
+			TRUE(pragmatic: '_TRUE_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/true.tmpl')
+			EXPR(pragmatic: '_EXPR_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/expr.tmpl')
+			
+			TOKEN(pragmatic: '_-TOKEN-_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/__TOKEN__.tmpl')
+			DECLARATIONS(pragmatic: '_-DECLARATIONS-_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/__DECLARATIONS__.tmpl')
+			
+			Id(pragmatic: 'Id')
+			Cond(pragmatic: 'Cond', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/cond.tmpl', isContainer: true, isMultiContainer: true)
+			startLoop(pragmatic: 'startLoop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/loop.tmpl', isContainer: true, isMultiContainer: true)
+			
+			endLoop(pragmatic: 'endLoop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/endLoop.tmpl')
+			
+			Print(pragmatic: 'print', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/print.tmpl')
+			
+			RemoveHead(pragmatic: 'RemoveHead', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/remHead.tmpl')
+			Merge(pragmatic: 'Merge')
+			LCV(pragmatic: 'LCV')
+			Return(pragmatic: 'return', weight: Integer.MAX_VALUE, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/return.tmpl')
+			Return1(pragmatic: 'Return', weight: Integer.MAX_VALUE, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/return.tmpl')
+			
+			/**OPERATIONS**/
+			partition(pragmatic: 'partition', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/partition.tmpl')
+			Partition(pragmatic: 'Partition', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/partition.tmpl')
+			Departition(pragmatic: 'Departition', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/departition.tmpl')
+			pop(pragmatic: 'pop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/pop.tmpl')
+			Pop(pragmatic: 'Pop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/pop.tmpl')
+			SetToken(pragmatic: 'setToken', parameterStrategy: CONDITIONALS, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setToken.tmpl')
+			SetToken(pragmatic: 'SetToken', parameterStrategy: CONDITIONALS, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setToken.tmpl')
+			setLCV(pragmatic: 'setLCV', parameterStrategy: NET, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setLCV.tmpl', weight: 1000)
+			
+			SetField(pragmatic: 'SetField', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setField.tmpl')
+			setField(pragmatic: 'setField', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setField.tmpl')
+			Append(pragmatic: 'Append', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/append.tmpl')
+			SetValue(pragmatic: 'setValue', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/setValue.tmpl')
+			OpenChannel(pragmatic: 'OpenChannel', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/openChannel.tmpl')
+			OpenServerChannel(pragmatic: 'OpenServerChannel', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/openServerChannel.tmpl')
+			
+			STMT(pragmatic: 'Stmt', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/stmt.tmpl')
+			
+			getAndIncCounter(pragmatic: 'getAndIncCounter', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/getAndIncCounter.tmpl')
+			inc(pragmatic: 'inc', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/inc.tmpl')
+			mod(pragmatic: 'mod', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/mod.tmpl')
+			add(pragmatic: 'add', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/opers/add.tmpl')
+
+Pop(pragmatic: 'wait', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/groovy/wait.tmpl')

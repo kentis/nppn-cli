@@ -1,0 +1,57 @@
+FILENAME(pragmatic: '__FILENAME__', template: {params -> "${params.name}.java"})
+
+
+classTemplate(pragmatic: 'principal', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/mainClass.tmpl', isContainer: true)
+
+ExternalTemplate(pragmatic: 'service', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/externalMethod.tmpl', isContainer: true)
+
+send(pragmatic: 'send', parameterStrategy: FROM_PRAGMATIC, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/sendMessageTCP.tmpl', dependencies: 'channels')
+Send(pragmatic: 'Send', parameterStrategy: FROM_PRAGMATIC, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/sendMessageTCP.tmpl', dependencies: 'channels')
+
+			Receive(pragmatic: 'Receive', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/recieveMessageTCP.tmpl', dependencies: 'channels')
+			receive(pragmatic: 'receive', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/recieveMessageTCP.tmpl', dependencies: 'channels')
+			
+			
+			COND(pragmatic: '_COND_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/cond.tmpl')
+			TRUE(pragmatic: '_TRUE_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/true.tmpl')
+			EXPR(pragmatic: '_EXPR_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/expr.tmpl')
+			
+			TOKEN(pragmatic: '_-TOKEN-_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/__TOKEN__.tmpl')
+			DECLARATIONS(pragmatic: '_-DECLARATIONS-_', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/__DECLARATIONS__.tmpl', parameterStrategy: DECLARATIONS_AND_TYPES)
+			
+			Id(pragmatic: 'Id')
+			Cond(pragmatic: 'Cond', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/cond.tmpl', isContainer: true, isMultiContainer: true)
+			startLoop(pragmatic: 'startLoop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/loop.tmpl', isContainer: true, isMultiContainer: true)
+			
+			endLoop(pragmatic: 'endLoop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/endLoop.tmpl')
+			
+			Print(pragmatic: 'print', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/print.tmpl')
+			
+			RemoveHead(pragmatic: 'RemoveHead', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/remHead.tmpl')
+			Merge(pragmatic: 'Merge')
+			LCV(pragmatic: 'LCV')
+			Return(pragmatic: 'return', weight: Integer.MAX_VALUE, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/return.tmpl')
+			Return1(pragmatic: 'Return', weight: Integer.MAX_VALUE, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/return.tmpl')
+			
+			/**OPERATIONS**/
+			partition(pragmatic: 'partition', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/partition.tmpl')
+			Partition(pragmatic: 'Partition', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/partition.tmpl')
+			Departition(pragmatic: 'Departition', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/departition.tmpl')
+			pop(pragmatic: 'pop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/pop.tmpl')
+			Pop(pragmatic: 'Pop', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/pop.tmpl')
+			SetToken(pragmatic: 'setToken', parameterStrategy: CONDITIONALS, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/setToken.tmpl')
+			SetToken(pragmatic: 'SetToken', parameterStrategy: CONDITIONALS, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/setToken.tmpl')
+			setLCV(pragmatic: 'setLCV', parameterStrategy: NET, template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/setLCV.tmpl', weight: 1000)
+			
+			SetField(pragmatic: 'SetField', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/setField.tmpl')
+			Append(pragmatic: 'Append', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/append.tmpl')
+			SetValue(pragmatic: 'setValue', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/setValue.tmpl')
+			OpenChannel(pragmatic: 'OpenChannel', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/openChannel.tmpl')
+			OpenServerChannel(pragmatic: 'OpenServerChannel', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/openServerChannel.tmpl')
+			
+			STMT(pragmatic: 'Stmt', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/stmt.tmpl')
+			
+			getAndIncCounter(pragmatic: 'getAndIncCounter', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/getAndIncCounter.tmpl')
+			inc(pragmatic: 'inc', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/inc.tmpl')
+			mod(pragmatic: 'mod', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/mod.tmpl')
+			add(pragmatic: 'add', template: '/home/kent/projects/nppn-cli/PetriCode/plattforms/java/opers/add.tmpl')
