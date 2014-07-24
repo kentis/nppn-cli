@@ -20,6 +20,10 @@ import org.k1s.petriCode.generation.BindingsDSL;
 import org.k1s.petriCode.generation.CodeGenerator
 import org.k1s.petriCode.cpn.io.CpnIO;
 
+
+//for timeing
+import groovy.time.*
+
 //@Log
 class PetriCode {
 
@@ -28,11 +32,14 @@ class PetriCode {
 	static def LOG_LEVEL
 	
 	static Logger log 
+	
+	static times = [:]
 	/**
 	 * Main method of the program. This is where it all begins.
 	 * @param args The arguments as a String array as per tradition.
 	 */
 	public static void main(String[] args){
+		times.start = System.currentTimeMillis()
 		log = Logger.getLogger("PetriCode")
 		log.addHandler(new StreamHandler(System.out, new SimpleFormatter()))
 		
@@ -46,6 +53,8 @@ class PetriCode {
 			this.LOG_LEVEL = java.util.logging.Level.WARNING
 		}
 		
+                
+
 		log.level = this.LOG_LEVEL
 		log.getHandlers()[0].level =this.LOG_LEVEL 
 		
@@ -59,6 +68,7 @@ class PetriCode {
 		
 		PetriCode.strict = options.hasOption('strict')
 		
+		times.startPragsModule = System.currentTimeMillis()
 		/****** MODULE 1: Derive pragmatics! ***********/
 		log.finest "Parsing pragmatics"
 		//get pragmatics descriptions
@@ -113,7 +123,7 @@ class PetriCode {
 		}
 		
 		/************ Module 2: Generate ATT ****************/
-		
+		times.startATTModule = System.currentTimeMillis()
 		if(options.hasOption('output-annotated-net') || options.hasOption('only-output-annotated-net')  ){
 			throw new Exception("nyi")
 		}
@@ -134,6 +144,7 @@ class PetriCode {
 		}
 		
 		/********** Module 3: Generate code ***************/
+		times.startCGModule = System.currentTimeMillis()
 		def bindings 
 		if(options.b){
 			def bConcats = new StringBuffer()
@@ -157,6 +168,10 @@ class PetriCode {
 		log.finest "Writeing ${files.size()} files"
 		generator.write(files)
 		//files.each{ println it; println "\n\n\n\n\n"}
+
+		times.end = System.currentTimeMillis()
+                if(options.hasOption('timeings')
+  		  println times
 	}
 	
 	/**
@@ -192,7 +207,9 @@ class PetriCode {
 						
 			//Code generation options
 			b(longOpt: 'template-bindings', args: 1, argName:'bindings', 'specifies template bindings')
-			
+                         
+                        //More general options
+			_(longOpt:'timeings', 'Computes and reports the time spent in each module.')
 			v(longOpt: 'verbose', 'Verbose logging')
 		}
 //		cli.t('Specify template bindings')
