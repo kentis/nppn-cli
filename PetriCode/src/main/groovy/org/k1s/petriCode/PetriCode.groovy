@@ -170,7 +170,7 @@ class PetriCode {
 		//files.each{ println it; println "\n\n\n\n\n"}
 
 		times.end = System.currentTimeMillis()
-                if(options.hasOption('timeings')
+                if(options.hasOption('timeings'))
   		  println times
 	}
 	
