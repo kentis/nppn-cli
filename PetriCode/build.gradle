@@ -9,6 +9,9 @@
 
 // Apply the groovy plugin to add support for Groovy
 apply plugin: 'groovy'
+apply plugin:'application'
+
+mainClassName = "org.k1s.petriCode.PetriCode"
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -21,7 +24,7 @@ repositories {
 dependencies {
     // We use the latest groovy 2.x version for building this library
     compile 'org.codehaus.groovy:groovy-all:2.3.3'
-    //runtime 'org.codehaus.groovy:groovy:2.3.3'
+    runtime 'org.codehaus.groovy:groovy-all:2.3.3'
     // We use the awesome Spock testing and specification framework
     //testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     testCompile 'junit:junit:4.11'
@@ -37,4 +40,13 @@ dependencies {
    testCompile fileTree(dir: 'lib', include: '*.jar')
    testCompile fileTree(dir: 'lib/jung', include: '*.jar')
    //testCompile files('lib/groovy/groovy-all-2.1.5.jar')
+}
+
+jar{
+//  from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+  manifest{
+    
+    attributes 'Main-Class': 'org.k1s.petriCode.PetriCode'
+
+  }
 }
