@@ -20,6 +20,7 @@ class ATTFactory {
 	
 	def controlFlowPragmatics = []
 	def servicePragmatics = []
+	def branchPragmatics = []
 	def pragmatics
 	def pragmaticsMap
 	
@@ -36,6 +37,7 @@ class ATTFactory {
 		
 		this.pragmatics.each { 
 			if(it.controlFlow || it.block != null) controlFlowPragmatics << it.name
+			if(it.conditional) branchPragmatics << it.name
 			
 		}
 		
@@ -302,7 +304,7 @@ class ATTFactory {
 			
 			visited << loop.end
 			return loop
-		} else if(node.pragmatics.name.flatten().contains("branch")){
+		} else if(node.pragmatics.name.flatten().intersect(branchPragmatics).size() == 1 ){
 			//throw new Exception("branching not yet supported")
 			if(PetriCode.log)PetriCode.log.finest("creating branch: ${node.pragmatics.name}")
 			def branch = new Conditional()
@@ -339,6 +341,8 @@ class ATTFactory {
 			branch.end = branch.sequences.values().toArray()[0].end
 			visited << branch.end
 			return branch
+		} else if(node.pragmatics.name.flatten().intersect(branchPragmatics).size() > 1){
+			throw new Exception("too many branch pragmatics on node: ${node.name}")
 		}
 		throw new Exception("block type for ${node.name} not yet supported")
 	}

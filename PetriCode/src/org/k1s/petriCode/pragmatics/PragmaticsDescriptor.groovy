@@ -19,6 +19,8 @@ class PragmaticsDescriptor {
 	List derviationRules
 	//List validationRules
 	
+	def conditional
+
 	//indicates wether or not this pragatic idicates that the underlying element
 	//is a service layer page
 	boolean containsService = false
