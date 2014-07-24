@@ -245,7 +245,7 @@ class ATTFactory {
 			if(isBlockStart(node)) {
 				return createBlock(node, service)
 			} else {
-				//println "creating atomic for $node with prags: ${node.pragmatics.name}"
+				println "creating atomic for $node with prags: ${node.pragmatics.name}"
 				return createAtomic(node, service)
 			}
 		} else {
@@ -363,13 +363,18 @@ class ATTFactory {
 		if(transition == null){
 			node.sourceArc.each{
 				if( transition == null
-					&& findFollowingControlflowPlaces(it.target) != [] 
+					//&& findFollowingControlflowPlaces(it.target) != [] 
 					&& !(visited.contains(it.target))
 					&& !(visited.contains(findFollowingControlflowPlaces(it.target)[0]))
 					){
 					transition = it.target
 				}
 			}
+                        /*if(transition == null){
+                            if(node.sourceArc.size() == 1 && !(visited.contains(it.target)) ){
+                                transition = node.sourceArc[0].target
+                            }
+                        }*/
 		}
 		if(transition == null) return null
 		atomic.transition = transition
